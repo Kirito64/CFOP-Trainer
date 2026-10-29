@@ -33,7 +33,8 @@ let solverPromise: Promise<(setup: string) => Promise<string>> | undefined;
 /** Lazily loads cubing.js's two-phase solver (it runs in a worker and builds tables on first use). */
 function solver() {
   solverPromise ??= Promise.all([import("cubing/puzzles"), import("cubing/search"), import("cubing/alg")]).then(
-    async ([{ cube3x3x3 }, { experimentalSolve3x3x3IgnoringCenters }, { Alg }]) => {
+    async ([{ cube3x3x3 }, { experimentalSolve3x3x3IgnoringCenters, setSearchDebug }, { Alg }]) => {
+      setSearchDebug({ logPerf: false });
       const kpuzzle = await cube3x3x3.kpuzzle();
       return async (setup: string) => {
         const pattern = kpuzzle.defaultPattern().applyAlg(new Alg(setup));

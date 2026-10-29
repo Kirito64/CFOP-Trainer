@@ -67,6 +67,8 @@ const lazy = (load: () => Promise<{ default: React.ComponentType }>) => async ()
 export const router = createBrowserRouter([
   {
     Component: Shell,
+    // Shown while the first page's lazy chunk loads.
+    HydrateFallback: () => null,
     children: [
       { index: true, lazy: lazy(() => import("./features/today/TodayPage")) },
       { path: "train", lazy: lazy(() => import("./features/trainer/TrainerPage")) },
