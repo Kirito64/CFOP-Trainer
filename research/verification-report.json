@@ -1,0 +1,37 @@
+{
+  "oll.json": {
+    "cases": 57,
+    "algs": 226,
+    "failures": [],
+    "duplicate_cases": [],
+    "distinct_cases": 57
+  },
+  "pll.json": {
+    "cases": 21,
+    "algs": 77,
+    "failures": [],
+    "duplicate_cases": [],
+    "distinct_cases": 21
+  },
+  "f2l.json": {
+    "cases": 41,
+    "algs": 126,
+    "failures": [],
+    "duplicate_cases": [],
+    "distinct_cases": 41
+  },
+  "coll.json": {
+    "cases": 42,
+    "algs": 182,
+    "failures": [],
+    "duplicate_cases": [],
+    "distinct_cases": 42
+  },
+  "wv.json": {
+    "cases": 27,
+    "algs": 121,
+    "failures": [],
+    "duplicate_cases": [],
+    "distinct_cases": 27
+  }
+}

@@ -1,0 +1,662 @@
+{
+  "set": "Winter Variation",
+  "notation": "WCA/SiGN; wide moves lowercase; slices M E S; rotations x y z",
+  "description": "Winter Variation (WV): last-slot + corner-orientation. With the LL edges oriented (cross on top) and the last F2L pair connected and ready to be inserted with R U' R', insert it while orienting all four LL corners, forcing a PLL. 27 cases (one per corner-orientation state, incl. the case where R U' R' already orients them).",
+  "notes": [
+    "algs[0] is the primary (from jperm.net); case state = inverse(algs[0]) applied to a solved cube. In that state the FR pair sits in the U layer such that R U' R' would insert it.",
+    "pre_auf[i] = clockwise U turns to apply to that case state BEFORE algs[i] (SpeedCubeDB alts usually include their own leading U/U2, so they often need a compensating pre-AUF).",
+    "No alg contains a cube rotation (algs with x/y/z were dropped). Trigger parentheses removed; moves otherwise verbatim.",
+    "id = SpeedCubeDB case number (WV 1-27); name = jperm.net case name (#n disambiguates jperm names used twice).",
+    "Recognition text is auto-derived from the simulated case state.",
+    "Verified with an independent sticker simulator: every alg solves the FR pair, keeps the rest of F2L, and orients all LL pieces for its case (LL permutation left for PLL)."
+  ],
+  "cases": [
+    {
+      "id": "WV01",
+      "name": "Oriented",
+      "group": "3 Corners",
+      "scdb_case": "WV 1",
+      "algs": [
+        "L' U2 R U R' U2 L",
+        "U L' U2 R U R' U2 L",
+        "L' U2 R U2 R' U2 L",
+        "f' L U L' U' L' f",
+        "U R' D' R U R' D R U' R U' R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '3 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing up; back-left corner: top colour facing up. Plain R U' R' insert would give the L OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_1"
+      ]
+    },
+    {
+      "id": "WV02",
+      "name": "Rectangle #1",
+      "group": "2 Corners",
+      "scdb_case": "WV 2",
+      "algs": [
+        "R U' R'",
+        "U R U' R'",
+        "U l F' l'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing up; back-left corner: top colour facing up. Plain R U' R' insert would give the O OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_2"
+      ]
+    },
+    {
+      "id": "WV03",
+      "name": "Rectangle #2",
+      "group": "2 Corners",
+      "scdb_case": "WV 3",
+      "algs": [
+        "U' R' F R U R U' R' F'",
+        "R' F R U R U' R' F'",
+        "U' L U' R U L' U R'",
+        "U R U' R' U F R' F' r U R U' r'",
+        "U' R2 U R2 U' R' U2 R U2 R' U2 R2"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing up; back-left corner: top colour facing up. Plain R U' R' insert would give the L OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_3"
+      ]
+    },
+    {
+      "id": "WV04",
+      "name": "Snake #1",
+      "group": "2 Corners",
+      "scdb_case": "WV 4",
+      "algs": [
+        "R2 D R' U' R D' R2",
+        "U R2 D R' U' R D' R2",
+        "U2 R' D' R U' R' D R2 U' R'",
+        "U2 R U' R' L' U2 R U R' U2 L",
+        "U R U R' U' R U' R2 U2 R U R' U R"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing right; back-left corner: top colour facing up. Plain R U' R' insert would give the T OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_4"
+      ]
+    },
+    {
+      "id": "WV05",
+      "name": "Snake #2",
+      "group": "2 Corners",
+      "scdb_case": "WV 5",
+      "algs": [
+        "R U' R' U R' U' R U' R' U2 R",
+        "U R U' R' U R' U' R U' R' U2 R",
+        "U R U' R' U2 R U2 R' U' R U' R'",
+        "U R U R' U' R U R D R' U2 R D' R2"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing back; back-left corner: top colour facing up. Plain R U' R' insert would give the Antisune OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_5"
+      ]
+    },
+    {
+      "id": "WV06",
+      "name": "Tank #1",
+      "group": "2 Corners",
+      "scdb_case": "WV 6",
+      "algs": [
+        "U' R U' R' U2 R U' R' U2 R U R'",
+        "R U' R' U2 R U' R' U2 R U R'",
+        "U' R' D' R U2 R' D R2 U' R'",
+        "U R U' R' U' R2 D R' U2 R D' R' U2 R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing up; back-left corner: top colour facing back. Plain R U' R' insert would give the U OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_6"
+      ]
+    },
+    {
+      "id": "WV07",
+      "name": "Tank #2",
+      "group": "2 Corners",
+      "scdb_case": "WV 7",
+      "algs": [
+        "R U R' U' R U' R'",
+        "U R U R' U' R U' R'",
+        "R' U' R U R U' R' U' R' U R"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing up; back-left corner: top colour facing left. Plain R U' R' insert would give the Antisune OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_7"
+      ]
+    },
+    {
+      "id": "WV08",
+      "name": "Gun (Near)",
+      "group": "1 Corner",
+      "scdb_case": "WV 8",
+      "algs": [
+        "U R U' R' U R U2 R'",
+        "U2 R U' R' U R U2 R'",
+        "U2 R U L' U R' U' L"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing right; back-left corner: top colour facing back. Plain R U' R' insert would give the H OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_8"
+      ]
+    },
+    {
+      "id": "WV09",
+      "name": "Gun (Sides)",
+      "group": "1 Corner",
+      "scdb_case": "WV 9",
+      "algs": [
+        "R U' R' U R U2 R2 U' R2 U' R2 U2 R",
+        "U2 F' R U2 R' U2 R' F R",
+        "U2 L' R U R' U' R U R' U' L U' R U' R'",
+        "U2 F2 R U2 R' U2 R' F2 R"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing right; back-left corner: top colour facing left. Plain R U' R' insert would give the Pi OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_9"
+      ]
+    },
+    {
+      "id": "WV10",
+      "name": "Gun (Back)",
+      "group": "1 Corner",
+      "scdb_case": "WV 10",
+      "algs": [
+        "R U R2 U' R2 U' R2 U2 R",
+        "U R U R2 U' R2 U' R2 U2 R",
+        "R' U2 R U R' U R2 U2 R'",
+        "R' F R2 U R' U' R U R' U' F'",
+        "U2 F2 L' U L U L' U' L F2"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing back; back-left corner: top colour facing back. Plain R U' R' insert would give the Pi OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_10"
+      ]
+    },
+    {
+      "id": "WV11",
+      "name": "Gun (Far)",
+      "group": "1 Corner",
+      "scdb_case": "WV 11",
+      "algs": [
+        "U R' U' R2 U' R2 U2 R",
+        "U2 R' U' R2 U' R2 U2 R",
+        "U R U' R' L' U' L U' L' U2 L",
+        "U R U' R' U' R U2 R' U' R U' R'",
+        "U R U R' U' R U R' U2 R' F R U R U' R' F'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing back; back-left corner: top colour facing left. Plain R U' R' insert would give the Antisune OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_11"
+      ]
+    },
+    {
+      "id": "WV12",
+      "name": "Bowtie #1",
+      "group": "1 Corner",
+      "scdb_case": "WV 12",
+      "algs": [
+        "U' R' F2 R F2 U L' U L",
+        "R' F2 R F2 U L' U L",
+        "U R U' R2 U' R' D' R U R' D R2",
+        "U R U' R' U' l' U' L U R U' r' F"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing up; back-left corner: top colour facing back. Plain R U' R' insert would give the T OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_12"
+      ]
+    },
+    {
+      "id": "WV13",
+      "name": "Bowtie #2",
+      "group": "1 Corner",
+      "scdb_case": "WV 13",
+      "algs": [
+        "U R U2 R' R' U' R U' R' U2 R",
+        "U2 R U2 R2 U' R U' R' U2 R",
+        "R' F R F' R' U' F' U F R",
+        "U R U' R D R' U2 R D' R' U2 R'",
+        "R2 D R' U' R D' R2 U R U' R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing up; back-left corner: top colour facing left. Plain R U' R' insert would give the U OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_13"
+      ]
+    },
+    {
+      "id": "WV14",
+      "name": "Bowtie #3",
+      "group": "1 Corner",
+      "scdb_case": "WV 14",
+      "algs": [
+        "U R2 D R' U2 R D' R2",
+        "U2 R2 D R' U2 R D' R2",
+        "M' U2 R' F R F' R U2 r'",
+        "U2 L' U R U' L U2 R'",
+        "U R U' R' U2 R U R' U R U2 R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing up; back-left corner: top colour facing back. Plain R U' R' insert would give the Sune OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_14"
+      ]
+    },
+    {
+      "id": "WV15",
+      "name": "Bowtie #4",
+      "group": "1 Corner",
+      "scdb_case": "WV 15",
+      "algs": [
+        "U' L' U R U' R' L",
+        "L' U R U' R' L",
+        "r' F R F' M'",
+        "R' U R U2 R U2 R' U R' U2 R"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing up; back-left corner: top colour facing left. Plain R U' R' insert would give the T OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_15"
+      ]
+    },
+    {
+      "id": "WV16",
+      "name": "Adjacent #1",
+      "group": "1 Corner",
+      "scdb_case": "WV 16",
+      "algs": [
+        "U R U' R' U' R' F R U R U' R' F'",
+        "U R' D' R U R' D R2 U2 R'",
+        "U2 R U' R' U' R' F R U R U' R' F'",
+        "U R U' R' U' R2 D' R U2 R' D R U2 R",
+        "U2 L' R U R' U' L R U2 R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing right; back-left corner: top colour facing up. Plain R U' R' insert would give the U OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_16"
+      ]
+    },
+    {
+      "id": "WV17",
+      "name": "Adjacent #3",
+      "group": "1 Corner",
+      "scdb_case": "WV 17",
+      "algs": [
+        "U' R' F' R U2 R U2 R' F",
+        "R' F' R U2 R U2 R' F",
+        "U R U' R' l' U' L U l F' L' F",
+        "U L' U2 R U' R' U2 L U R U' R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing back; back-left corner: top colour facing up. Plain R U' R' insert would give the T OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_17"
+      ]
+    },
+    {
+      "id": "WV18",
+      "name": "Adjacent #2",
+      "group": "1 Corner",
+      "scdb_case": "WV 18",
+      "algs": [
+        "U R U2 R'",
+        "U2 R U2 R'",
+        "U2 l F2 l'",
+        "U R U' U R' U R U2 R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing right; back-left corner: top colour facing up. Plain R U' R' insert would give the Sune OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_18"
+      ]
+    },
+    {
+      "id": "WV19",
+      "name": "Adjacent #4",
+      "group": "1 Corner",
+      "scdb_case": "WV 19",
+      "algs": [
+        "R U' R D' R U2 R' D R U2 R",
+        "R' F2 R2 U' R' U' R U R' F2",
+        "U L' U2 R U' R' U' R U' R' L",
+        "U2 L' U R U' R' L U' R U' R'",
+        "U R U' R D' R U2 R' D R U2 R"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing back; back-left corner: top colour facing up. Plain R U' R' insert would give the U OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_19"
+      ]
+    },
+    {
+      "id": "WV20",
+      "name": "Sune #1",
+      "group": "0 Corners",
+      "scdb_case": "WV 20",
+      "algs": [
+        "R U' R' U' R U R' U R U2 R'",
+        "U R U' R' U' R U R' U R U2 R'",
+        "U2 R U' R' U R U' R' U' R' F R U R U' R' F'",
+        "U L' U2 L R U R' U L' U L",
+        "U R U R' U' R U R2 U' R2 U' R2 U2 R"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing right; back-left corner: top colour facing back. Plain R U' R' insert would give the Sune OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_20"
+      ]
+    },
+    {
+      "id": "WV21",
+      "name": "Pi (Far)",
+      "group": "0 Corners",
+      "scdb_case": "WV 21",
+      "algs": [
+        "R U' R' R' U2 R U R' U R",
+        "U R U' R2 U2 R U R' U R",
+        "U2 R U' R D R' U' R D' R2",
+        "U R U' R' U R U R' U R U2 R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing right; back-left corner: top colour facing back. Plain R U' R' insert would give the Sune OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_21"
+      ]
+    },
+    {
+      "id": "WV22",
+      "name": "Pi (Back)",
+      "group": "0 Corners",
+      "scdb_case": "WV 22",
+      "algs": [
+        "R2 D R' U R D' R' U2 R'",
+        "U R U R D R' U2 R D' R2",
+        "U R2 D R' U R D' R' U2 R'",
+        "U R U' R' F R' F' r U R U' r'",
+        "U2 R U2 R' U R' U' R U' R' U2 R"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing right; back-left corner: top colour facing left. Plain R U' R' insert would give the L OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_22"
+      ]
+    },
+    {
+      "id": "WV23",
+      "name": "H (Front)",
+      "group": "0 Corners",
+      "scdb_case": "WV 23",
+      "algs": [
+        "U R' U L U' R2 U L' U R'",
+        "R U' R' U2 R U2 R2 U' R2 U' R2 U2 R",
+        "R2 U R' U R' U' R U R U2 R2",
+        "U2 R U2 R D' R U2 R' D R U2 R",
+        "U F' L U2 L2 U' L2 U' L' U F",
+        "U2 R' D' R U' R' D R2 U' R2 U' R U' R' U2 R"
+      ],
+      "pre_auf": [
+        0,
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing right; back-left corner: top colour facing left. Plain R U' R' insert would give the Pi OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_23"
+      ]
+    },
+    {
+      "id": "WV24",
+      "name": "H (Side)",
+      "group": "0 Corners",
+      "scdb_case": "WV 24",
+      "algs": [
+        "U R U' R' U R U' R' U R U2 R'",
+        "U2 R U' R' U R U' R' U R U2 R'",
+        "U R U' R' U' F' r U R' U' r' F R",
+        "U R U R' U' R U R' U' R U R' U' R U' R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing back; back-left corner: top colour facing back. Plain R U' R' insert would give the L OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_24"
+      ]
+    },
+    {
+      "id": "WV25",
+      "name": "Pi (Front)",
+      "group": "0 Corners",
+      "scdb_case": "WV 25",
+      "algs": [
+        "U R U2 R' R' U2 R U R' U R",
+        "U2 R U2 R2 U2 R U R' U R",
+        "U2 R U2 R' U R U R' U R U2 R'",
+        "U2 R U' R' U R U' R D R' U' R D' R2",
+        "U R U' R' U' R' U2 R2 U R2 U R2 U2 R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing back; back-left corner: top colour facing back. Plain R U' R' insert would give the Pi OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_25"
+      ]
+    },
+    {
+      "id": "WV26",
+      "name": "Pi (Near)",
+      "group": "0 Corners",
+      "scdb_case": "WV 26",
+      "algs": [
+        "R U' R' R' U' R U' R' U2 R",
+        "U R U' R2 U' R U' R' U2 R",
+        "U R U R' U F2 L' U L U' L' U' L F2",
+        "U R' D' R U' R' D R2 U' r' l' U R U' R' L",
+        "U R U' R' U R U2 R' U' R U' R'"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing back; back-left corner: top colour facing left. Plain R U' R' insert would give the Antisune OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_26"
+      ]
+    },
+    {
+      "id": "WV27",
+      "name": "Sune #2",
+      "group": "0 Corners",
+      "scdb_case": "WV 27",
+      "algs": [
+        "R U R' U' R U R' U' R U' R'",
+        "U R U R' U' R U R' U' R U' R'",
+        "U R U' R' F R U R' U' R U R' U' R U R' U' F'",
+        "U R U' R' U' R U R' U R U' R' U R U2 R'",
+        "U R U' R' U R' U' R U' R' U R U' R' U2 R"
+      ],
+      "pre_auf": [
+        0,
+        3,
+        3,
+        3,
+        3
+      ],
+      "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing back; back-left corner: top colour facing left. Plain R U' R' insert would give the H OCLL case.",
+      "sources": [
+        "https://jperm.net/algs/wv",
+        "https://www.speedcubedb.com/a/3x3/WV/WV_27"
+      ]
+    }
+  ]
+}

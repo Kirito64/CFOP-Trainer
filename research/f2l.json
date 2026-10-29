@@ -1,0 +1,1394 @@
+{
+  "set": "F2L",
+  "notation": "WCA/SiGN outer-block notation: R U F L D B, primes ', doubles 2; wide moves lowercase (r, u, f...); slices M E S; rotations x y z",
+  "slot": "FR",
+  "conventions": [
+    "Cross on D (white bottom). 'front-colour' = colour of the F centre, 'right-colour' = colour of the R centre (green/red in the standard white-bottom, green-front scheme).",
+    "Case numbering and canonical case state follow SpeedCubeDB F2L 1-41 (https://www.speedcubedb.com/a/3x3/F2L). The speedsolving.com wiki uses the same numbers for 1-36; the wiki inserts a 'Solved' entry as F2L 37, so wiki F2L 38-42 = F2L 37-41 here (see speedsolving_wiki_number).",
+    "Every alg in a case solves the IDENTICAL case state (same corner/edge positions and orientations including the U-layer position, not just up to AUF). Case state = inverse(alg) applied to a solved cube. Leading U/U'/U2 moves in algs are part of the published solution for that canonical state (the pieces are not pre-aligned), not an added AUF.",
+    "No alg contains x/y/z rotations; algs using d/u moves that leave the cross displaced were dropped (they are disguised rotations). Algs that use other slots temporarily (e.g. F' L' U2 L F, R B U2 B' R') restore them.",
+    "Text normalisation vs sources: grouping parentheses removed, X2' written as X2, and repeat groups like (R' F R F')2 expanded (noted in alg_notes). Moves otherwise verbatim.",
+    "All algs were checked with an independent sticker simulator: inverse(alg) on a solved cube leaves cross + FL/BL/BR slots + centres intact, and all algs of one case produce the same FR corner/edge state."
+  ],
+  "cases": [
+    {
+      "id": "F2L 1",
+      "group": "Basic inserts",
+      "speedcubedb_group": "Free Pairs",
+      "speedsolving_wiki_number": "F2L 1",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UR with its front-colour sticker on top.",
+      "algs": [
+        "U R U' R'",
+        "R' F R F'",
+        "U2 R U2 R'"
+      ],
+      "notes": "Pair is already connected along the R face (front-colour on top of both pieces). U positions it, then the basic insert R U' R'. R' F R F' (sledgehammer) avoids the pre-move U.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_1",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_1",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R' F R F'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_1",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U2 R U2 R'": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 2",
+      "group": "Basic inserts",
+      "speedcubedb_group": "Free Pairs",
+      "speedsolving_wiki_number": "F2L 2",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UF with its right-colour sticker on top.",
+      "algs": [
+        "F R' F' R",
+        "U' F' U F",
+        "r U R' U' M"
+      ],
+      "notes": "Front-face mirror of F2L 1: the pair is already connected along the F face. F R' F' R (reverse sledgehammer) is rotationless; U' F' U F is the F-face 4-mover. The common y' U' R' U R is the same solution after a rotation.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_2",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "F R' F' R": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_2",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' F' U F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_2",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "r U R' U' M": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 3",
+      "group": "Basic inserts",
+      "speedcubedb_group": "Free Pairs",
+      "speedsolving_wiki_number": "F2L 3",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UL with its right-colour sticker on top.",
+      "algs": [
+        "F' U' F",
+        "S U R U' R' S'"
+      ],
+      "notes": "Corner above the slot with white facing front; edge sits on the left (UL). F' U' F pairs and inserts in one trigger (F-face mirror of R U R'). Commonly also done as y' R' U' R. Primary alg, simulated: the pair is connected after \"F'\" and \"U' F\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_3",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "F' U' F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_3",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "S U R U' R' S'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_3"
+        ]
+      }
+    },
+    {
+      "id": "F2L 4",
+      "group": "Basic inserts",
+      "speedcubedb_group": "Free Pairs",
+      "speedsolving_wiki_number": "F2L 4",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UB with its front-colour sticker on top.",
+      "algs": [
+        "R U R'"
+      ],
+      "notes": "Basic 3-move insert: R lifts the corner next to the edge at UB (pair forms), U carries the pair over the slot, R' drops it in. Primary alg, simulated: the pair is connected after \"R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_4",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_4",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 5",
+      "group": "Reposition edge",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 5",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UB with its front-colour sticker on top.",
+      "algs": [
+        "U' R U R' U2 R U' R'",
+        "U' R U R' U' R U2 R'",
+        "F2 L' U' L U F2",
+        "U' R U R' U R' F R F'"
+      ],
+      "notes": "Edge must be repositioned: U' R U R' builds the connected pair, then U2 R U' R' inserts it. Learn this as the template 'pair, U2, insert'. Primary alg, simulated: the pair is connected after \"U' R U R'\" and \"U2 R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_5",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U' R U R' U2 R U' R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_5",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' R U R' U' R U2 R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_5",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "F2 L' U' L U F2": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_5",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' R U R' U R' F R F'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_5",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 6",
+      "group": "Reposition edge",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 6",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UL with its right-colour sticker on top.",
+      "algs": [
+        "U' r U' R' U R U r'",
+        "R2 B U B' U' R2",
+        "U2 R' F R F' R' F R F' U2 R U R'"
+      ],
+      "notes": "F2L 5's partner with white facing right. U' r U' R' U R U r' is the popular rotationless choice (wide-r keeps it R/U friendly); otherwise y' U R' U' R U2 R' U R (rotation, not listed). Primary alg, simulated: the pair is connected after \"U' r U' R' U R\" and \"U r'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_6",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U' r U' R' U R U r'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_6",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R2 B U B' U' R2": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U2 R' F R F' R' F R F' U2 R U R'": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      },
+      "alg_notes": {
+        "U2 R' F R F' R' F R F' U2 R U R'": "expanded from U2 (R' F R F')2 U2 (R U R') on the speedsolving wiki"
+      }
+    },
+    {
+      "id": "F2L 7",
+      "group": "Reposition edge",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 7",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UL with its front-colour sticker on top.",
+      "algs": [
+        "U' R U2 R' U' R U2 R'",
+        "U' R U2 R' U2 R U' R'",
+        "M' U' M U2 r U' r'",
+        "U' R U2 R' U R' F R F'"
+      ],
+      "notes": "Corner white-front, edge at UL with front-colour on top. U' R U2 R' then U' R U2 R' (same 4-move chunk twice). M' U' M U2 r U' r' is a fast M-slice option. Primary alg, simulated: the pair is connected after \"U' R U2 R'\" and \"U' R U2 R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_7",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U' R U2 R' U' R U2 R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_7"
+        ],
+        "U' R U2 R' U2 R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_7",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "M' U' M U2 r U' r'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_7",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' R U2 R' U R' F R F'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_7"
+        ]
+      }
+    },
+    {
+      "id": "F2L 8",
+      "group": "Reposition edge",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 8",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UB with its right-colour sticker on top.",
+      "algs": [
+        "r' U2 R2 U R2 U r",
+        "U F' U2 F U F' U2 F",
+        "U R' F R F' R' F R F' R U' R'"
+      ],
+      "notes": "Mirror-type case of F2L 7 (white facing right, edge at back). r' U2 R2 U R2 U r is the standard rotationless alg; the classic y' U R' U2 R U2 R' U R / d R' U2 R U R' U2 R needs a rotation or d-move. Primary alg, simulated: the pair is connected after \"r' U2 R2\" and \"U R2 U r\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_8",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "r' U2 R2 U R2 U r": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_8",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U F' U2 F U F' U2 F": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U R' F R F' R' F R F' R U' R'": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      },
+      "alg_notes": {
+        "U F' U2 F U F' U2 F": "expanded from (U F' U2 F)2 on the speedsolving wiki",
+        "U R' F R F' R' F R F' R U' R'": "expanded from U (R' F R F')2 (R U' R') on the speedsolving wiki"
+      }
+    },
+    {
+      "id": "F2L 9",
+      "group": "Reposition edge and flip corner",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 9",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UB with its right-colour sticker on top.",
+      "algs": [
+        "U' R U' R' U F' U' F",
+        "F R U R' U' F' R U' R'",
+        "U F' U' F U' F' U' F"
+      ],
+      "notes": "Corner white-front, edge at UB with its right-colour on top. U' R U' R' sets up, then U F' U' F inserts from the front. Primary alg, simulated: the pair is connected after \"U' R U' R' U F'\" and \"U' F\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_9",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U' R U' R' U F' U' F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_9",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "F R U R' U' F' R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_9",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U F' U' F U' F' U' F": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 10",
+      "group": "Reposition edge and flip corner",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 10",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UL with its front-colour sticker on top.",
+      "algs": [
+        "U' R U R' U R U R'",
+        "U2 R U' R' U' R U R'",
+        "U F' U F U' R U R'"
+      ],
+      "notes": "U' R U R' U R U R' : two R U R' triggers separated by U. U2 R U' R' U' R U R' is an equal-length alternative. Primary alg, simulated: the pair is connected after \"U' R U R' U R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_10",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U' R U R' U R U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_10",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U2 R U' R' U' R U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_10"
+        ],
+        "U F' U F U' R U R'": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 11",
+      "group": "Reposition edge and flip corner",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 11",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UR with its right-colour sticker on top.",
+      "algs": [
+        "U' R U2 R' U F' U' F",
+        "F' U L' U2 L U2 F",
+        "U F R' F' R F R' F' R U' R U R'"
+      ],
+      "notes": "Connected but wrong (corner white-front, edge at UR flipped). Break and re-pair: U' R U2 R' U then F' U' F inserts from the front. Primary alg, simulated: the pair is connected after \"U' R U2 R' U F'\" and \"U' F\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_11",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U' R U2 R' U F' U' F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_11",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "F' U L' U2 L U2 F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_11"
+        ],
+        "U F R' F' R F R' F' R U' R U R'": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      },
+      "alg_notes": {
+        "U F R' F' R F R' F' R U' R U R'": "expanded from U (F R' F' R)2 U' R U R' on the speedsolving wiki"
+      }
+    },
+    {
+      "id": "F2L 12",
+      "group": "Reposition edge and flip corner",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 12",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UF with its front-colour sticker on top.",
+      "algs": [
+        "R U' R' U R U' R' U2 R U' R'",
+        "R' U2 R2 U R2 U R",
+        "U F' U2 F U' R U R'",
+        "U R U' R' U' R U R' U' R U R'"
+      ],
+      "notes": "Incorrectly connected pair with the edge in front. R U' R' U R U' R' U2 R U' R' is 2-gen (R/U only); R' U2 R2 U R2 U R is shorter (7 moves) and also 2-gen. Primary alg, simulated: the pair is connected after \"R U' R' U R U' R'\" and \"U2 R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_12",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R U' R' U R U' R' U2 R U' R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_12",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R' U2 R2 U R2 U R": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_12",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U F' U2 F U' R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_12"
+        ],
+        "U R U' R' U' R U R' U' R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_12",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 13",
+      "group": "Reposition edge and flip corner",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 13",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UF with its right-colour sticker on top.",
+      "algs": [
+        "U F' U F U' F' U' F",
+        "M' U' R U R' U2 R U' r'",
+        "R U' R' U R' F R F' R U' R'"
+      ],
+      "notes": "Corner (white-front) and edge (UF) are adjacent but not paired. U F' U F U' F' U' F is the rotationless equivalent of the most-voted y' U R' U R U' R' U' R (same moves seen from the front). M' U' R U R' U2 R U' r' is an M-slice option. Primary alg, simulated: the pair is connected after \"U F' U F U' F'\" and \"U' F\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_13",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U F' U F U' F' U' F": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "M' U' R U R' U2 R U' r'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_13"
+        ],
+        "R U' R' U R' F R F' R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_13",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 14",
+      "group": "Reposition edge and flip corner",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 14",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UR with its front-colour sticker on top.",
+      "algs": [
+        "U' R U' R' U R U R'",
+        "U2 R2 U R' U R U2 R2",
+        "R U2 R' U2 R U R' U2 R U' R'"
+      ],
+      "notes": "U' R U' R' U R U R' : the R U' R' at the start splits the bad pair, the final R U R' inserts. Primary alg, simulated: the pair is connected after \"U' R U' R' U R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_14",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U' R U' R' U R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_14",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U2 R2 U R' U R U2 R2": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_14"
+        ],
+        "R U2 R' U2 R U R' U2 R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_14"
+        ]
+      }
+    },
+    {
+      "id": "F2L 15",
+      "group": "Split pair by going over",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 15",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UF with its front-colour sticker on top.",
+      "algs": [
+        "M U r U' r' U' M'",
+        "R U R' U2 R U' R' U R U' R'",
+        "F' U F U2 R U R'",
+        "R' D' R U' R' D R U R U' R'"
+      ],
+      "notes": "'Split pair by going over': the classic 2-gen R U R' U2 R U' R' U R U' R'. M U r U' r' U' M' (7 moves) is the most voted on SpeedCubeDB; F' U F U2 R U R' uses an F-insert. Primary alg, simulated: the pair is connected after \"M U r\" and \"U' r' U' M'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_15",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/useful-f2l-algorithms.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "M U r U' r' U' M'": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/useful-f2l-algorithms.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_15"
+        ],
+        "R U R' U2 R U' R' U R U' R'": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_15",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "F' U F U2 R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_15",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R' D' R U' R' D R U R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_15",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 16",
+      "group": "Split pair by going over",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 16",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UR with its right-colour sticker on top.",
+      "algs": [
+        "R U' R' U2 F' U' F",
+        "U F R U R' U' F' U R U' R'",
+        "U M' U R U' r' U' R U R'"
+      ],
+      "notes": "Corner white-right, edge at UR adjacent but not paired (front-colour on the R face). R U' R' U2 then F' U' F (front insert). Primary alg, simulated: the pair is connected after \"R U' R' U2 F'\" and \"U' F\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_16",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf"
+      ],
+      "alg_sources": {
+        "R U' R' U2 F' U' F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_16",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U F R U R' U' F' U R U' R'": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf"
+        ],
+        "U M' U R U' r' U' R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_16",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 17",
+      "group": "Split pair by going over",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 17",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UR with its front-colour sticker on top.",
+      "algs": [
+        "R U2 R' U' R U R'",
+        "R U R' U' R U2 R' U2 R U R'"
+      ],
+      "notes": "Corner white UP, edge at UR with front-colour on top. R U2 R' U' R U R' : the R U2 R' sets the corner, U' R U R' pairs-and-inserts. Recognise white-up corners first, then where the edge sits. Primary alg, simulated: the pair is connected after \"R U2 R' U' R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_17",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R U2 R' U' R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_17",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U R' U' R U2 R' U2 R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_17"
+        ]
+      }
+    },
+    {
+      "id": "F2L 18",
+      "group": "Split pair by going over",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 18",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UF with its right-colour sticker on top.",
+      "algs": [
+        "F' U2 F U F' U' F",
+        "R' F R F' R U' R' U R U' R'",
+        "R U R' U' R U R' U' F R' F' R"
+      ],
+      "notes": "Corner white UP, edge at UF. F-face version of F2L 17: F' U2 F U F' U' F is the rotationless equivalent of the popular y' R' U2 R U R' U' R. Primary alg, simulated: the pair is connected after \"F' U2 F U F'\" and \"U' F\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_18",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "F' U2 F U F' U' F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_18",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R' F R F' R U' R' U R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_18",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U R' U' R U R' U' F R' F' R": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 19",
+      "group": "Pair made on side (corner white-up)",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 19",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UB with its front-colour sticker on top.",
+      "algs": [
+        "U R U2 R' U R U' R'",
+        "U R U2 R2 F R F'",
+        "R U' R' U R U' R' U R U R'"
+      ],
+      "notes": "Corner white up, edge at UB. U R U2 R' builds the pair, U R U' R' inserts. Very common case; drill the 'U R U2 R'' setup. Primary alg, simulated: the pair is connected after \"U R U2\" and \"R' U R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_19",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U R U2 R' U R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_19",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U R U2 R2 F R F'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_19",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U' R' U R U' R' U R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_19",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      },
+      "alg_notes": {
+        "R U' R' U R U' R' U R U R'": "expanded from (R U' R' U)2 R U R' on the speedsolving wiki"
+      }
+    },
+    {
+      "id": "F2L 20",
+      "group": "Pair made on side (corner white-up)",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 20",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UL with its right-colour sticker on top.",
+      "algs": [
+        "U' R U' R2 F R F' R U' R'",
+        "U' F' U2 F U' F' U F",
+        "R U R' U2 R U R' U2 F' U F"
+      ],
+      "notes": "Corner white up, edge at UL (right-colour on top). U' F' U2 F U' F' U F is the rotationless equivalent of the popular y' U' R' U2 R U' R' U R; U' R U' R2 F R F' R U' R' stays on the right hand. Primary alg, simulated: the pair is connected after \"U' R U' R2 F\" and \"R F' R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_20",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U' R U' R2 F R F' R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_20",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' F' U2 F U' F' U F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_20"
+        ],
+        "R U R' U2 R U R' U2 F' U F": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 21",
+      "group": "Pair made on side (corner white-up)",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 21",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UL with its front-colour sticker on top.",
+      "algs": [
+        "U2 R U R' U R U' R'",
+        "R U' R' U2 R U R'",
+        "R B U2 B' R'"
+      ],
+      "notes": "Corner white up, edge at UL. U2 R U R' U R U' R' is fully 2-gen; R U' R' U2 R U R' is one move shorter. Primary alg, simulated: the pair is connected after \"U2 R U\" and \"R' U R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_21",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U2 R U R' U R U' R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_21",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U' R' U2 R U R'": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_21",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R B U2 B' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_21",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 22",
+      "group": "Pair made on side (corner white-up)",
+      "speedcubedb_group": "Disconnected Pairs",
+      "speedsolving_wiki_number": "F2L 22",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UB with its right-colour sticker on top.",
+      "algs": [
+        "r U' r' U2 r U r'",
+        "F' L' U2 L F"
+      ],
+      "notes": "Corner white up, edge at UB with the R-colour on top. r U' r' U2 r U r' (wide-r version of the intuitive alg) or F' L' U2 L F (5 moves; borrows the L face but restores the FL slot). Primary alg, simulated: the pair is connected after \"r U' r'\" and \"U2 r U r'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_22",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf"
+      ],
+      "alg_sources": {
+        "r U' r' U2 r U r'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_22",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "F' L' U2 L F": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_22",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 23",
+      "group": "Pair made on side (corner white-up)",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 23",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UF with its front-colour sticker on top.",
+      "algs": [
+        "U R U' R' U' R U' R' U R U' R'",
+        "R U R' U2 R U R' U' R U R'",
+        "U2 R2 U2 R' U' R U' R2",
+        "U F R' F' R U R U R'"
+      ],
+      "notes": "Corner white up, edge at UF showing front-colour on top. U R U' R' U' R U' R' U R U' R' is the safe 2-gen way; U2 R2 U2 R' U' R U' R2 is short but less finger-friendly. Primary alg, simulated: the pair is connected after \"U R U' R' U' R U'\" and \"R' U R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_23",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U R U' R' U' R U' R' U R U' R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_23",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U R' U2 R U R' U' R U R'": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_23"
+        ],
+        "U2 R2 U2 R' U' R U' R2": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_23",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U F R' F' R U R U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 24",
+      "group": "Pair made on side (corner white-up)",
+      "speedcubedb_group": "Connected Pairs",
+      "speedsolving_wiki_number": "F2L 24",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UR with its right-colour sticker on top.",
+      "algs": [
+        "F U R U' R' F' R U' R'",
+        "U' R U R2 F R F' R U' R'",
+        "U F' L' U L F R U R'"
+      ],
+      "notes": "Corner white up, edge at UR flipped. F U R U' R' F' R U' R' (front sexy-move setup) is the most popular rotationless choice.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_24",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "F U R U' R' F' R U' R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_24",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' R U R2 F R F' R U' R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_24",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U F' L' U L F R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_24",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 25",
+      "group": "Corner in slot, edge in U layer",
+      "speedcubedb_group": "Corner In Slot",
+      "speedsolving_wiki_number": "F2L 25",
+      "description": "Corner in its slot (DFR), correctly oriented (white facing down). Edge in the U layer at UR with its front-colour sticker on top.",
+      "algs": [
+        "U' R' F R F' R U R'",
+        "R' F' R U R U' R' F",
+        "U' F' U F U R U' R'",
+        "U' F' R U R' U' R' F R"
+      ],
+      "notes": "Corner solved in slot, edge in U at UR. U' R' F R F' R U R' (sledgehammer then insert). R' F' R U R U' R' F avoids the leading U. Primary alg, simulated: the pair is connected after \"U' R' F R F' R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_25",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/useful-f2l-algorithms.pdf"
+      ],
+      "alg_sources": {
+        "U' R' F R F' R U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_25",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R' F' R U R U' R' F": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/useful-f2l-algorithms.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_25",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' F' U F U R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_25",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' F' R U R' U' R' F R": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 26",
+      "group": "Corner in slot, edge in U layer",
+      "speedcubedb_group": "Corner In Slot",
+      "speedsolving_wiki_number": "F2L 26",
+      "description": "Corner in its slot (DFR), correctly oriented (white facing down). Edge in the U layer at UF with its right-colour sticker on top.",
+      "algs": [
+        "U R U' R' F R' F' R",
+        "U R U' R' U' F' U F",
+        "R S' R' U R S R'"
+      ],
+      "notes": "Corner solved in slot, edge at UF. U R U' R' F R' F' R or U R U' R' U' F' U F: take the corner out with the edge, then re-insert. Primary alg, simulated: the pair is connected after \"U R U' R'\" and \"F R' F' R\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_26",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U R U' R' F R' F' R": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_26",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U R U' R' U' F' U F": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_26",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R S' R' U R S R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_26"
+        ]
+      }
+    },
+    {
+      "id": "F2L 27",
+      "group": "Corner in slot, edge in U layer",
+      "speedcubedb_group": "Corner In Slot",
+      "speedsolving_wiki_number": "F2L 27",
+      "description": "Corner in its slot (DFR), twisted: white sticker facing front. Edge in the U layer at UR with its front-colour sticker on top.",
+      "algs": [
+        "R U' R' U R U' R'",
+        "F' U' F U2 R U' R'",
+        "R U' R2 F R F'"
+      ],
+      "notes": "Corner in slot twisted (white facing front), edge at UR. R U' R' U R U' R' : pull the corner up, re-pair, insert. Primary alg, simulated: the pair is connected after \"R U'\" and \"R' U R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_27",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R U' R' U R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_27",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "F' U' F U2 R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_27",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U' R2 F R F'": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 28",
+      "group": "Corner in slot, edge in U layer",
+      "speedcubedb_group": "Corner In Slot",
+      "speedsolving_wiki_number": "F2L 28",
+      "description": "Corner in its slot (DFR), twisted: white sticker facing right. Edge in the U layer at UF with its right-colour sticker on top.",
+      "algs": [
+        "R U R' U' F R' F' R",
+        "F' U F U' F' U F",
+        "R U R' U F' U2 F"
+      ],
+      "notes": "Corner in slot twisted (white facing right), edge at UF. R U R' U' F R' F' R (sexy move + reverse sledgehammer) or the F-face F' U F U' F' U F.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_28",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R U R' U' F R' F' R": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_28",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "F' U F U' F' U F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_28"
+        ],
+        "R U R' U F' U2 F": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 29",
+      "group": "Corner in slot, edge in U layer",
+      "speedcubedb_group": "Corner In Slot",
+      "speedsolving_wiki_number": "F2L 29",
+      "description": "Corner in its slot (DFR), twisted: white sticker facing front. Edge in the U layer at UF with its right-colour sticker on top.",
+      "algs": [
+        "R' F R F' U R U' R'",
+        "R' F R F' R' F R F'",
+        "M' U R U' r' U R U' R'"
+      ],
+      "notes": "Corner twisted (white front), edge at UF. R' F R F' U R U' R' or the double sledgehammer R' F R F' R' F R F'. Primary alg, simulated: the pair is connected after \"R' F R F'\" and \"U R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_29",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R' F R F' U R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_29",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R' F R F' R' F R F'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_29",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "M' U R U' r' U R U' R'": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      },
+      "alg_notes": {
+        "R' F R F' R' F R F'": "expanded from (R' F R F')2 on the speedsolving wiki"
+      }
+    },
+    {
+      "id": "F2L 30",
+      "group": "Corner in slot, edge in U layer",
+      "speedcubedb_group": "Corner In Slot",
+      "speedsolving_wiki_number": "F2L 30",
+      "description": "Corner in its slot (DFR), twisted: white sticker facing right. Edge in the U layer at UR with its front-colour sticker on top.",
+      "algs": [
+        "R U R' U' R U R'",
+        "U' R U2 R' U2 R U R'",
+        "U2 F' U F R U R'"
+      ],
+      "notes": "Corner twisted (white right), edge at UR. R U R' U' R U R' (sexy move then insert). Primary alg, simulated: the pair is connected after \"R U R' U' R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_30",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R U R' U' R U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_30",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' R U2 R' U2 R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_30",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U2 F' U F R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_30",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 31",
+      "group": "Edge in slot, corner in U layer",
+      "speedcubedb_group": "Edge In Slot",
+      "speedsolving_wiki_number": "F2L 31",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+      "algs": [
+        "U' R' F R F' R U' R'",
+        "R U' R' F' U2 F",
+        "F' U F R U2 R'",
+        "R U' R' U F' U F"
+      ],
+      "notes": "Edge in slot flipped, corner above slot with white up. U' R' F R F' R U' R'; R U' R' F' U2 F (J Perm) avoids the leading U. Primary alg, simulated: the pair is connected after \"U' R' F\" and \"R F' R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_31",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view"
+      ],
+      "alg_sources": {
+        "U' R' F R F' R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_31",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U' R' F' U2 F": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view"
+        ],
+        "F' U F R U2 R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_31"
+        ],
+        "R U' R' U F' U F": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 32",
+      "group": "Edge in slot, corner in U layer",
+      "speedcubedb_group": "Edge In Slot",
+      "speedsolving_wiki_number": "F2L 32",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in its slot (FR), correctly oriented.",
+      "algs": [
+        "R U R' U' R U R' U' R U R'",
+        "U R U' R' U R U' R' U R U' R'",
+        "R2 U R2 U R2 U2 R2"
+      ],
+      "notes": "Edge solved in slot, corner above slot with white up. (R U R' U') x2 + R U R', or (U R U' R') x3; R2 U R2 U R2 U2 R2 is a short 2-gen alternative. Primary alg, simulated: the pair is connected after \"R U R' U' R U R' U' R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_32",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R U R' U' R U R' U' R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_32",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U R U' R' U R U' R' U R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_32",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R2 U R2 U R2 U2 R2": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_32",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      },
+      "alg_notes": {
+        "R U R' U' R U R' U' R U R'": "expanded from (R U R' U')2 (R U R') on the speedsolving wiki",
+        "U R U' R' U R U' R' U R U' R'": "expanded from (U R U' R')3 on the speedsolving wiki"
+      }
+    },
+    {
+      "id": "F2L 33",
+      "group": "Edge in slot, corner in U layer",
+      "speedcubedb_group": "Edge In Slot",
+      "speedsolving_wiki_number": "F2L 33",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in its slot (FR), correctly oriented.",
+      "algs": [
+        "U' R U' R' U2 R U' R'",
+        "U' R U' R' U' R U2 R'",
+        "U' F' U' F U2 F' U' F"
+      ],
+      "notes": "Edge solved in slot, corner white facing front. U' R U' R' U2 R U' R' : take the edge out paired, re-insert. Primary alg, simulated: the pair is connected after \"U' R U' R'\" and \"U2 R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_33",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U' R U' R' U2 R U' R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_33",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' R U' R' U' R U2 R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_33"
+        ],
+        "U' F' U' F U2 F' U' F": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 34",
+      "group": "Edge in slot, corner in U layer",
+      "speedcubedb_group": "Edge In Slot",
+      "speedsolving_wiki_number": "F2L 34",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in its slot (FR), correctly oriented.",
+      "algs": [
+        "U R U R' U2 R U R'",
+        "U' R U2 R' U R U R'",
+        "U F' U F U2 F' U F"
+      ],
+      "notes": "Edge solved in slot, corner white facing right. U R U R' U2 R U R' or U' R U2 R' U R U R'. Primary alg, simulated: the pair is connected after \"U R U R' U2 R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_34",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U R U R' U2 R U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_34",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U' R U2 R' U R U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_34",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U F' U F U2 F' U F": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 35",
+      "group": "Edge in slot, corner in U layer",
+      "speedcubedb_group": "Edge In Slot",
+      "speedsolving_wiki_number": "F2L 35",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+      "algs": [
+        "U' R U R' U F' U' F",
+        "U2 R U R' F R' F' R",
+        "U2 R U' R' U' F' U' F"
+      ],
+      "notes": "Edge flipped in slot, corner white facing front. U' R U R' U F' U' F (take out, front insert); U2 R U R' F R' F' R ends with a reverse sledgehammer. Primary alg, simulated: the pair is connected after \"U' R U R' U F'\" and \"U' F\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_35",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view"
+      ],
+      "alg_sources": {
+        "U' R U R' U F' U' F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_35",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U2 R U R' F R' F' R": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_35"
+        ],
+        "U2 R U' R' U' F' U' F": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 36",
+      "group": "Edge in slot, corner in U layer",
+      "speedcubedb_group": "Edge In Slot",
+      "speedsolving_wiki_number": "F2L 36",
+      "description": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+      "algs": [
+        "U F' U' F U' R U R'",
+        "U2 R' F R F' U2 R U R'",
+        "R U R' U R U R' U' F' U' F"
+      ],
+      "notes": "Edge flipped in slot, corner white facing right. U F' U' F U' R U R'. Primary alg, simulated: the pair is connected after \"U F' U' F U' R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_36",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "U F' U' F U' R U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_36",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "U2 R' F R F' U2 R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_36",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U R' U R U R' U' F' U' F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_36"
+        ]
+      }
+    },
+    {
+      "id": "F2L 37",
+      "group": "Corner and edge both in slot",
+      "speedcubedb_group": "Pieces In Slot",
+      "speedsolving_wiki_number": "F2L 38",
+      "description": "Corner in its slot (DFR), correctly oriented (white facing down). Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+      "algs": [
+        "R2 U2 F R2 F' U2 R' U R'",
+        "R' F R F' R U' R' U R U' R' U2 R U' R'",
+        "R U2 R' U R U2 R' U F' U' F"
+      ],
+      "notes": "Edge flipped in slot, corner solved. R2 U2 F R2 F' U2 R' U R' is the shortest (9); the long 2-gen R' F R F' R U' R' U R U' R' U2 R U' R' is easier to remember (sledgehammer + F2L). Primary alg, simulated: the pair is connected after \"R2 U2 F R2 F' U2 R'\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_37",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R2 U2 F R2 F' U2 R' U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_37",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R' F R F' R U' R' U R U' R' U2 R U' R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_37",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U2 R' U R U2 R' U F' U' F": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_37"
+        ]
+      }
+    },
+    {
+      "id": "F2L 38",
+      "group": "Corner and edge both in slot",
+      "speedcubedb_group": "Pieces In Slot",
+      "speedsolving_wiki_number": "F2L 39",
+      "description": "Corner in its slot (DFR), twisted: white sticker facing front. Edge in its slot (FR), correctly oriented.",
+      "algs": [
+        "R U' R' U' R U R' U2 R U' R'",
+        "R U R' U' R U2 R' U' R U R'",
+        "R2 U2 R' U' R U' R' U2 R'"
+      ],
+      "notes": "Both pieces in slot, corner twisted white-front, edge correct. R U' R' U' R U R' U2 R U' R' or R U R' U' R U2 R' U' R U R' (both 11, 2-gen). Primary alg, simulated: the pair is connected after \"R U' R' U' R U R'\" and \"U2 R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_38",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R U' R' U' R U R' U2 R U' R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_38",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U R' U' R U2 R' U' R U R'": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_38",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R2 U2 R' U' R U' R' U2 R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_38",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 39",
+      "group": "Corner and edge both in slot",
+      "speedcubedb_group": "Pieces In Slot",
+      "speedsolving_wiki_number": "F2L 40",
+      "description": "Corner in its slot (DFR), twisted: white sticker facing right. Edge in its slot (FR), correctly oriented.",
+      "algs": [
+        "R U' R' U R U2 R' U R U' R'",
+        "R U R' U2 R U' R' U R U R'",
+        "R U2 R U R' U R U2 R2"
+      ],
+      "notes": "Both in slot, corner twisted white-right, edge correct. R U' R' U R U2 R' U R U' R' (2-gen). Primary alg, simulated: the pair is connected after \"R U' R' U R U2\" and \"R' U R U' R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_39",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+      ],
+      "alg_sources": {
+        "R U' R' U R U2 R' U R U' R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_39",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U R' U2 R U' R' U R U R'": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_39",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U2 R U R' U R U2 R2": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_39",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    },
+    {
+      "id": "F2L 40",
+      "group": "Corner and edge both in slot",
+      "speedcubedb_group": "Pieces In Slot",
+      "speedsolving_wiki_number": "F2L 41",
+      "description": "Corner in its slot (DFR), twisted: white sticker facing front. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+      "algs": [
+        "r U' r' U2 r U r' R U R'",
+        "F' L' U2 L F R U R'",
+        "R U' R' F R U R' U' F' R U' R'",
+        "F' U F U2 R U R' U R U' R'"
+      ],
+      "notes": "Both in slot, corner twisted white-front, edge flipped. r U' r' U2 r U r' R U R' or F' L' U2 L F R U R': the first part is the F2L 22 alg, which here turns the case into the basic R U R' insert (F2L 4). Primary alg, simulated: the pair is connected after \"r U' r' U2 r U r' R\" and \"U R'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_40",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf"
+      ],
+      "alg_sources": {
+        "r U' r' U2 r U r' R U R'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_40",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "F' L' U2 L F R U R'": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_40"
+        ],
+        "R U' R' F R U R' U' F' R U' R'": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_40"
+        ],
+        "F' U F U2 R U R' U R U' R'": [
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l-algorithms-different-slot-positions.pdf",
+          "https://www.cubeskills.com/uploads/pdf/tutorials/f2l.pdf"
+        ]
+      }
+    },
+    {
+      "id": "F2L 41",
+      "group": "Corner and edge both in slot",
+      "speedcubedb_group": "Pieces In Slot",
+      "speedsolving_wiki_number": "F2L 42",
+      "description": "Corner in its slot (DFR), twisted: white sticker facing right. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+      "algs": [
+        "R U' R' r U' r' U2 r U r'",
+        "R U' R' F' L' U2 L F",
+        "R U F R U R' U' F' R'"
+      ],
+      "notes": "Both in slot, corner twisted white-right, edge flipped. R U' R' r U' r' U2 r U r' or R U' R' F' L' U2 L F (take out, then solve as F2L 22). Primary alg, simulated: the pair is connected after \"R U' R' r U' r'\" and \"U2 r U r'\" inserts it.",
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/F2L/F2L_41",
+        "https://www.speedsolving.com/wiki/index.php/First_Two_Layers",
+        "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view"
+      ],
+      "alg_sources": {
+        "R U' R' r U' r' U2 r U r'": [
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_41",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U' R' F' L' U2 L F": [
+          "https://drive.google.com/file/d/1nzAXYUWZJ6H2wIOXaHdWXep3W57tArbR/view",
+          "https://www.speedcubedb.com/a/3x3/F2L/F2L_41",
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ],
+        "R U F R U R' U' F' R'": [
+          "https://www.speedsolving.com/wiki/index.php/First_Two_Layers"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,2935 @@
+{
+  "set": "OLL",
+  "notation": "WCA/SiGN: R U F L D B, ' and 2; wide moves lowercase (r, l, f, u...); slices M E S; rotations x y z",
+  "field_notes": {
+    "pattern": "Sticker map of the case exactly as held before executing algs[0] (computed by simulation). OLL: \"top\" is 9 chars, rows back->front, columns left->right; X = U-colour sticker. front/right/back/left are the 3 top-layer stickers of that side read left-to-right as you face that side. PLL: letters are the home face of each sticker colour (F,R,B,L), same reading order.",
+    "mirror_of": "Case solved by the left-right mirror (R<->L) of algs[0], computed by simulation.",
+    "inverse_of": "Case solved by the inverse of algs[0], computed by simulation. For OLL this is alg-specific (a different alg for the same case can invert to a different OLL); for PLL it is case-level.",
+    "alg_details": "Per-alg provenance; speedcubedb_votes = community votes on the SpeedCubeDB category page at fetch time (2026-10-28).",
+    "verification": "Every alg was simulated: it solves exactly this case (matched against SpeedCubeDB's setup scramble for the case, up to AUF), preserves F2L, and (PLL) preserves LL orientation. Parentheses from sources were stripped; no other edits. Case identity was cross-checked three ways: J Perm algs, SpeedCubeDB setups/algs, and every alg in Feliks Zemdegs' CubeSkills PDFs (all 78 cases agree)."
+  },
+  "two_look_edge_step": {
+    "description": "2-look OLL step 1 (orient edges, ignore corners). Step 2 is the 7 OCLL cases (two_look=true). Source: J Perm 2-look OLL.",
+    "source": "https://jperm.net/algs/2look/oll",
+    "cases": [
+      {
+        "name": "Line (I-shape)",
+        "algs": [
+          "F R U R' U' F'"
+        ],
+        "hold": "line horizontal: oriented edges left+right (verified by simulation)"
+      },
+      {
+        "name": "L-shape",
+        "algs": [
+          "f R U R' U' f'"
+        ],
+        "hold": "oriented edges at FRONT+RIGHT for f R U R' U' f' (verified by simulation and SpeedCubeDB OLL 44 image). The equivalent y2 F U R U' R' F' / F U R U' R' F' is the form used with the L at back+left."
+      },
+      {
+        "name": "Dot",
+        "algs": [
+          "F R U R' U' F' f R U R' U' f'"
+        ],
+        "hold": "any (no edges oriented)"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "OLL 1",
+      "name": "Runway / Blank",
+      "group": "Dot",
+      "probability": "1/108",
+      "algs": [
+        "R U2 R2 F R F' U2 R' F R F'",
+        "y R U' R2 D' r U' r' D R2 U R'",
+        "f R U R' U' R f' U' r' U' R U M'",
+        "L' U2 L2 F' L' F U2 L F' L' F"
+      ],
+      "recognition": "No edges or corners oriented; two parallel 3-sticker bars on opposite sides. Top: no edges oriented (dot); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: 3-bar; back: edge; left: 3-bar. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_1",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 1",
+      "inverse_of": "OLL 2",
+      "pattern": {
+        "top": "....X....",
+        "front": ".X.",
+        "right": "XXX",
+        "back": ".X.",
+        "left": "XXX"
+      },
+      "alg_details": [
+        {
+          "alg": "R U2 R2 F R F' U2 R' F R F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 143
+        },
+        {
+          "alg": "y R U' R2 D' r U' r' D R2 U R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 34
+        },
+        {
+          "alg": "f R U R' U' R f' U' r' U' R U M'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 12
+        },
+        {
+          "alg": "L' U2 L2 F' L' F U2 L F' L' F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 6
+        }
+      ]
+    },
+    {
+      "id": "OLL 2",
+      "name": "Zamboni",
+      "group": "Dot",
+      "probability": "1/54",
+      "algs": [
+        "F R U R' U' S R U R' U' f'",
+        "y' R U' R2 D' r U r' D R2 U R'",
+        "y r U r' U2 R U2 R' U2 r U' r'",
+        "r U r' U2 r U2 R' U2 R U' r'"
+      ],
+      "recognition": "No edges or corners oriented; one 3-sticker bar on one side only. Top: no edges oriented (dot); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: edge; back: left corner + edge; left: 3-bar. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_2",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 2",
+      "inverse_of": "OLL 2",
+      "pattern": {
+        "top": "....X....",
+        "front": ".XX",
+        "right": ".X.",
+        "back": "XX.",
+        "left": "XXX"
+      },
+      "alg_details": [
+        {
+          "alg": "F R U R' U' S R U R' U' f'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 64
+        },
+        {
+          "alg": "y' R U' R2 D' r U r' D R2 U R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 89
+        },
+        {
+          "alg": "y r U r' U2 R U2 R' U2 r U' r'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 39
+        },
+        {
+          "alg": "r U r' U2 r U2 R' U2 R U' r'",
+          "source": "J Perm",
+          "speedcubedb_votes": null
+        }
+      ]
+    },
+    {
+      "id": "OLL 3",
+      "name": "Anti-Pinwheel / Anti-Mouse",
+      "group": "Dot",
+      "probability": "1/54",
+      "algs": [
+        "r' R2 U R' U r U2 r' U M'",
+        "y' f R U R' U' f' U' F R U R' U' F'",
+        "y R' F2 R2 U2 R' F R U2 R2 F2 R",
+        "M R U R' U r U2 r' U M'"
+      ],
+      "recognition": "Dot shape. Top: no edges oriented (dot); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: edge + right corner; back: edge + right corner; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_3",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 4",
+      "inverse_of": "OLL 4",
+      "pattern": {
+        "top": "....X.X..",
+        "front": ".XX",
+        "right": ".XX",
+        "back": ".XX",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "r' R2 U R' U r U2 r' U M'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 29
+        },
+        {
+          "alg": "y' f R U R' U' f' U' F R U R' U' F'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 43
+        },
+        {
+          "alg": "y R' F2 R2 U2 R' F R U2 R2 F2 R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 36
+        },
+        {
+          "alg": "M R U R' U r U2 r' U M'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 19
+        }
+      ]
+    },
+    {
+      "id": "OLL 4",
+      "name": "Pinwheel / Mouse",
+      "group": "Dot",
+      "probability": "1/54",
+      "algs": [
+        "y' R' F2 R2 U2 R' F' R U2 R2 F2 R",
+        "y' f R U R' U' f' U F R U R' U' F'",
+        "R' F R F' U' S R' U' R U R S'",
+        "M U' r U2 r' U' R U' R' M'"
+      ],
+      "recognition": "Dot shape. Top: no edges oriented (dot); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: edge; back: left corner + edge; left: left corner + edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_4",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 3",
+      "inverse_of": "OLL 3",
+      "pattern": {
+        "top": "....X...X",
+        "front": "XX.",
+        "right": ".X.",
+        "back": "XX.",
+        "left": "XX."
+      },
+      "alg_details": [
+        {
+          "alg": "y' R' F2 R2 U2 R' F' R U2 R2 F2 R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 42
+        },
+        {
+          "alg": "y' f R U R' U' f' U F R U R' U' F'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 27
+        },
+        {
+          "alg": "R' F R F' U' S R' U' R U R S'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 16
+        },
+        {
+          "alg": "M U' r U2 r' U' R U' R' M'",
+          "source": "J Perm",
+          "speedcubedb_votes": null
+        }
+      ]
+    },
+    {
+      "id": "OLL 5",
+      "name": "Lefty Square",
+      "group": "Square",
+      "probability": "1/54",
+      "algs": [
+        "r' U2 R U R' U r",
+        "l' U2 L U L' U l",
+        "y2 R' F2 r U r' F R",
+        "y2 R' F2 L F L' F R"
+      ],
+      "recognition": "Square shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): right: right corner; back: edge + right corner; left: edge + right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_5",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 6",
+      "inverse_of": "OLL 8",
+      "pattern": {
+        "top": "....XX.XX",
+        "front": "...",
+        "right": "..X",
+        "back": ".XX",
+        "left": ".XX"
+      },
+      "alg_details": [
+        {
+          "alg": "r' U2 R U R' U r",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 77
+        },
+        {
+          "alg": "l' U2 L U L' U l",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 35
+        },
+        {
+          "alg": "y2 R' F2 r U r' F R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 22
+        },
+        {
+          "alg": "y2 R' F2 L F L' F R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 4
+        }
+      ]
+    },
+    {
+      "id": "OLL 6",
+      "name": "Righty Square",
+      "group": "Square",
+      "probability": "1/54",
+      "algs": [
+        "r U2 R' U' R U' r'",
+        "F U' R2 D R' U' R D' R2 U F'",
+        "y2 l U2 L' U' L U' l'",
+        "L F2 l' U' l F' L'"
+      ],
+      "recognition": "Square shape. Top: edges oriented: back+right (L-shape with centre); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: left corner; left: left corner + edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_6",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 5",
+      "inverse_of": "OLL 7",
+      "pattern": {
+        "top": ".XX.XX...",
+        "front": "XX.",
+        "right": "X..",
+        "back": "...",
+        "left": "XX."
+      },
+      "alg_details": [
+        {
+          "alg": "r U2 R' U' R U' r'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 86
+        },
+        {
+          "alg": "F U' R2 D R' U' R D' R2 U F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 3
+        },
+        {
+          "alg": "y2 l U2 L' U' L U' l'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 3
+        },
+        {
+          "alg": "L F2 l' U' l F' L'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 2
+        }
+      ]
+    },
+    {
+      "id": "OLL 7",
+      "name": "Lightning / Wide Sune",
+      "group": "Small Lightning Bolt",
+      "probability": "1/54",
+      "algs": [
+        "r U R' U R U2 r'",
+        "S' R U R' U R U2 R' U S",
+        "L' U2 L U2 L F' L' F"
+      ],
+      "recognition": "Small Lightning Bolt shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: edge + right corner; back: right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_7",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 8",
+      "inverse_of": "OLL 6",
+      "pattern": {
+        "top": ".X.XX.X..",
+        "front": ".XX",
+        "right": ".XX",
+        "back": "..X",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "r U R' U R U2 r'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 77
+        },
+        {
+          "alg": "S' R U R' U R U2 R' U S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 8
+        },
+        {
+          "alg": "L' U2 L U2 L F' L' F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 6
+        }
+      ]
+    },
+    {
+      "id": "OLL 8",
+      "name": "Reverse Lightning / Wide Left Sune",
+      "group": "Small Lightning Bolt",
+      "probability": "1/54",
+      "algs": [
+        "l' U' L U' L' U2 l",
+        "y2 r' U' R U' R' U2 r",
+        "R U2 R' U2 R' F R F'",
+        "R' F' r U' r' F2 R"
+      ],
+      "recognition": "Small Lightning Bolt shape. Top: edges oriented: back+right (L-shape with centre); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; back: left corner; left: left corner + edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_8",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 7",
+      "inverse_of": "OLL 5",
+      "pattern": {
+        "top": ".X..XX..X",
+        "front": "XX.",
+        "right": "...",
+        "back": "X..",
+        "left": "XX."
+      },
+      "alg_details": [
+        {
+          "alg": "l' U' L U' L' U2 l",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 46
+        },
+        {
+          "alg": "y2 r' U' R U' R' U2 r",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 52
+        },
+        {
+          "alg": "R U2 R' U2 R' F R F'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 26
+        },
+        {
+          "alg": "R' F' r U' r' F2 R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 22
+        }
+      ]
+    },
+    {
+      "id": "OLL 9",
+      "name": "Kite",
+      "group": "Fish",
+      "probability": "1/54",
+      "algs": [
+        "R U R' U' R' F R2 U R' U' F'",
+        "R U2 R' U' S' R U' R' S",
+        "y2 F' U' F r U' r' U r U r'",
+        "y' L' U' L U' L F' L' F L' U2 L"
+      ],
+      "recognition": "Fish shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: edge; back: left corner; left: left corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_9",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 10",
+      "inverse_of": "OLL 13",
+      "pattern": {
+        "top": ".X.XX...X",
+        "front": "XX.",
+        "right": ".X.",
+        "back": "X..",
+        "left": "X.."
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U' R' F R2 U R' U' F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 89
+        },
+        {
+          "alg": "R U2 R' U' S' R U' R' S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 22
+        },
+        {
+          "alg": "y2 F' U' F r U' r' U r U r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        },
+        {
+          "alg": "y' L' U' L U' L F' L' F L' U2 L",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        }
+      ]
+    },
+    {
+      "id": "OLL 10",
+      "name": "Anti-Kite",
+      "group": "Fish",
+      "probability": "1/54",
+      "algs": [
+        "R U R' U R' F R F' R U2 R'",
+        "y F U F' R' F R U' R' F' R",
+        "y M' R' U2 R U R' U R U M",
+        "y2 L' U' L U L F' L2 U' L U F"
+      ],
+      "recognition": "Fish shape. Top: edges oriented: left+front (L-shape with centre); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; right: edge; back: edge + right corner; left: right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_10",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 9",
+      "inverse_of": "OLL 8",
+      "pattern": {
+        "top": "..XXX..X.",
+        "front": "..X",
+        "right": ".X.",
+        "back": ".XX",
+        "left": "..X"
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U R' F R F' R U2 R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 58
+        },
+        {
+          "alg": "y F U F' R' F R U' R' F' R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 16
+        },
+        {
+          "alg": "y M' R' U2 R U R' U R U M",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 9
+        },
+        {
+          "alg": "y2 L' U' L U L F' L2 U' L U F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 6
+        }
+      ]
+    },
+    {
+      "id": "OLL 11",
+      "name": "Downstairs",
+      "group": "Small Lightning Bolt",
+      "probability": "1/54",
+      "algs": [
+        "r' R2 U R' U R U2 R' U M'",
+        "r U R' U R' F R F' R U2 r'",
+        "S R U R' U R U2 R' U2 S'",
+        "M R U R' U R U2 R' U M'"
+      ],
+      "recognition": "Small Lightning Bolt shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; right: right corner; back: edge + right corner; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_11",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 12",
+      "inverse_of": "OLL 6",
+      "pattern": {
+        "top": "....XXXX.",
+        "front": "..X",
+        "right": "..X",
+        "back": ".XX",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "r' R2 U R' U R U2 R' U M'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 45
+        },
+        {
+          "alg": "r U R' U R' F R F' R U2 r'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 37
+        },
+        {
+          "alg": "S R U R' U R U2 R' U2 S'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 29
+        },
+        {
+          "alg": "M R U R' U R U2 R' U M'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 29
+        }
+      ]
+    },
+    {
+      "id": "OLL 12",
+      "name": "Upstairs",
+      "group": "Small Lightning Bolt",
+      "probability": "1/54",
+      "algs": [
+        "F R U R' U' F' U F R U R' U' F'",
+        "y' M' R' U' R U' R' U2 R U' M",
+        "y' S R' U' R U' R' U2 R U2 S'",
+        "M' R' U' R U' R' U2 R U' R r'"
+      ],
+      "recognition": "Small Lightning Bolt shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: left corner; back: edge; left: left corner + edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_12",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 11",
+      "inverse_of": "OLL 7",
+      "pattern": {
+        "top": "..X.XX.X.",
+        "front": "X..",
+        "right": "X..",
+        "back": ".X.",
+        "left": "XX."
+      },
+      "alg_details": [
+        {
+          "alg": "F R U R' U' F' U F R U R' U' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 29
+        },
+        {
+          "alg": "y' M' R' U' R U' R' U2 R U' M",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 37
+        },
+        {
+          "alg": "y' S R' U' R U' R' U2 R U2 S'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 18
+        },
+        {
+          "alg": "M' R' U' R U' R' U2 R U' R r'",
+          "source": "J Perm",
+          "speedcubedb_votes": null
+        }
+      ]
+    },
+    {
+      "id": "OLL 13",
+      "name": "Gun / Trigger",
+      "group": "Knight Move",
+      "probability": "1/54",
+      "algs": [
+        "F U R U2 R' U' R U R' F'",
+        "F U R U' R2 F' R U R U' R'",
+        "r U' r' U' r U r' F' U F",
+        "y2 f R U R2 U' R' U R U' f'"
+      ],
+      "recognition": "Knight Move shape. Top: edges oriented: left+right (horizontal line); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: right corner; back: edge + right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_13",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 14",
+      "inverse_of": "OLL 6",
+      "pattern": {
+        "top": "...XXXX..",
+        "front": ".XX",
+        "right": "..X",
+        "back": ".XX",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "F U R U2 R' U' R U R' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 48
+        },
+        {
+          "alg": "F U R U' R2 F' R U R U' R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 44
+        },
+        {
+          "alg": "r U' r' U' r U r' F' U F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 28
+        },
+        {
+          "alg": "y2 f R U R2 U' R' U R U' f'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        }
+      ]
+    },
+    {
+      "id": "OLL 14",
+      "name": "Anti-Gun / Anti-Trigger",
+      "group": "Knight Move",
+      "probability": "1/54",
+      "algs": [
+        "R' F R U R' F' R F U' F'",
+        "r U R' U' r' F R2 U R' U' F'",
+        "l' U l U l' U' l F U' F'",
+        "S R U R' U' R' F R2 U R' U' f'"
+      ],
+      "recognition": "Knight Move shape. Top: edges oriented: left+right (horizontal line); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; back: left corner + edge; left: left corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_14",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 13",
+      "inverse_of": "OLL 10",
+      "pattern": {
+        "top": "...XXX..X",
+        "front": "XX.",
+        "right": "...",
+        "back": "XX.",
+        "left": "X.."
+      },
+      "alg_details": [
+        {
+          "alg": "R' F R U R' F' R F U' F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 56
+        },
+        {
+          "alg": "r U R' U' r' F R2 U R' U' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 30
+        },
+        {
+          "alg": "l' U l U l' U' l F U' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 9
+        },
+        {
+          "alg": "S R U R' U' R' F R2 U R' U' f'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 8
+        }
+      ]
+    },
+    {
+      "id": "OLL 15",
+      "name": "Squeegee",
+      "group": "Knight Move",
+      "probability": "1/54",
+      "algs": [
+        "r' U' r R' U' R U r' U r",
+        "l' U' l L' U' L U l' U l",
+        "r' U' M' U' R U r' U r",
+        "y2 R' F' R L' U' L U R' F R"
+      ],
+      "recognition": "Knight Move shape. Top: edges oriented: left+right (horizontal line); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: right corner; back: edge + right corner; left: right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_15",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 16",
+      "inverse_of": "OLL 8",
+      "pattern": {
+        "top": "...XXX..X",
+        "front": ".X.",
+        "right": "..X",
+        "back": ".XX",
+        "left": "..X"
+      },
+      "alg_details": [
+        {
+          "alg": "r' U' r R' U' R U r' U r",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 40
+        },
+        {
+          "alg": "l' U' l L' U' L U l' U l",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 35
+        },
+        {
+          "alg": "r' U' M' U' R U r' U r",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 14
+        },
+        {
+          "alg": "y2 R' F' R L' U' L U R' F R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 12
+        }
+      ]
+    },
+    {
+      "id": "OLL 16",
+      "name": "Anti-Squeegee",
+      "group": "Knight Move",
+      "probability": "1/54",
+      "algs": [
+        "r U r' R U R' U' r U' r'",
+        "r U M U R' U' r U' r'",
+        "y2 R' F R U R' U' F' R U' R' U2 R",
+        "y2 l U l' L U L' U' l U' l'"
+      ],
+      "recognition": "Knight Move shape. Top: edges oriented: left+right (horizontal line); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: left corner; back: edge; left: left corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_16",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 15",
+      "inverse_of": "OLL 7",
+      "pattern": {
+        "top": "..XXXX...",
+        "front": "XX.",
+        "right": "X..",
+        "back": ".X.",
+        "left": "X.."
+      },
+      "alg_details": [
+        {
+          "alg": "r U r' R U R' U' r U' r'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 76
+        },
+        {
+          "alg": "r U M U R' U' r U' r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 11
+        },
+        {
+          "alg": "y2 R' F R U R' U' F' R U' R' U2 R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        },
+        {
+          "alg": "y2 l U l' L U L' U' l U' l'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 4
+        }
+      ]
+    },
+    {
+      "id": "OLL 17",
+      "name": "Slash / Diagonal",
+      "group": "Dot",
+      "probability": "1/54",
+      "algs": [
+        "R U R' U R' F R F' U2 R' F R F'",
+        "y2 F R' F' R U S' R U' R' S",
+        "F R' F' R2 r' U R U' R' U' M'",
+        "y' F' r U r' U' S r' F r S'"
+      ],
+      "recognition": "Dot shape. Top: no edges oriented (dot); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge; back: left corner + edge; left: edge + right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_17",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 17",
+      "inverse_of": "OLL 18",
+      "pattern": {
+        "top": "X...X...X",
+        "front": ".X.",
+        "right": ".X.",
+        "back": "XX.",
+        "left": ".XX"
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U R' F R F' U2 R' F R F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 58
+        },
+        {
+          "alg": "y2 F R' F' R U S' R U' R' S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 51
+        },
+        {
+          "alg": "F R' F' R2 r' U R U' R' U' M'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 12
+        },
+        {
+          "alg": "y' F' r U r' U' S r' F r S'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 8
+        }
+      ]
+    },
+    {
+      "id": "OLL 18",
+      "name": "Crown",
+      "group": "Dot",
+      "probability": "1/54",
+      "algs": [
+        "y R U2 R2 F R F' U2 M' U R U' r'",
+        "r U R' U R U2 r2 U' R U' R' U2 r",
+        "y F S' R U' R' S R U2 R' U' F'",
+        "R D r' U' r D' R' U' R2 F R F' R"
+      ],
+      "recognition": "Dot with two adjacent corners oriented and a 3-bar on the side opposite those corners. Top: no edges oriented (dot); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): front: 3-bar; right: edge; back: edge; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_18",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 18",
+      "inverse_of": "OLL 18",
+      "pattern": {
+        "top": "X.X.X....",
+        "front": "XXX",
+        "right": ".X.",
+        "back": ".X.",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "y R U2 R2 F R F' U2 M' U R U' r'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 42
+        },
+        {
+          "alg": "r U R' U R U2 r2 U' R U' R' U2 r",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 23
+        },
+        {
+          "alg": "y F S' R U' R' S R U2 R' U' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 23
+        },
+        {
+          "alg": "R D r' U' r D' R' U' R2 F R F' R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 10
+        }
+      ]
+    },
+    {
+      "id": "OLL 19",
+      "name": "Bunny",
+      "group": "Dot",
+      "probability": "1/54",
+      "algs": [
+        "M U R U R' U' M' R' F R F'",
+        "y S' R U R' S U' R' F R F'",
+        "R' U2 F R U R' U' F2 U2 F R",
+        "r' R U R U R' U' M' R' F R F'"
+      ],
+      "recognition": "Dot shape. Top: no edges oriented (dot); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: left corner + edge; back: edge; left: edge + right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_19",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 19",
+      "inverse_of": "OLL 17",
+      "pattern": {
+        "top": "X.X.X....",
+        "front": ".X.",
+        "right": "XX.",
+        "back": ".X.",
+        "left": ".XX"
+      },
+      "alg_details": [
+        {
+          "alg": "M U R U R' U' M' R' F R F'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 38
+        },
+        {
+          "alg": "y S' R U R' S U' R' F R F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 48
+        },
+        {
+          "alg": "R' U2 F R U R' U' F2 U2 F R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 14
+        },
+        {
+          "alg": "r' R U R U R' U' M' R' F R F'",
+          "source": "J Perm",
+          "speedcubedb_votes": null
+        }
+      ]
+    },
+    {
+      "id": "OLL 20",
+      "name": "X / Checkers",
+      "group": "Dot",
+      "probability": "1/216",
+      "algs": [
+        "r U R' U' M2 U R U' R' U' M'",
+        "M' U2 M U2 M' U M U2 M' U2 M",
+        "S' R U R' S U' M' U R U' r'",
+        "S R' U' R U R U R U' R' S'"
+      ],
+      "recognition": "Dot with all four corners oriented (X / Checkers). Rarest OLL (1/216). Top: no edges oriented (dot); all 4 corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge; back: edge; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_20",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 20",
+      "inverse_of": "OLL 20",
+      "pattern": {
+        "top": "X.X.X.X.X",
+        "front": ".X.",
+        "right": ".X.",
+        "back": ".X.",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "r U R' U' M2 U R U' R' U' M'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 57
+        },
+        {
+          "alg": "M' U2 M U2 M' U M U2 M' U2 M",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 42
+        },
+        {
+          "alg": "S' R U R' S U' M' U R U' r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 28
+        },
+        {
+          "alg": "S R' U' R U R U R U' R' S'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 25
+        }
+      ]
+    },
+    {
+      "id": "OLL 21",
+      "name": "H / Double Sune",
+      "group": "OCLL (Cross / all edges oriented)",
+      "probability": "1/108",
+      "algs": [
+        "R U R' U R U' R' U R U2 R'",
+        "R U2 R' U' R U R' U' R U' R'",
+        "y F R U R' U' R U R' U' R U R' U' F'",
+        "R' U' R U' R' U R U' R' U2 R"
+      ],
+      "recognition": "Cross, no corners oriented; corner stickers form two pairs of headlights on opposite sides. Hold headlights left/right. Top: all 4 edges oriented (cross); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): right: headlights; left: headlights. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_21",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 21",
+      "inverse_of": "OLL 21",
+      "pattern": {
+        "top": ".X.XXX.X.",
+        "front": "...",
+        "right": "X.X",
+        "back": "...",
+        "left": "X.X"
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U R U' R' U R U2 R'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 82
+        },
+        {
+          "alg": "R U2 R' U' R U R' U' R U' R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 48
+        },
+        {
+          "alg": "y F R U R' U' R U R' U' R U R' U' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 40
+        },
+        {
+          "alg": "R' U' R U' R' U R U' R' U2 R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 13
+        }
+      ]
+    },
+    {
+      "id": "OLL 22",
+      "name": "Pi / Bruno",
+      "group": "OCLL (Cross / all edges oriented)",
+      "probability": "1/54",
+      "algs": [
+        "R U2 R2 U' R2 U' R2 U2 R",
+        "R' U2 R2 U R2 U R2 U2 R'",
+        "f R U R' U' S' R U R' U' F'",
+        "f R U R' U' f' F R U R' U' F'"
+      ],
+      "recognition": "Cross, no corners oriented; headlights on one side, and the opposite side shows no U-colour stickers. Hold headlights on the left for alg 1. Top: all 4 edges oriented (cross); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; back: left corner; left: headlights. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_22",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 22",
+      "inverse_of": "OLL 22",
+      "pattern": {
+        "top": ".X.XXX.X.",
+        "front": "..X",
+        "right": "...",
+        "back": "X..",
+        "left": "X.X"
+      },
+      "alg_details": [
+        {
+          "alg": "R U2 R2 U' R2 U' R2 U2 R",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 100
+        },
+        {
+          "alg": "R' U2 R2 U R2 U R2 U2 R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 18
+        },
+        {
+          "alg": "f R U R' U' S' R U R' U' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 18
+        },
+        {
+          "alg": "f R U R' U' f' F R U R' U' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 6
+        }
+      ]
+    },
+    {
+      "id": "OLL 23",
+      "name": "U / Headlights / Superman",
+      "group": "OCLL (Cross / all edges oriented)",
+      "probability": "1/54",
+      "algs": [
+        "R2 D R' U2 R D' R' U2 R'",
+        "R2 D' R U2 R' D R U2 R",
+        "R U R' U R U2 R2 U' R U' R' U2 R",
+        "y R U R' U' R U' R' U2 R U' R' U2 R U R'"
+      ],
+      "recognition": "Cross, two adjacent corners oriented; the other two corners form headlights on one side (front for alg 1). Top: all 4 edges oriented (cross); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): front: headlights. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_23",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 23",
+      "inverse_of": "OLL 25",
+      "pattern": {
+        "top": "XXXXXX.X.",
+        "front": "X.X",
+        "right": "...",
+        "back": "...",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "R2 D R' U2 R D' R' U2 R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 104
+        },
+        {
+          "alg": "R2 D' R U2 R' D R U2 R",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 41
+        },
+        {
+          "alg": "R U R' U R U2 R2 U' R U' R' U2 R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 13
+        },
+        {
+          "alg": "y R U R' U' R U' R' U2 R U' R' U2 R U R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 5
+        }
+      ]
+    },
+    {
+      "id": "OLL 24",
+      "name": "T / Chameleon",
+      "group": "OCLL (Cross / all edges oriented)",
+      "probability": "1/54",
+      "algs": [
+        "r U R' U' r' F R F'",
+        "y R U R D R' U' R D' R2",
+        "y2 R' F' r U R U' r' F",
+        "y' x' R U R' D R U' R' D' x"
+      ],
+      "recognition": "Cross, two adjacent corners oriented; the two unoriented corners face opposite directions (front and back for alg 1), not headlights. Top: all 4 edges oriented (cross); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; back: right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_24",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 24",
+      "inverse_of": "OLL 25",
+      "pattern": {
+        "top": ".XXXXX.XX",
+        "front": "X..",
+        "right": "...",
+        "back": "..X",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "r U R' U' r' F R F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 117
+        },
+        {
+          "alg": "y R U R D R' U' R D' R2",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 14
+        },
+        {
+          "alg": "y2 R' F' r U R U' r' F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 14
+        },
+        {
+          "alg": "y' x' R U R' D R U' R' D' x",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 12
+        }
+      ]
+    },
+    {
+      "id": "OLL 25",
+      "name": "L / Bowtie",
+      "group": "OCLL (Cross / all edges oriented)",
+      "probability": "1/54",
+      "algs": [
+        "R U2 R D R' U2 R D' R2",
+        "F' r U R' U' r' F R",
+        "F R' F' r U R U' r'",
+        "x R' U R D' R' U' R D x'"
+      ],
+      "recognition": "Cross, two diagonal corners oriented (Bowtie). Top: all 4 edges oriented (cross); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_25",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 25",
+      "inverse_of": "OLL 23",
+      "pattern": {
+        "top": "XX.XXX.XX",
+        "front": "X..",
+        "right": "..X",
+        "back": "...",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "R U2 R D R' U2 R D' R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 97
+        },
+        {
+          "alg": "F' r U R' U' r' F R",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 78
+        },
+        {
+          "alg": "F R' F' r U R U' r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 65
+        },
+        {
+          "alg": "x R' U R D' R' U' R D x'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 13
+        }
+      ]
+    },
+    {
+      "id": "OLL 26",
+      "name": "Anti-Sune",
+      "group": "OCLL (Cross / all edges oriented)",
+      "probability": "1/54",
+      "algs": [
+        "R U2 R' U' R U' R'",
+        "R' U' R U' R' U2 R",
+        "y2 L' U' L U' L' U2 L",
+        "y2 L' U R U' L U R'"
+      ],
+      "recognition": "Cross, exactly one corner oriented. With the oriented corner at back-right, the front-left corner's U sticker faces front (Anti-Sune). Top: all 4 edges oriented (cross); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: left corner; left: left corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_26",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 27",
+      "inverse_of": "OLL 27",
+      "pattern": {
+        "top": ".XXXXX.X.",
+        "front": "X..",
+        "right": "X..",
+        "back": "...",
+        "left": "X.."
+      },
+      "alg_details": [
+        {
+          "alg": "R U2 R' U' R U' R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 83
+        },
+        {
+          "alg": "R' U' R U' R' U2 R",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 44
+        },
+        {
+          "alg": "y2 L' U' L U' L' U2 L",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 24
+        },
+        {
+          "alg": "y2 L' U R U' L U R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 4
+        }
+      ]
+    },
+    {
+      "id": "OLL 27",
+      "name": "Sune",
+      "group": "OCLL (Cross / all edges oriented)",
+      "probability": "1/54",
+      "algs": [
+        "R U R' U R U2 R'",
+        "y' R' U2 R U R' U R",
+        "y L' U2 L U L' U L",
+        "y2 L U L' U L U2 L'"
+      ],
+      "recognition": "Cross, exactly one corner oriented. With the oriented corner at front-left, the front-right corner's U sticker faces front (Sune). Top: all 4 edges oriented (cross); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; right: right corner; back: right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_27",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 26",
+      "inverse_of": "OLL 26",
+      "pattern": {
+        "top": ".X.XXXXX.",
+        "front": "..X",
+        "right": "..X",
+        "back": "..X",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U R U2 R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 112
+        },
+        {
+          "alg": "y' R' U2 R U R' U R",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 14
+        },
+        {
+          "alg": "y L' U2 L U L' U L",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 8
+        },
+        {
+          "alg": "y2 L U L' U L U2 L'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        }
+      ]
+    },
+    {
+      "id": "OLL 28",
+      "name": "Stealth / Arrowhead",
+      "group": "Corners Oriented (edges only)",
+      "probability": "1/54",
+      "algs": [
+        "r U R' U' M U R U' R'",
+        "r U R' U' r' R U R U' R'",
+        "R' F R S R' F' R S'",
+        "y2 M' U M U2 M' U M"
+      ],
+      "recognition": "All corners oriented, two adjacent edges unoriented (arrow). Top: edges oriented: back+left (L-shape with centre); all 4 corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_28",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 28",
+      "inverse_of": "OLL 57",
+      "pattern": {
+        "top": "XXXXX.X.X",
+        "front": ".X.",
+        "right": ".X.",
+        "back": "...",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "r U R' U' M U R U' R'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 113
+        },
+        {
+          "alg": "r U R' U' r' R U R U' R'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 26
+        },
+        {
+          "alg": "R' F R S R' F' R S'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 26
+        },
+        {
+          "alg": "y2 M' U M U2 M' U M",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 17
+        }
+      ]
+    },
+    {
+      "id": "OLL 29",
+      "name": "Spotted Chameleon",
+      "group": "Awkward",
+      "probability": "1/54",
+      "algs": [
+        "r2 D' r U r' D r2 U' r' U' r",
+        "R U R' U' R U' R' F' U' F R U R'",
+        "y S' R U R' U' R' F R F' U S",
+        "M U R U R' U' R' F R F' M'"
+      ],
+      "recognition": "Awkward shape. Top: edges oriented: left+front (L-shape with centre); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): right: left corner + edge; back: edge; left: right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_29",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 30",
+      "inverse_of": "OLL 33",
+      "pattern": {
+        "top": "X.XXX..X.",
+        "front": "...",
+        "right": "XX.",
+        "back": ".X.",
+        "left": "..X"
+      },
+      "alg_details": [
+        {
+          "alg": "r2 D' r U r' D r2 U' r' U' r",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 57
+        },
+        {
+          "alg": "R U R' U' R U' R' F' U' F R U R'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 42
+        },
+        {
+          "alg": "y S' R U R' U' R' F R F' U S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 25
+        },
+        {
+          "alg": "M U R U R' U' R' F R F' M'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 20
+        }
+      ]
+    },
+    {
+      "id": "OLL 30",
+      "name": "Anti-Spotted Chameleon",
+      "group": "Awkward",
+      "probability": "1/54",
+      "algs": [
+        "F U R U2 R' U' R U2 R' U' F'",
+        "y' r' D' r U' r' D r2 U' r' U r U r'",
+        "F R' F R2 U' R' U' R U R' F2",
+        "y S' R' U' R f R' U R U' F'"
+      ],
+      "recognition": "Awkward shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: front-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge + right corner; left: left corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_30",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 29",
+      "inverse_of": "OLL 44",
+      "pattern": {
+        "top": ".X.XX.X.X",
+        "front": ".X.",
+        "right": ".XX",
+        "back": "...",
+        "left": "X.."
+      },
+      "alg_details": [
+        {
+          "alg": "F U R U2 R' U' R U2 R' U' F'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 48
+        },
+        {
+          "alg": "y' r' D' r U' r' D r2 U' r' U r U r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 47
+        },
+        {
+          "alg": "F R' F R2 U' R' U' R U R' F2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 29
+        },
+        {
+          "alg": "y S' R' U' R f R' U R U' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 15
+        }
+      ]
+    },
+    {
+      "id": "OLL 31",
+      "name": "Couch",
+      "group": "P",
+      "probability": "1/54",
+      "algs": [
+        "R' U' F U R U' R' F' R",
+        "y2 S' L' U' L U L F' L' f",
+        "y S R U R' U' f' U' F",
+        "y' F R' F' R U R U R' U' R U' R'"
+      ],
+      "recognition": "P shape. Top: edges oriented: back+right (L-shape with centre); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; back: right corner; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_31",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 32",
+      "inverse_of": "OLL 40",
+      "pattern": {
+        "top": ".XX.XX..X",
+        "front": "XX.",
+        "right": "...",
+        "back": "..X",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "R' U' F U R U' R' F' R",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 78
+        },
+        {
+          "alg": "y2 S' L' U' L U L F' L' f",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 13
+        },
+        {
+          "alg": "y S R U R' U' f' U' F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 12
+        },
+        {
+          "alg": "y' F R' F' R U R U R' U' R U' R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        }
+      ]
+    },
+    {
+      "id": "OLL 32",
+      "name": "Anti-Couch",
+      "group": "P",
+      "probability": "1/54",
+      "algs": [
+        "S R U R' U' R' F R f'",
+        "L U F' U' L' U L F L'",
+        "R U B' U' R' U R B R'",
+        "y' R' F R F' U' r U' r' U r U r'"
+      ],
+      "recognition": "P shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; back: edge + right corner; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_32",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 31",
+      "inverse_of": "OLL 40",
+      "pattern": {
+        "top": "..X.XX.XX",
+        "front": "X..",
+        "right": "...",
+        "back": ".XX",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "S R U R' U' R' F R f'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 74
+        },
+        {
+          "alg": "L U F' U' L' U L F L'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 22
+        },
+        {
+          "alg": "R U B' U' R' U R B R'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 14
+        },
+        {
+          "alg": "y' R' F R F' U' r U' r' U r U r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 6
+        }
+      ]
+    },
+    {
+      "id": "OLL 33",
+      "name": "Key / Tying Shoelaces",
+      "group": "T",
+      "probability": "1/54",
+      "algs": [
+        "R U R' U' R' F R F'",
+        "y2 L' U' L U L F' L' F",
+        "y2 r' F' r U r U' r' F",
+        "R U R' F' U' F R U' R'"
+      ],
+      "recognition": "T shape (line + two corners on one end); the two unoriented corners face front and back (not headlights). Compare OLL 45. Top: edges oriented: left+right (horizontal line); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; back: edge + right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_33",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 33",
+      "inverse_of": "OLL 37",
+      "pattern": {
+        "top": "..XXXX..X",
+        "front": "XX.",
+        "right": "...",
+        "back": ".XX",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U' R' F R F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 116
+        },
+        {
+          "alg": "y2 L' U' L U L F' L' F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 5
+        },
+        {
+          "alg": "y2 r' F' r U r U' r' F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 3
+        },
+        {
+          "alg": "R U R' F' U' F R U' R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 2
+        }
+      ]
+    },
+    {
+      "id": "OLL 34",
+      "name": "City",
+      "group": "C",
+      "probability": "1/54",
+      "algs": [
+        "R U R2 U' R' F R U R U' F'",
+        "y f R f' U' r' U' R U M'",
+        "F R U R' U' R' F' r U R U' r'",
+        "R U R' U' B' R' F R F' B"
+      ],
+      "recognition": "C shape (line + two corners on one side); the two unoriented corners face opposite directions. Top: edges oriented: left+right (horizontal line); corners oriented: front-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: right corner; back: edge; left: left corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_34",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 34",
+      "inverse_of": "OLL 37",
+      "pattern": {
+        "top": "...XXXX.X",
+        "front": ".X.",
+        "right": "..X",
+        "back": ".X.",
+        "left": "X.."
+      },
+      "alg_details": [
+        {
+          "alg": "R U R2 U' R' F R U R U' F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 57
+        },
+        {
+          "alg": "y f R f' U' r' U' R U M'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 80
+        },
+        {
+          "alg": "F R U R' U' R' F' r U R U' r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 32
+        },
+        {
+          "alg": "R U R' U' B' R' F R F' B",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 18
+        }
+      ]
+    },
+    {
+      "id": "OLL 35",
+      "name": "Fish Salad",
+      "group": "Fish",
+      "probability": "1/54",
+      "algs": [
+        "R U2 R2 F R F' R U2 R'",
+        "f R U R' U' f' R U R' U R U2 R'",
+        "R U2 R' d' R' F R U' R' F' R",
+        "y L' U2 L2 F' L' F L' U2 L"
+      ],
+      "recognition": "Fish shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: right corner; back: edge; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_35",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 35",
+      "inverse_of": "OLL 37",
+      "pattern": {
+        "top": "X...XX.XX",
+        "front": "X..",
+        "right": "..X",
+        "back": ".X.",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "R U2 R2 F R F' R U2 R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 56
+        },
+        {
+          "alg": "f R U R' U' f' R U R' U R U2 R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 6
+        },
+        {
+          "alg": "R U2 R' d' R' F R U' R' F' R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 3
+        },
+        {
+          "alg": "y L' U2 L2 F' L' F L' U2 L",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 2
+        }
+      ]
+    },
+    {
+      "id": "OLL 36",
+      "name": "Wario / Anti-Moustache",
+      "group": "W",
+      "probability": "1/54",
+      "algs": [
+        "L' U' L U' L' U L U L F' L' F",
+        "y R U R2 F' U' F U R2 U2 R'",
+        "y2 R U R' F' R U R' U' R' F R U' R' F R F'",
+        "R U R' U' F' U2 F U R U R'"
+      ],
+      "recognition": "W shape. Top: edges oriented: back+right (L-shape with centre); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; back: left corner; left: edge + right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_36",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 38",
+      "inverse_of": "OLL 32",
+      "pattern": {
+        "top": "XX..XX..X",
+        "front": ".X.",
+        "right": "...",
+        "back": "X..",
+        "left": ".XX"
+      },
+      "alg_details": [
+        {
+          "alg": "L' U' L U' L' U L U L F' L' F",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 53
+        },
+        {
+          "alg": "y R U R2 F' U' F U R2 U2 R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 59
+        },
+        {
+          "alg": "y2 R U R' F' R U R' U' R' F R U' R' F R F'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 36
+        },
+        {
+          "alg": "R U R' U' F' U2 F U R U R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 16
+        }
+      ]
+    },
+    {
+      "id": "OLL 37",
+      "name": "Mounted Fish / Untying Shoelaces",
+      "group": "Fish",
+      "probability": "1/54",
+      "algs": [
+        "F R' F' R U R U' R'",
+        "F R U' R' U' R U R' F'",
+        "y F' r U r' U' r' F r",
+        "y2 r2 D' r U' r' D r U r"
+      ],
+      "recognition": "Fish shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: edge + right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_37",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 37",
+      "inverse_of": "OLL 33",
+      "pattern": {
+        "top": "XX.XX...X",
+        "front": "XX.",
+        "right": ".XX",
+        "back": "...",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "F R' F' R U R U' R'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 77
+        },
+        {
+          "alg": "F R U' R' U' R U R' F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 72
+        },
+        {
+          "alg": "y F' r U r' U' r' F r",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 8
+        },
+        {
+          "alg": "y2 r2 D' r U' r' D r U r",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 3
+        }
+      ]
+    },
+    {
+      "id": "OLL 38",
+      "name": "Mario / Moustache",
+      "group": "W",
+      "probability": "1/54",
+      "algs": [
+        "R U R' U R U' R' U' R' F R F'",
+        "y F R U' R' S U' R U R' f'",
+        "r U R' U' r' F R U R U' R' F'",
+        "y2 L U L' U L U' L' U' L' B L B'"
+      ],
+      "recognition": "W shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: back-right, front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: left corner + edge; back: right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_38",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 36",
+      "inverse_of": "OLL 31",
+      "pattern": {
+        "top": ".XXXX.X..",
+        "front": ".X.",
+        "right": "XX.",
+        "back": "..X",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U R U' R' U' R' F R F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 92
+        },
+        {
+          "alg": "y F R U' R' S U' R U R' f'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        },
+        {
+          "alg": "r U R' U' r' F R U R U' R' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 2
+        },
+        {
+          "alg": "y2 L U L' U L U' L' U' L' B L B'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 2
+        }
+      ]
+    },
+    {
+      "id": "OLL 39",
+      "name": "Fung",
+      "group": "Big Lightning Bolt",
+      "probability": "1/54",
+      "algs": [
+        "L F' L' U' L U F U' L'",
+        "y' f' r U r' U' r' F r S",
+        "y' R U R' F' U' F U R U2 R'",
+        "y' f' L F L' U' L' U L S"
+      ],
+      "recognition": "Big Lightning Bolt shape. Top: edges oriented: left+right (horizontal line); corners oriented: back-right, front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: left corner; back: edge + right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_39",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 40",
+      "inverse_of": "OLL 32",
+      "pattern": {
+        "top": "..XXXXX..",
+        "front": ".X.",
+        "right": "X..",
+        "back": ".XX",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "L F' L' U' L U F U' L'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 32
+        },
+        {
+          "alg": "y' f' r U r' U' r' F r S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 46
+        },
+        {
+          "alg": "y' R U R' F' U' F U R U2 R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 42
+        },
+        {
+          "alg": "y' f' L F L' U' L' U L S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 17
+        }
+      ]
+    },
+    {
+      "id": "OLL 40",
+      "name": "Anti-Fung",
+      "group": "Big Lightning Bolt",
+      "probability": "1/54",
+      "algs": [
+        "R' F R U R' U' F' U R",
+        "y' f R' F' R U R U' R' S'",
+        "R r D r' U r D' r' U' R'",
+        "y' L' U' L F U F' U' L' U2 L"
+      ],
+      "recognition": "Big Lightning Bolt shape. Top: edges oriented: left+right (horizontal line); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; back: left corner + edge; left: right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_40",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 39",
+      "inverse_of": "OLL 31",
+      "pattern": {
+        "top": "X..XXX..X",
+        "front": ".X.",
+        "right": "...",
+        "back": "XX.",
+        "left": "..X"
+      },
+      "alg_details": [
+        {
+          "alg": "R' F R U R' U' F' U R",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 68
+        },
+        {
+          "alg": "y' f R' F' R U R U' R' S'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 38
+        },
+        {
+          "alg": "R r D r' U r D' r' U' R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 2
+        },
+        {
+          "alg": "y' L' U' L F U F' U' L' U2 L",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 1
+        }
+      ]
+    },
+    {
+      "id": "OLL 41",
+      "name": "Awkward Fish / Dalmatian",
+      "group": "Awkward",
+      "probability": "1/54",
+      "algs": [
+        "R U R' U R U2 R' F R U R' U' F'",
+        "y2 F U R2 D R' U' R D' R2 F'",
+        "y' S U' R' F' U' F U R S'",
+        "M U' F' L' U' L U F M'"
+      ],
+      "recognition": "Awkward shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: front-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge; back: headlights. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_41",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 42",
+      "inverse_of": "OLL 43",
+      "pattern": {
+        "top": ".X.XX.X.X",
+        "front": ".X.",
+        "right": ".X.",
+        "back": "X.X",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U R U2 R' F R U R' U' F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 54
+        },
+        {
+          "alg": "y2 F U R2 D R' U' R D' R2 F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 21
+        },
+        {
+          "alg": "y' S U' R' F' U' F U R S'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 12
+        },
+        {
+          "alg": "M U' F' L' U' L U F M'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 10
+        }
+      ]
+    },
+    {
+      "id": "OLL 42",
+      "name": "Lefty Awkward Fish / Anti-Dalmatian",
+      "group": "Awkward",
+      "probability": "1/54",
+      "algs": [
+        "R' U' R U' R' U2 R F R U R' U' F'",
+        "y F S' R U R' U' F' U S",
+        "y R' F R F' R' F R F' R U R' U' R U R'",
+        "y R' U' F2 u' R U R' D R2 B"
+      ],
+      "recognition": "Awkward shape. Top: edges oriented: left+front (L-shape with centre); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): front: headlights; right: edge; back: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_42",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 41",
+      "inverse_of": "OLL 41",
+      "pattern": {
+        "top": "X.XXX..X.",
+        "front": "X.X",
+        "right": ".X.",
+        "back": ".X.",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "R' U' R U' R' U2 R F R U R' U' F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 41
+        },
+        {
+          "alg": "y F S' R U R' U' F' U S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 26
+        },
+        {
+          "alg": "y R' F R F' R' F R F' R U R' U' R U R'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 23
+        },
+        {
+          "alg": "y R' U' F2 u' R U R' D R2 B",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 16
+        }
+      ]
+    },
+    {
+      "id": "OLL 43",
+      "name": "Anti-P",
+      "group": "P",
+      "probability": "1/54",
+      "algs": [
+        "y R' U' F' U F R",
+        "F' U' L' U L F",
+        "f' L' U' L U f",
+        "B' U' R' U R B"
+      ],
+      "recognition": "P shape. Top: edges oriented: left+front (L-shape with centre); corners oriented: back-left, front-left. Side U-colour stickers (each side read left-to-right as you face it): right: 3-bar; back: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_43",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 44",
+      "inverse_of": "OLL 45",
+      "pattern": {
+        "top": "X..XX.XX.",
+        "front": "...",
+        "right": "XXX",
+        "back": ".X.",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "y R' U' F' U F R",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 63
+        },
+        {
+          "alg": "F' U' L' U L F",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 26
+        },
+        {
+          "alg": "f' L' U' L U f",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 24
+        },
+        {
+          "alg": "B' U' R' U R B",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        }
+      ]
+    },
+    {
+      "id": "OLL 44",
+      "name": "P",
+      "group": "P",
+      "probability": "1/54",
+      "algs": [
+        "f R U R' U' f'",
+        "F U R U' R' F'",
+        "y R U B U' B' R'",
+        "y' L U F U' F' L'"
+      ],
+      "recognition": "P shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): back: edge; left: 3-bar. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_44",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 43",
+      "inverse_of": "OLL 45",
+      "pattern": {
+        "top": "..X.XX.XX",
+        "front": "...",
+        "right": "...",
+        "back": ".X.",
+        "left": "XXX"
+      },
+      "alg_details": [
+        {
+          "alg": "f R U R' U' f'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 75
+        },
+        {
+          "alg": "F U R U' R' F'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 68
+        },
+        {
+          "alg": "y R U B U' B' R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 6
+        },
+        {
+          "alg": "y' L U F U' F' L'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 2
+        }
+      ]
+    },
+    {
+      "id": "OLL 45",
+      "name": "T / Suit up",
+      "group": "T",
+      "probability": "1/54",
+      "algs": [
+        "F R U R' U' F'",
+        "y R' F' U' F U R",
+        "y2 f U R U' R' f'",
+        "y2 F' L' U' L U F"
+      ],
+      "recognition": "T shape; the two unoriented corners form headlights on the side opposite the oriented corners. Same alg as the 2-look OLL line case. Top: edges oriented: left+right (horizontal line); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; back: edge; left: headlights. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_45",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 45",
+      "inverse_of": "OLL 44",
+      "pattern": {
+        "top": "..XXXX..X",
+        "front": ".X.",
+        "right": "...",
+        "back": ".X.",
+        "left": "X.X"
+      },
+      "alg_details": [
+        {
+          "alg": "F R U R' U' F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 104
+        },
+        {
+          "alg": "y R' F' U' F U R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 17
+        },
+        {
+          "alg": "y2 f U R U' R' f'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 5
+        },
+        {
+          "alg": "y2 F' L' U' L U F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 4
+        }
+      ]
+    },
+    {
+      "id": "OLL 46",
+      "name": "Seein' Headlights",
+      "group": "C",
+      "probability": "1/54",
+      "algs": [
+        "R' U' R' F R F' U R",
+        "R' F' U' F R U' R' U2 R",
+        "y F R U R' U' F' U' R U R' U R U2 R'",
+        "l' U2 L2 F' L' F U L' U l"
+      ],
+      "recognition": "C shape; the unoriented corners and edge form a 3-bar on one side. Top: edges oriented: front+back (vertical line); corners oriented: back-left, front-left. Side U-colour stickers (each side read left-to-right as you face it): right: 3-bar; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_46",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 46",
+      "inverse_of": "OLL 43",
+      "pattern": {
+        "top": "XX..X.XX.",
+        "front": "...",
+        "right": "XXX",
+        "back": "...",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "R' U' R' F R F' U R",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 76
+        },
+        {
+          "alg": "R' F' U' F R U' R' U2 R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 6
+        },
+        {
+          "alg": "y F R U R' U' F' U' R U R' U R U2 R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 5
+        },
+        {
+          "alg": "l' U2 L2 F' L' F U L' U l",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 3
+        }
+      ]
+    },
+    {
+      "id": "OLL 47",
+      "name": "Anti-Breakneck",
+      "group": "Small L",
+      "probability": "1/54",
+      "algs": [
+        "F' L' U' L U L' U' L U F",
+        "y' F R' F' R U2 R U' R' U R U2 R'",
+        "R' U' R' F R F' R' F R F' U R",
+        "y' R' F' U' F U F' U' F U R"
+      ],
+      "recognition": "Small L shape. Top: edges oriented: back+right (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: headlights; back: right corner; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_47",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 48",
+      "inverse_of": "OLL 51",
+      "pattern": {
+        "top": ".X..XX...",
+        "front": "XX.",
+        "right": "X.X",
+        "back": "..X",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "F' L' U' L U L' U' L U F",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 38
+        },
+        {
+          "alg": "y' F R' F' R U2 R U' R' U R U2 R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 40
+        },
+        {
+          "alg": "R' U' R' F R F' R' F R F' U R",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 28
+        },
+        {
+          "alg": "y' R' F' U' F U F' U' F U R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 9
+        }
+      ]
+    },
+    {
+      "id": "OLL 48",
+      "name": "Breakneck",
+      "group": "Small L",
+      "probability": "1/54",
+      "algs": [
+        "F R U R' U' R U R' U' F'",
+        "y2 f U R U' R' U R U' R' f'",
+        "R U2 R' U' R U R' U2 R' F R F'",
+        "F R' F' U2 R U R' U R2 U2 R'"
+      ],
+      "recognition": "Small L shape. Top: edges oriented: back+left (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: edge; back: left corner; left: headlights. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_48",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 47",
+      "inverse_of": "OLL 51",
+      "pattern": {
+        "top": ".X.XX....",
+        "front": ".XX",
+        "right": ".X.",
+        "back": "X..",
+        "left": "X.X"
+      },
+      "alg_details": [
+        {
+          "alg": "F R U R' U' R U R' U' F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 69
+        },
+        {
+          "alg": "y2 f U R U' R' U R U' R' f'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 8
+        },
+        {
+          "alg": "R U2 R' U' R U R' U2 R' F R F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 3
+        },
+        {
+          "alg": "F R' F' U2 R U R' U R2 U2 R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 1
+        }
+      ]
+    },
+    {
+      "id": "OLL 49",
+      "name": "Right back squeezy",
+      "group": "Small L",
+      "probability": "1/54",
+      "algs": [
+        "r U' r2 U r2 U r2 U' r",
+        "l U' l2 U l2 U l2 U' l",
+        "R B' R2 F R2 B R2 F' R",
+        "y2 R' F R' F' R2 U2 B' R B R'"
+      ],
+      "recognition": "Small L shape. Top: edges oriented: back+right (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; back: left corner; left: 3-bar. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_49",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 50",
+      "inverse_of": "OLL 50",
+      "pattern": {
+        "top": ".X..XX...",
+        "front": ".XX",
+        "right": "...",
+        "back": "X..",
+        "left": "XXX"
+      },
+      "alg_details": [
+        {
+          "alg": "r U' r2 U r2 U r2 U' r",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 59
+        },
+        {
+          "alg": "l U' l2 U l2 U l2 U' l",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 14
+        },
+        {
+          "alg": "R B' R2 F R2 B R2 F' R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 8
+        },
+        {
+          "alg": "y2 R' F R' F' R2 U2 B' R B R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 4
+        }
+      ]
+    },
+    {
+      "id": "OLL 50",
+      "name": "Right front squeezy",
+      "group": "Small L",
+      "probability": "1/54",
+      "algs": [
+        "r' U r2 U' r2 U' r2 U r'",
+        "y2 R' F R2 B' R2 F' R2 B R'",
+        "y' R U2 R' U' R U' R' F R U R' U' F'",
+        "y2 l' U l2 U' l2 U' l2 U l'"
+      ],
+      "recognition": "Small L shape. Top: edges oriented: right+front (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; back: left corner + edge; left: 3-bar. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_50",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 49",
+      "inverse_of": "OLL 49",
+      "pattern": {
+        "top": "....XX.X.",
+        "front": "..X",
+        "right": "...",
+        "back": "XX.",
+        "left": "XXX"
+      },
+      "alg_details": [
+        {
+          "alg": "r' U r2 U' r2 U' r2 U r'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 51
+        },
+        {
+          "alg": "y2 R' F R2 B' R2 F' R2 B R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 11
+        },
+        {
+          "alg": "y' R U2 R' U' R U' R' F R U R' U' F'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 11
+        },
+        {
+          "alg": "y2 l' U l2 U' l2 U' l2 U l'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 11
+        }
+      ]
+    },
+    {
+      "id": "OLL 51",
+      "name": "Bottlecap / Ant",
+      "group": "I / Line",
+      "probability": "1/54",
+      "algs": [
+        "F U R U' R' U R U' R' F'",
+        "f R U R' U' R U R' U' f'",
+        "y' R' U' R' F R F' R U' R' U2 R",
+        "y r' F' U' F U F' U' F U r"
+      ],
+      "recognition": "Line, no corners oriented; headlights at one end of the line, the other end's corners face front and back. Top: edges oriented: left+right (horizontal line); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: headlights; back: edge + right corner. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_51",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 51",
+      "inverse_of": "OLL 48",
+      "pattern": {
+        "top": "...XXX...",
+        "front": "XX.",
+        "right": "X.X",
+        "back": ".XX",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "F U R U' R' U R U' R' F'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 64
+        },
+        {
+          "alg": "f R U R' U' R U R' U' f'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 55
+        },
+        {
+          "alg": "y' R' U' R' F R F' R U' R' U2 R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 5
+        },
+        {
+          "alg": "y r' F' U' F U F' U' F U r",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 3
+        }
+      ]
+    },
+    {
+      "id": "OLL 52",
+      "name": "Rice Cooker",
+      "group": "I / Line",
+      "probability": "1/54",
+      "algs": [
+        "R U R' U R U' B U' B' R'",
+        "y2 R' F' U' F U' R U R' U R",
+        "R U R' U R d' R U' R' F'"
+      ],
+      "recognition": "Line, no corners oriented; a 3-bar on one side parallel to the line. Top: edges oriented: front+back (vertical line); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: 3-bar; back: right corner; left: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_52",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 52",
+      "inverse_of": "OLL 52",
+      "pattern": {
+        "top": ".X..X..X.",
+        "front": "X..",
+        "right": "XXX",
+        "back": "..X",
+        "left": ".X."
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U R U' B U' B' R'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 44
+        },
+        {
+          "alg": "y2 R' F' U' F U' R U R' U R",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 56
+        },
+        {
+          "alg": "R U R' U R d' R U' R' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 19
+        }
+      ]
+    },
+    {
+      "id": "OLL 53",
+      "name": "Frying Pan",
+      "group": "Small L",
+      "probability": "1/54",
+      "algs": [
+        "r' U' R U' R' U R U' R' U2 r",
+        "y2 l' U' L U' L' U L U' L' U2 l",
+        "y r' U2 R U R' U' R U R' U r",
+        "l' U2 L U L' U' L U L' U l"
+      ],
+      "recognition": "Small L shape. Top: edges oriented: right+front (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): right: headlights; back: edge; left: 3-bar. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_53",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 54",
+      "inverse_of": "OLL 53",
+      "pattern": {
+        "top": "....XX.X.",
+        "front": "...",
+        "right": "X.X",
+        "back": ".X.",
+        "left": "XXX"
+      },
+      "alg_details": [
+        {
+          "alg": "r' U' R U' R' U R U' R' U2 r",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 33
+        },
+        {
+          "alg": "y2 l' U' L U' L' U L U' L' U2 l",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 25
+        },
+        {
+          "alg": "y r' U2 R U R' U' R U R' U r",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 24
+        },
+        {
+          "alg": "l' U2 L U L' U' L U L' U l",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 13
+        }
+      ]
+    },
+    {
+      "id": "OLL 54",
+      "name": "Anti-Frying Pan",
+      "group": "Small L",
+      "probability": "1/54",
+      "algs": [
+        "r U R' U R U' R' U R U2 r'",
+        "r U2 R' U' R U R' U' R U' r'",
+        "y' r U r' R U R' U' R U R' U' r U' r'",
+        "y2 l U L' U L U' L' U L U2 l'"
+      ],
+      "recognition": "Small L shape. Top: edges oriented: back+right (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: headlights; left: 3-bar. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_54",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 53",
+      "inverse_of": "OLL 54",
+      "pattern": {
+        "top": ".X..XX...",
+        "front": ".X.",
+        "right": "X.X",
+        "back": "...",
+        "left": "XXX"
+      },
+      "alg_details": [
+        {
+          "alg": "r U R' U R U' R' U R U2 r'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 45
+        },
+        {
+          "alg": "r U2 R' U' R U R' U' R U' r'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 26
+        },
+        {
+          "alg": "y' r U r' R U R' U' R U R' U' r U' r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 4
+        },
+        {
+          "alg": "y2 l U L' U L U' L' U L U2 l'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 3
+        }
+      ]
+    },
+    {
+      "id": "OLL 55",
+      "name": "Highway / Freeway",
+      "group": "I / Line",
+      "probability": "1/108",
+      "algs": [
+        "R' F R U R U' R2 F' R2 U' R' U R U R'",
+        "y R' F U R U' R2 F' R2 U R' U' R",
+        "R U2 R2 U' R U' R' U2 F R F'",
+        "r U2 R2 F R F' U2 r' F R F'"
+      ],
+      "recognition": "Line, no corners oriented; two parallel 3-bars on the two sides along the line. Top: edges oriented: left+right (horizontal line); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: 3-bar; back: 3-bar. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_55",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 55",
+      "inverse_of": "OLL 54",
+      "pattern": {
+        "top": "...XXX...",
+        "front": "XXX",
+        "right": "...",
+        "back": "XXX",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "R' F R U R U' R2 F' R2 U' R' U R U R'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 34
+        },
+        {
+          "alg": "y R' F U R U' R2 F' R2 U R' U' R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 51
+        },
+        {
+          "alg": "R U2 R2 U' R U' R' U2 F R F'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 22
+        },
+        {
+          "alg": "r U2 R2 F R F' U2 r' F R F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 19
+        }
+      ]
+    },
+    {
+      "id": "OLL 56",
+      "name": "Streetlights / Dead Man",
+      "group": "I / Line",
+      "probability": "1/108",
+      "algs": [
+        "r U r' U R U' R' U R U' R' r U' r'",
+        "r U r' U R U' R' M' U R U2 r'",
+        "F R U R' U' R F' r U R' U' r'",
+        "r' U' r U' R' U R U' R' U R r' U r"
+      ],
+      "recognition": "Line, no corners oriented; headlights on both ends of the line. Top: edges oriented: left+right (horizontal line); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: headlights; back: edge; left: headlights. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_56",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 56",
+      "inverse_of": "OLL 54",
+      "pattern": {
+        "top": "...XXX...",
+        "front": ".X.",
+        "right": "X.X",
+        "back": ".X.",
+        "left": "X.X"
+      },
+      "alg_details": [
+        {
+          "alg": "r U r' U R U' R' U R U' R' r U' r'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 33
+        },
+        {
+          "alg": "r U r' U R U' R' M' U R U2 r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 32
+        },
+        {
+          "alg": "F R U R' U' R F' r U R' U' r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 19
+        },
+        {
+          "alg": "r' U' r U' R' U R U' R' U R r' U r",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 17
+        }
+      ]
+    },
+    {
+      "id": "OLL 57",
+      "name": "Mummy / H / Brick",
+      "group": "Corners Oriented (edges only)",
+      "probability": "1/108",
+      "algs": [
+        "R U R' U' M' U R U' r'",
+        "y R U' R' S' R U R' S",
+        "y R U R' S' R U' R' S",
+        "R U R' U' R' r U R U' r'"
+      ],
+      "recognition": "All corners oriented, two opposite edges unoriented (H / Mummy). Top: edges oriented: left+right (horizontal line); all 4 corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; back: edge. (Orientation = how the case is held right before executing algs[0].)",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/oll",
+        "https://www.speedcubedb.com/a/3x3/OLL/OLL_57",
+        "https://www.speedsolving.com/wiki/index.php?title=OLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/oll-algorithms.pdf"
+      ],
+      "mirror_of": "OLL 57",
+      "inverse_of": "OLL 28",
+      "pattern": {
+        "top": "X.XXXXX.X",
+        "front": ".X.",
+        "right": "...",
+        "back": ".X.",
+        "left": "..."
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U' M' U R U' r'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 96
+        },
+        {
+          "alg": "y R U' R' S' R U R' S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 12
+        },
+        {
+          "alg": "y R U R' S' R U' R' S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 10
+        },
+        {
+          "alg": "R U R' U' R' r U R U' r'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        }
+      ]
+    }
+  ]
+}

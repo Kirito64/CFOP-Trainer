@@ -1,0 +1,2470 @@
+[
+ {
+  "id": "F2L",
+  "name": "F2L",
+  "description": "The 41 ways a corner and edge can sit relative to their slot. Algs insert into the front-right slot; the front-left versions are mirrors.",
+  "cases": [
+   {
+    "id": "F2L 1",
+    "name": "F2L 1",
+    "group": "Basic inserts",
+    "algs": [
+     "U R U' R'",
+     "R' F R F'",
+     "U2 R U2 R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UR with its front-colour sticker on top.",
+    "notes": "Pair is already connected along the R face (front-colour on top of both pieces). U positions it, then the basic insert R U' R'. R' F R F' (sledgehammer) avoids the pre-move U."
+   },
+   {
+    "id": "F2L 2",
+    "name": "F2L 2",
+    "group": "Basic inserts",
+    "algs": [
+     "F R' F' R",
+     "U' F' U F",
+     "r U R' U' M"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UF with its right-colour sticker on top.",
+    "notes": "Front-face mirror of F2L 1: the pair is already connected along the F face. F R' F' R (reverse sledgehammer) is rotationless; U' F' U F is the F-face 4-mover. The common y' U' R' U R is the same solution after a rotation."
+   },
+   {
+    "id": "F2L 3",
+    "name": "F2L 3",
+    "group": "Basic inserts",
+    "algs": [
+     "F' U' F",
+     "S U R U' R' S'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UL with its right-colour sticker on top.",
+    "notes": "Corner above the slot with white facing front; edge sits on the left (UL). F' U' F pairs and inserts in one trigger (F-face mirror of R U R'). Commonly also done as y' R' U' R. Primary alg, simulated: the pair is connected after \"F'\" and \"U' F\" inserts it."
+   },
+   {
+    "id": "F2L 4",
+    "name": "F2L 4",
+    "group": "Basic inserts",
+    "algs": [
+     "R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UB with its front-colour sticker on top.",
+    "notes": "Basic 3-move insert: R lifts the corner next to the edge at UB (pair forms), U carries the pair over the slot, R' drops it in. Primary alg, simulated: the pair is connected after \"R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 5",
+    "name": "F2L 5",
+    "group": "Reposition edge",
+    "algs": [
+     "U' R U R' U2 R U' R'",
+     "U' R U R' U' R U2 R'",
+     "F2 L' U' L U F2",
+     "U' R U R' U R' F R F'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UB with its front-colour sticker on top.",
+    "notes": "Edge must be repositioned: U' R U R' builds the connected pair, then U2 R U' R' inserts it. Learn this as the template 'pair, U2, insert'. Primary alg, simulated: the pair is connected after \"U' R U R'\" and \"U2 R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 6",
+    "name": "F2L 6",
+    "group": "Reposition edge",
+    "algs": [
+     "U' r U' R' U R U r'",
+     "R2 B U B' U' R2",
+     "U2 R' F R F' R' F R F' U2 R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UL with its right-colour sticker on top.",
+    "notes": "F2L 5's partner with white facing right. U' r U' R' U R U r' is the popular rotationless choice (wide-r keeps it R/U friendly); otherwise y' U R' U' R U2 R' U R (rotation, not listed). Primary alg, simulated: the pair is connected after \"U' r U' R' U R\" and \"U r'\" inserts it."
+   },
+   {
+    "id": "F2L 7",
+    "name": "F2L 7",
+    "group": "Reposition edge",
+    "algs": [
+     "U' R U2 R' U' R U2 R'",
+     "U' R U2 R' U2 R U' R'",
+     "M' U' M U2 r U' r'",
+     "U' R U2 R' U R' F R F'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UL with its front-colour sticker on top.",
+    "notes": "Corner white-front, edge at UL with front-colour on top. U' R U2 R' then U' R U2 R' (same 4-move chunk twice). M' U' M U2 r U' r' is a fast M-slice option. Primary alg, simulated: the pair is connected after \"U' R U2 R'\" and \"U' R U2 R'\" inserts it."
+   },
+   {
+    "id": "F2L 8",
+    "name": "F2L 8",
+    "group": "Reposition edge",
+    "algs": [
+     "r' U2 R2 U R2 U r",
+     "U F' U2 F U F' U2 F",
+     "U R' F R F' R' F R F' R U' R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UB with its right-colour sticker on top.",
+    "notes": "Mirror-type case of F2L 7 (white facing right, edge at back). r' U2 R2 U R2 U r is the standard rotationless alg; the classic y' U R' U2 R U2 R' U R / d R' U2 R U R' U2 R needs a rotation or d-move. Primary alg, simulated: the pair is connected after \"r' U2 R2\" and \"U R2 U r\" inserts it."
+   },
+   {
+    "id": "F2L 9",
+    "name": "F2L 9",
+    "group": "Reposition edge and flip corner",
+    "algs": [
+     "U' R U' R' U F' U' F",
+     "F R U R' U' F' R U' R'",
+     "U F' U' F U' F' U' F"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UB with its right-colour sticker on top.",
+    "notes": "Corner white-front, edge at UB with its right-colour on top. U' R U' R' sets up, then U F' U' F inserts from the front. Primary alg, simulated: the pair is connected after \"U' R U' R' U F'\" and \"U' F\" inserts it."
+   },
+   {
+    "id": "F2L 10",
+    "name": "F2L 10",
+    "group": "Reposition edge and flip corner",
+    "algs": [
+     "U' R U R' U R U R'",
+     "U2 R U' R' U' R U R'",
+     "U F' U F U' R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UL with its front-colour sticker on top.",
+    "notes": "U' R U R' U R U R' : two R U R' triggers separated by U. U2 R U' R' U' R U R' is an equal-length alternative. Primary alg, simulated: the pair is connected after \"U' R U R' U R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 11",
+    "name": "F2L 11",
+    "group": "Reposition edge and flip corner",
+    "algs": [
+     "U' R U2 R' U F' U' F",
+     "F' U L' U2 L U2 F",
+     "U F R' F' R F R' F' R U' R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UR with its right-colour sticker on top.",
+    "notes": "Connected but wrong (corner white-front, edge at UR flipped). Break and re-pair: U' R U2 R' U then F' U' F inserts from the front. Primary alg, simulated: the pair is connected after \"U' R U2 R' U F'\" and \"U' F\" inserts it."
+   },
+   {
+    "id": "F2L 12",
+    "name": "F2L 12",
+    "group": "Reposition edge and flip corner",
+    "algs": [
+     "R U' R' U R U' R' U2 R U' R'",
+     "R' U2 R2 U R2 U R",
+     "U F' U2 F U' R U R'",
+     "U R U' R' U' R U R' U' R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UF with its front-colour sticker on top.",
+    "notes": "Incorrectly connected pair with the edge in front. R U' R' U R U' R' U2 R U' R' is 2-gen (R/U only); R' U2 R2 U R2 U R is shorter (7 moves) and also 2-gen. Primary alg, simulated: the pair is connected after \"R U' R' U R U' R'\" and \"U2 R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 13",
+    "name": "F2L 13",
+    "group": "Reposition edge and flip corner",
+    "algs": [
+     "U F' U F U' F' U' F",
+     "M' U' R U R' U2 R U' r'",
+     "R U' R' U R' F R F' R U' R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UF with its right-colour sticker on top.",
+    "notes": "Corner (white-front) and edge (UF) are adjacent but not paired. U F' U F U' F' U' F is the rotationless equivalent of the most-voted y' U R' U R U' R' U' R (same moves seen from the front). M' U' R U R' U2 R U' r' is an M-slice option. Primary alg, simulated: the pair is connected after \"U F' U F U' F'\" and \"U' F\" inserts it."
+   },
+   {
+    "id": "F2L 14",
+    "name": "F2L 14",
+    "group": "Reposition edge and flip corner",
+    "algs": [
+     "U' R U' R' U R U R'",
+     "U2 R2 U R' U R U2 R2",
+     "R U2 R' U2 R U R' U2 R U' R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UR with its front-colour sticker on top.",
+    "notes": "U' R U' R' U R U R' : the R U' R' at the start splits the bad pair, the final R U R' inserts. Primary alg, simulated: the pair is connected after \"U' R U' R' U R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 15",
+    "name": "F2L 15",
+    "group": "Split pair by going over",
+    "algs": [
+     "M U r U' r' U' M'",
+     "R U R' U2 R U' R' U R U' R'",
+     "F' U F U2 R U R'",
+     "R' D' R U' R' D R U R U' R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in the U layer at UF with its front-colour sticker on top.",
+    "notes": "'Split pair by going over': the classic 2-gen R U R' U2 R U' R' U R U' R'. M U r U' r' U' M' (7 moves) is the most voted on SpeedCubeDB; F' U F U2 R U R' uses an F-insert. Primary alg, simulated: the pair is connected after \"M U r\" and \"U' r' U' M'\" inserts it."
+   },
+   {
+    "id": "F2L 16",
+    "name": "F2L 16",
+    "group": "Split pair by going over",
+    "algs": [
+     "R U' R' U2 F' U' F",
+     "U F R U R' U' F' U R U' R'",
+     "U M' U R U' r' U' R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in the U layer at UR with its right-colour sticker on top.",
+    "notes": "Corner white-right, edge at UR adjacent but not paired (front-colour on the R face). R U' R' U2 then F' U' F (front insert). Primary alg, simulated: the pair is connected after \"R U' R' U2 F'\" and \"U' F\" inserts it."
+   },
+   {
+    "id": "F2L 17",
+    "name": "F2L 17",
+    "group": "Split pair by going over",
+    "algs": [
+     "R U2 R' U' R U R'",
+     "R U R' U' R U2 R' U2 R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UR with its front-colour sticker on top.",
+    "notes": "Corner white UP, edge at UR with front-colour on top. R U2 R' U' R U R' : the R U2 R' sets the corner, U' R U R' pairs-and-inserts. Recognise white-up corners first, then where the edge sits. Primary alg, simulated: the pair is connected after \"R U2 R' U' R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 18",
+    "name": "F2L 18",
+    "group": "Split pair by going over",
+    "algs": [
+     "F' U2 F U F' U' F",
+     "R' F R F' R U' R' U R U' R'",
+     "R U R' U' R U R' U' F R' F' R"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UF with its right-colour sticker on top.",
+    "notes": "Corner white UP, edge at UF. F-face version of F2L 17: F' U2 F U F' U' F is the rotationless equivalent of the popular y' R' U2 R U R' U' R. Primary alg, simulated: the pair is connected after \"F' U2 F U F'\" and \"U' F\" inserts it."
+   },
+   {
+    "id": "F2L 19",
+    "name": "F2L 19",
+    "group": "Pair made on side (corner white-up)",
+    "algs": [
+     "U R U2 R' U R U' R'",
+     "U R U2 R2 F R F'",
+     "R U' R' U R U' R' U R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UB with its front-colour sticker on top.",
+    "notes": "Corner white up, edge at UB. U R U2 R' builds the pair, U R U' R' inserts. Very common case; drill the 'U R U2 R'' setup. Primary alg, simulated: the pair is connected after \"U R U2\" and \"R' U R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 20",
+    "name": "F2L 20",
+    "group": "Pair made on side (corner white-up)",
+    "algs": [
+     "U' R U' R2 F R F' R U' R'",
+     "U' F' U2 F U' F' U F",
+     "R U R' U2 R U R' U2 F' U F"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UL with its right-colour sticker on top.",
+    "notes": "Corner white up, edge at UL (right-colour on top). U' F' U2 F U' F' U F is the rotationless equivalent of the popular y' U' R' U2 R U' R' U R; U' R U' R2 F R F' R U' R' stays on the right hand. Primary alg, simulated: the pair is connected after \"U' R U' R2 F\" and \"R F' R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 21",
+    "name": "F2L 21",
+    "group": "Pair made on side (corner white-up)",
+    "algs": [
+     "U2 R U R' U R U' R'",
+     "R U' R' U2 R U R'",
+     "R B U2 B' R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UL with its front-colour sticker on top.",
+    "notes": "Corner white up, edge at UL. U2 R U R' U R U' R' is fully 2-gen; R U' R' U2 R U R' is one move shorter. Primary alg, simulated: the pair is connected after \"U2 R U\" and \"R' U R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 22",
+    "name": "F2L 22",
+    "group": "Pair made on side (corner white-up)",
+    "algs": [
+     "r U' r' U2 r U r'",
+     "F' L' U2 L F"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UB with its right-colour sticker on top.",
+    "notes": "Corner white up, edge at UB with the R-colour on top. r U' r' U2 r U r' (wide-r version of the intuitive alg) or F' L' U2 L F (5 moves; borrows the L face but restores the FL slot). Primary alg, simulated: the pair is connected after \"r U' r'\" and \"U2 r U r'\" inserts it."
+   },
+   {
+    "id": "F2L 23",
+    "name": "F2L 23",
+    "group": "Pair made on side (corner white-up)",
+    "algs": [
+     "U R U' R' U' R U' R' U R U' R'",
+     "R U R' U2 R U R' U' R U R'",
+     "U2 R2 U2 R' U' R U' R2",
+     "U F R' F' R U R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UF with its front-colour sticker on top.",
+    "notes": "Corner white up, edge at UF showing front-colour on top. U R U' R' U' R U' R' U R U' R' is the safe 2-gen way; U2 R2 U2 R' U' R U' R2 is short but less finger-friendly. Primary alg, simulated: the pair is connected after \"U R U' R' U' R U'\" and \"R' U R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 24",
+    "name": "F2L 24",
+    "group": "Pair made on side (corner white-up)",
+    "algs": [
+     "F U R U' R' F' R U' R'",
+     "U' R U R2 F R F' R U' R'",
+     "U F' L' U L F R U R'"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in the U layer at UR with its right-colour sticker on top.",
+    "notes": "Corner white up, edge at UR flipped. F U R U' R' F' R U' R' (front sexy-move setup) is the most popular rotationless choice."
+   },
+   {
+    "id": "F2L 25",
+    "name": "F2L 25",
+    "group": "Corner in slot, edge in U layer",
+    "algs": [
+     "U' R' F R F' R U R'",
+     "R' F' R U R U' R' F",
+     "U' F' U F U R U' R'",
+     "U' F' R U R' U' R' F R"
+    ],
+    "recognition": "Corner in its slot (DFR), correctly oriented (white facing down). Edge in the U layer at UR with its front-colour sticker on top.",
+    "notes": "Corner solved in slot, edge in U at UR. U' R' F R F' R U R' (sledgehammer then insert). R' F' R U R U' R' F avoids the leading U. Primary alg, simulated: the pair is connected after \"U' R' F R F' R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 26",
+    "name": "F2L 26",
+    "group": "Corner in slot, edge in U layer",
+    "algs": [
+     "U R U' R' F R' F' R",
+     "U R U' R' U' F' U F",
+     "R S' R' U R S R'"
+    ],
+    "recognition": "Corner in its slot (DFR), correctly oriented (white facing down). Edge in the U layer at UF with its right-colour sticker on top.",
+    "notes": "Corner solved in slot, edge at UF. U R U' R' F R' F' R or U R U' R' U' F' U F: take the corner out with the edge, then re-insert. Primary alg, simulated: the pair is connected after \"U R U' R'\" and \"F R' F' R\" inserts it."
+   },
+   {
+    "id": "F2L 27",
+    "name": "F2L 27",
+    "group": "Corner in slot, edge in U layer",
+    "algs": [
+     "R U' R' U R U' R'",
+     "F' U' F U2 R U' R'",
+     "R U' R2 F R F'"
+    ],
+    "recognition": "Corner in its slot (DFR), twisted: white sticker facing front. Edge in the U layer at UR with its front-colour sticker on top.",
+    "notes": "Corner in slot twisted (white facing front), edge at UR. R U' R' U R U' R' : pull the corner up, re-pair, insert. Primary alg, simulated: the pair is connected after \"R U'\" and \"R' U R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 28",
+    "name": "F2L 28",
+    "group": "Corner in slot, edge in U layer",
+    "algs": [
+     "R U R' U' F R' F' R",
+     "F' U F U' F' U F",
+     "R U R' U F' U2 F"
+    ],
+    "recognition": "Corner in its slot (DFR), twisted: white sticker facing right. Edge in the U layer at UF with its right-colour sticker on top.",
+    "notes": "Corner in slot twisted (white facing right), edge at UF. R U R' U' F R' F' R (sexy move + reverse sledgehammer) or the F-face F' U F U' F' U F."
+   },
+   {
+    "id": "F2L 29",
+    "name": "F2L 29",
+    "group": "Corner in slot, edge in U layer",
+    "algs": [
+     "R' F R F' U R U' R'",
+     "R' F R F' R' F R F'",
+     "M' U R U' r' U R U' R'"
+    ],
+    "recognition": "Corner in its slot (DFR), twisted: white sticker facing front. Edge in the U layer at UF with its right-colour sticker on top.",
+    "notes": "Corner twisted (white front), edge at UF. R' F R F' U R U' R' or the double sledgehammer R' F R F' R' F R F'. Primary alg, simulated: the pair is connected after \"R' F R F'\" and \"U R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 30",
+    "name": "F2L 30",
+    "group": "Corner in slot, edge in U layer",
+    "algs": [
+     "R U R' U' R U R'",
+     "U' R U2 R' U2 R U R'",
+     "U2 F' U F R U R'"
+    ],
+    "recognition": "Corner in its slot (DFR), twisted: white sticker facing right. Edge in the U layer at UR with its front-colour sticker on top.",
+    "notes": "Corner twisted (white right), edge at UR. R U R' U' R U R' (sexy move then insert). Primary alg, simulated: the pair is connected after \"R U R' U' R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 31",
+    "name": "F2L 31",
+    "group": "Edge in slot, corner in U layer",
+    "algs": [
+     "U' R' F R F' R U' R'",
+     "R U' R' F' U2 F",
+     "F' U F R U2 R'",
+     "R U' R' U F' U F"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+    "notes": "Edge in slot flipped, corner above slot with white up. U' R' F R F' R U' R'; R U' R' F' U2 F (J Perm) avoids the leading U. Primary alg, simulated: the pair is connected after \"U' R' F\" and \"R F' R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 32",
+    "name": "F2L 32",
+    "group": "Edge in slot, corner in U layer",
+    "algs": [
+     "R U R' U' R U R' U' R U R'",
+     "U R U' R' U R U' R' U R U' R'",
+     "R2 U R2 U R2 U2 R2"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing up. Edge in its slot (FR), correctly oriented.",
+    "notes": "Edge solved in slot, corner above slot with white up. (R U R' U') x2 + R U R', or (U R U' R') x3; R2 U R2 U R2 U2 R2 is a short 2-gen alternative. Primary alg, simulated: the pair is connected after \"R U R' U' R U R' U' R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 33",
+    "name": "F2L 33",
+    "group": "Edge in slot, corner in U layer",
+    "algs": [
+     "U' R U' R' U2 R U' R'",
+     "U' R U' R' U' R U2 R'",
+     "U' F' U' F U2 F' U' F"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in its slot (FR), correctly oriented.",
+    "notes": "Edge solved in slot, corner white facing front. U' R U' R' U2 R U' R' : take the edge out paired, re-insert. Primary alg, simulated: the pair is connected after \"U' R U' R'\" and \"U2 R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 34",
+    "name": "F2L 34",
+    "group": "Edge in slot, corner in U layer",
+    "algs": [
+     "U R U R' U2 R U R'",
+     "U' R U2 R' U R U R'",
+     "U F' U F U2 F' U F"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in its slot (FR), correctly oriented.",
+    "notes": "Edge solved in slot, corner white facing right. U R U R' U2 R U R' or U' R U2 R' U R U R'. Primary alg, simulated: the pair is connected after \"U R U R' U2 R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 35",
+    "name": "F2L 35",
+    "group": "Edge in slot, corner in U layer",
+    "algs": [
+     "U' R U R' U F' U' F",
+     "U2 R U R' F R' F' R",
+     "U2 R U' R' U' F' U' F"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing front. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+    "notes": "Edge flipped in slot, corner white facing front. U' R U R' U F' U' F (take out, front insert); U2 R U R' F R' F' R ends with a reverse sledgehammer. Primary alg, simulated: the pair is connected after \"U' R U R' U F'\" and \"U' F\" inserts it."
+   },
+   {
+    "id": "F2L 36",
+    "name": "F2L 36",
+    "group": "Edge in slot, corner in U layer",
+    "algs": [
+     "U F' U' F U' R U R'",
+     "U2 R' F R F' U2 R U R'",
+     "R U R' U R U R' U' F' U' F"
+    ],
+    "recognition": "Corner in the U layer above the slot (UFR), white sticker facing right. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+    "notes": "Edge flipped in slot, corner white facing right. U F' U' F U' R U R'. Primary alg, simulated: the pair is connected after \"U F' U' F U' R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 37",
+    "name": "F2L 37",
+    "group": "Corner and edge both in slot",
+    "algs": [
+     "R2 U2 F R2 F' U2 R' U R'",
+     "R' F R F' R U' R' U R U' R' U2 R U' R'",
+     "R U2 R' U R U2 R' U F' U' F"
+    ],
+    "recognition": "Corner in its slot (DFR), correctly oriented (white facing down). Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+    "notes": "Edge flipped in slot, corner solved. R2 U2 F R2 F' U2 R' U R' is the shortest (9); the long 2-gen R' F R F' R U' R' U R U' R' U2 R U' R' is easier to remember (sledgehammer + F2L). Primary alg, simulated: the pair is connected after \"R2 U2 F R2 F' U2 R'\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 38",
+    "name": "F2L 38",
+    "group": "Corner and edge both in slot",
+    "algs": [
+     "R U' R' U' R U R' U2 R U' R'",
+     "R U R' U' R U2 R' U' R U R'",
+     "R2 U2 R' U' R U' R' U2 R'"
+    ],
+    "recognition": "Corner in its slot (DFR), twisted: white sticker facing front. Edge in its slot (FR), correctly oriented.",
+    "notes": "Both pieces in slot, corner twisted white-front, edge correct. R U' R' U' R U R' U2 R U' R' or R U R' U' R U2 R' U' R U R' (both 11, 2-gen). Primary alg, simulated: the pair is connected after \"R U' R' U' R U R'\" and \"U2 R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 39",
+    "name": "F2L 39",
+    "group": "Corner and edge both in slot",
+    "algs": [
+     "R U' R' U R U2 R' U R U' R'",
+     "R U R' U2 R U' R' U R U R'",
+     "R U2 R U R' U R U2 R2"
+    ],
+    "recognition": "Corner in its slot (DFR), twisted: white sticker facing right. Edge in its slot (FR), correctly oriented.",
+    "notes": "Both in slot, corner twisted white-right, edge correct. R U' R' U R U2 R' U R U' R' (2-gen). Primary alg, simulated: the pair is connected after \"R U' R' U R U2\" and \"R' U R U' R'\" inserts it."
+   },
+   {
+    "id": "F2L 40",
+    "name": "F2L 40",
+    "group": "Corner and edge both in slot",
+    "algs": [
+     "r U' r' U2 r U r' R U R'",
+     "F' L' U2 L F R U R'",
+     "R U' R' F R U R' U' F' R U' R'",
+     "F' U F U2 R U R' U R U' R'"
+    ],
+    "recognition": "Corner in its slot (DFR), twisted: white sticker facing front. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+    "notes": "Both in slot, corner twisted white-front, edge flipped. r U' r' U2 r U r' R U R' or F' L' U2 L F R U R': the first part is the F2L 22 alg, which here turns the case into the basic R U R' insert (F2L 4). Primary alg, simulated: the pair is connected after \"r U' r' U2 r U r' R\" and \"U R'\" inserts it."
+   },
+   {
+    "id": "F2L 41",
+    "name": "F2L 41",
+    "group": "Corner and edge both in slot",
+    "algs": [
+     "R U' R' r U' r' U2 r U r'",
+     "R U' R' F' L' U2 L F",
+     "R U F R U R' U' F' R'"
+    ],
+    "recognition": "Corner in its slot (DFR), twisted: white sticker facing right. Edge in its slot (FR), flipped (front-colour sticker on the right face).",
+    "notes": "Both in slot, corner twisted white-right, edge flipped. R U' R' r U' r' U2 r U r' or R U' R' F' L' U2 L F (take out, then solve as F2L 22). Primary alg, simulated: the pair is connected after \"R U' R' r U' r'\" and \"U2 r U r'\" inserts it."
+   }
+  ]
+ },
+ {
+  "id": "OLL",
+  "name": "OLL",
+  "description": "Orient the last layer in one look. 57 cases.",
+  "cases": [
+   {
+    "id": "OLL 1",
+    "name": "Runway / Blank",
+    "group": "Dot",
+    "algs": [
+     "R U2 R2 F R F' U2 R' F R F'",
+     "y R U' R2 D' r U' r' D R2 U R'",
+     "f R U R' U' R f' U' r' U' R U M'",
+     "L' U2 L2 F' L' F U2 L F' L' F"
+    ],
+    "recognition": "No edges or corners oriented; two parallel 3-sticker bars on opposite sides. Top: no edges oriented (dot); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: 3-bar; back: edge; left: 3-bar.",
+    "probability": 0.009259259259259259,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 2",
+    "name": "Zamboni",
+    "group": "Dot",
+    "algs": [
+     "F R U R' U' S R U R' U' f'",
+     "y' R U' R2 D' r U r' D R2 U R'",
+     "y r U r' U2 R U2 R' U2 r U' r'",
+     "r U r' U2 r U2 R' U2 R U' r'"
+    ],
+    "recognition": "No edges or corners oriented; one 3-sticker bar on one side only. Top: no edges oriented (dot); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: edge; back: left corner + edge; left: 3-bar.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 3",
+    "name": "Anti-Pinwheel / Anti-Mouse",
+    "group": "Dot",
+    "algs": [
+     "r' R2 U R' U r U2 r' U M'",
+     "y' f R U R' U' f' U' F R U R' U' F'",
+     "y R' F2 R2 U2 R' F R U2 R2 F2 R",
+     "M R U R' U r U2 r' U M'"
+    ],
+    "recognition": "Dot shape. Top: no edges oriented (dot); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: edge + right corner; back: edge + right corner; left: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 4",
+    "name": "Pinwheel / Mouse",
+    "group": "Dot",
+    "algs": [
+     "y' R' F2 R2 U2 R' F' R U2 R2 F2 R",
+     "y' f R U R' U' f' U F R U R' U' F'",
+     "R' F R F' U' S R' U' R U R S'",
+     "M U' r U2 r' U' R U' R' M'"
+    ],
+    "recognition": "Dot shape. Top: no edges oriented (dot); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: edge; back: left corner + edge; left: left corner + edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 5",
+    "name": "Lefty Square",
+    "group": "Square",
+    "algs": [
+     "r' U2 R U R' U r",
+     "l' U2 L U L' U l",
+     "y2 R' F2 r U r' F R",
+     "y2 R' F2 L F L' F R"
+    ],
+    "recognition": "Square shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): right: right corner; back: edge + right corner; left: edge + right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 6",
+    "name": "Righty Square",
+    "group": "Square",
+    "algs": [
+     "r U2 R' U' R U' r'",
+     "F U' R2 D R' U' R D' R2 U F'",
+     "y2 l U2 L' U' L U' l'",
+     "L F2 l' U' l F' L'"
+    ],
+    "recognition": "Square shape. Top: edges oriented: back+right (L-shape with centre); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: left corner; left: left corner + edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 7",
+    "name": "Lightning / Wide Sune",
+    "group": "Small Lightning Bolt",
+    "algs": [
+     "r U R' U R U2 r'",
+     "S' R U R' U R U2 R' U S",
+     "L' U2 L U2 L F' L' F"
+    ],
+    "recognition": "Small Lightning Bolt shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: edge + right corner; back: right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 8",
+    "name": "Reverse Lightning / Wide Left Sune",
+    "group": "Small Lightning Bolt",
+    "algs": [
+     "l' U' L U' L' U2 l",
+     "y2 r' U' R U' R' U2 r",
+     "R U2 R' U2 R' F R F'",
+     "R' F' r U' r' F2 R"
+    ],
+    "recognition": "Small Lightning Bolt shape. Top: edges oriented: back+right (L-shape with centre); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; back: left corner; left: left corner + edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 9",
+    "name": "Kite",
+    "group": "Fish",
+    "algs": [
+     "R U R' U' R' F R2 U R' U' F'",
+     "R U2 R' U' S' R U' R' S",
+     "y2 F' U' F r U' r' U r U r'",
+     "y' L' U' L U' L F' L' F L' U2 L"
+    ],
+    "recognition": "Fish shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: edge; back: left corner; left: left corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 10",
+    "name": "Anti-Kite",
+    "group": "Fish",
+    "algs": [
+     "R U R' U R' F R F' R U2 R'",
+     "y F U F' R' F R U' R' F' R",
+     "y M' R' U2 R U R' U R U M",
+     "y2 L' U' L U L F' L2 U' L U F"
+    ],
+    "recognition": "Fish shape. Top: edges oriented: left+front (L-shape with centre); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; right: edge; back: edge + right corner; left: right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 11",
+    "name": "Downstairs",
+    "group": "Small Lightning Bolt",
+    "algs": [
+     "r' R2 U R' U R U2 R' U M'",
+     "r U R' U R' F R F' R U2 r'",
+     "S R U R' U R U2 R' U2 S'",
+     "M R U R' U R U2 R' U M'"
+    ],
+    "recognition": "Small Lightning Bolt shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; right: right corner; back: edge + right corner; left: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 12",
+    "name": "Upstairs",
+    "group": "Small Lightning Bolt",
+    "algs": [
+     "F R U R' U' F' U F R U R' U' F'",
+     "y' M' R' U' R U' R' U2 R U' M",
+     "y' S R' U' R U' R' U2 R U2 S'",
+     "M' R' U' R U' R' U2 R U' R r'"
+    ],
+    "recognition": "Small Lightning Bolt shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: left corner; back: edge; left: left corner + edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 13",
+    "name": "Gun / Trigger",
+    "group": "Knight Move",
+    "algs": [
+     "F U R U2 R' U' R U R' F'",
+     "F U R U' R2 F' R U R U' R'",
+     "r U' r' U' r U r' F' U F",
+     "y2 f R U R2 U' R' U R U' f'"
+    ],
+    "recognition": "Knight Move shape. Top: edges oriented: left+right (horizontal line); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: right corner; back: edge + right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 14",
+    "name": "Anti-Gun / Anti-Trigger",
+    "group": "Knight Move",
+    "algs": [
+     "R' F R U R' F' R F U' F'",
+     "r U R' U' r' F R2 U R' U' F'",
+     "l' U l U l' U' l F U' F'",
+     "S R U R' U' R' F R2 U R' U' f'"
+    ],
+    "recognition": "Knight Move shape. Top: edges oriented: left+right (horizontal line); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; back: left corner + edge; left: left corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 15",
+    "name": "Squeegee",
+    "group": "Knight Move",
+    "algs": [
+     "r' U' r R' U' R U r' U r",
+     "l' U' l L' U' L U l' U l",
+     "r' U' M' U' R U r' U r",
+     "y2 R' F' R L' U' L U R' F R"
+    ],
+    "recognition": "Knight Move shape. Top: edges oriented: left+right (horizontal line); corners oriented: front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: right corner; back: edge + right corner; left: right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 16",
+    "name": "Anti-Squeegee",
+    "group": "Knight Move",
+    "algs": [
+     "r U r' R U R' U' r U' r'",
+     "r U M U R' U' r U' r'",
+     "y2 R' F R U R' U' F' R U' R' U2 R",
+     "y2 l U l' L U L' U' l U' l'"
+    ],
+    "recognition": "Knight Move shape. Top: edges oriented: left+right (horizontal line); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: left corner; back: edge; left: left corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 17",
+    "name": "Slash / Diagonal",
+    "group": "Dot",
+    "algs": [
+     "R U R' U R' F R F' U2 R' F R F'",
+     "y2 F R' F' R U S' R U' R' S",
+     "F R' F' R2 r' U R U' R' U' M'",
+     "y' F' r U r' U' S r' F r S'"
+    ],
+    "recognition": "Dot shape. Top: no edges oriented (dot); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge; back: left corner + edge; left: edge + right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 18",
+    "name": "Crown",
+    "group": "Dot",
+    "algs": [
+     "y R U2 R2 F R F' U2 M' U R U' r'",
+     "r U R' U R U2 r2 U' R U' R' U2 r",
+     "y F S' R U' R' S R U2 R' U' F'",
+     "R D r' U' r D' R' U' R2 F R F' R"
+    ],
+    "recognition": "Dot with two adjacent corners oriented and a 3-bar on the side opposite those corners. Top: no edges oriented (dot); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): front: 3-bar; right: edge; back: edge; left: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 19",
+    "name": "Bunny",
+    "group": "Dot",
+    "algs": [
+     "M U R U R' U' M' R' F R F'",
+     "y S' R U R' S U' R' F R F'",
+     "R' U2 F R U R' U' F2 U2 F R",
+     "r' R U R U R' U' M' R' F R F'"
+    ],
+    "recognition": "Dot shape. Top: no edges oriented (dot); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: left corner + edge; back: edge; left: edge + right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 20",
+    "name": "X / Checkers",
+    "group": "Dot",
+    "algs": [
+     "r U R' U' M2 U R U' R' U' M'",
+     "M' U2 M U2 M' U M U2 M' U2 M",
+     "S' R U R' S U' M' U R U' r'",
+     "S R' U' R U R U R U' R' S'"
+    ],
+    "recognition": "Dot with all four corners oriented (X / Checkers). Rarest OLL (1/216). Top: no edges oriented (dot); all 4 corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge; back: edge; left: edge.",
+    "probability": 0.004629629629629629,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 21",
+    "name": "H / Double Sune",
+    "group": "OCLL (Cross / all edges oriented)",
+    "algs": [
+     "R U R' U R U' R' U R U2 R'",
+     "R U2 R' U' R U R' U' R U' R'",
+     "y F R U R' U' R U R' U' R U R' U' F'",
+     "R' U' R U' R' U R U' R' U2 R"
+    ],
+    "recognition": "Cross, no corners oriented; corner stickers form two pairs of headlights on opposite sides. Hold headlights left/right. Top: all 4 edges oriented (cross); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): right: headlights; left: headlights.",
+    "probability": 0.009259259259259259,
+    "twoLook": true
+   },
+   {
+    "id": "OLL 22",
+    "name": "Pi / Bruno",
+    "group": "OCLL (Cross / all edges oriented)",
+    "algs": [
+     "R U2 R2 U' R2 U' R2 U2 R",
+     "R' U2 R2 U R2 U R2 U2 R'",
+     "f R U R' U' S' R U R' U' F'",
+     "f R U R' U' f' F R U R' U' F'"
+    ],
+    "recognition": "Cross, no corners oriented; headlights on one side, and the opposite side shows no U-colour stickers. Hold headlights on the left for alg 1. Top: all 4 edges oriented (cross); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; back: left corner; left: headlights.",
+    "probability": 0.018518518518518517,
+    "twoLook": true
+   },
+   {
+    "id": "OLL 23",
+    "name": "U / Headlights / Superman",
+    "group": "OCLL (Cross / all edges oriented)",
+    "algs": [
+     "R2 D R' U2 R D' R' U2 R'",
+     "R2 D' R U2 R' D R U2 R",
+     "R U R' U R U2 R2 U' R U' R' U2 R",
+     "y R U R' U' R U' R' U2 R U' R' U2 R U R'"
+    ],
+    "recognition": "Cross, two adjacent corners oriented; the other two corners form headlights on one side (front for alg 1). Top: all 4 edges oriented (cross); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): front: headlights.",
+    "probability": 0.018518518518518517,
+    "twoLook": true
+   },
+   {
+    "id": "OLL 24",
+    "name": "T / Chameleon",
+    "group": "OCLL (Cross / all edges oriented)",
+    "algs": [
+     "r U R' U' r' F R F'",
+     "y R U R D R' U' R D' R2",
+     "y2 R' F' r U R U' r' F",
+     "y' x' R U R' D R U' R' D' x"
+    ],
+    "recognition": "Cross, two adjacent corners oriented; the two unoriented corners face opposite directions (front and back for alg 1), not headlights. Top: all 4 edges oriented (cross); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; back: right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": true
+   },
+   {
+    "id": "OLL 25",
+    "name": "L / Bowtie",
+    "group": "OCLL (Cross / all edges oriented)",
+    "algs": [
+     "R U2 R D R' U2 R D' R2",
+     "F' r U R' U' r' F R",
+     "F R' F' r U R U' r'",
+     "x R' U R D' R' U' R D x'"
+    ],
+    "recognition": "Cross, two diagonal corners oriented (Bowtie). Top: all 4 edges oriented (cross); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": true
+   },
+   {
+    "id": "OLL 26",
+    "name": "Anti-Sune",
+    "group": "OCLL (Cross / all edges oriented)",
+    "algs": [
+     "R U2 R' U' R U' R'",
+     "R' U' R U' R' U2 R",
+     "y2 L' U' L U' L' U2 L",
+     "y2 L' U R U' L U R'"
+    ],
+    "recognition": "Cross, exactly one corner oriented. With the oriented corner at back-right, the front-left corner's U sticker faces front (Anti-Sune). Top: all 4 edges oriented (cross); corners oriented: back-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: left corner; left: left corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": true
+   },
+   {
+    "id": "OLL 27",
+    "name": "Sune",
+    "group": "OCLL (Cross / all edges oriented)",
+    "algs": [
+     "R U R' U R U2 R'",
+     "y' R' U2 R U R' U R",
+     "y L' U2 L U L' U L",
+     "y2 L U L' U L U2 L'"
+    ],
+    "recognition": "Cross, exactly one corner oriented. With the oriented corner at front-left, the front-right corner's U sticker faces front (Sune). Top: all 4 edges oriented (cross); corners oriented: front-left. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; right: right corner; back: right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": true
+   },
+   {
+    "id": "OLL 28",
+    "name": "Stealth / Arrowhead",
+    "group": "Corners Oriented (edges only)",
+    "algs": [
+     "r U R' U' M U R U' R'",
+     "r U R' U' r' R U R U' R'",
+     "R' F R S R' F' R S'",
+     "y2 M' U M U2 M' U M"
+    ],
+    "recognition": "All corners oriented, two adjacent edges unoriented (arrow). Top: edges oriented: back+left (L-shape with centre); all 4 corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 29",
+    "name": "Spotted Chameleon",
+    "group": "Awkward",
+    "algs": [
+     "r2 D' r U r' D r2 U' r' U' r",
+     "R U R' U' R U' R' F' U' F R U R'",
+     "y S' R U R' U' R' F R F' U S",
+     "M U R U R' U' R' F R F' M'"
+    ],
+    "recognition": "Awkward shape. Top: edges oriented: left+front (L-shape with centre); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): right: left corner + edge; back: edge; left: right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 30",
+    "name": "Anti-Spotted Chameleon",
+    "group": "Awkward",
+    "algs": [
+     "F U R U2 R' U' R U2 R' U' F'",
+     "y' r' D' r U' r' D r2 U' r' U r U r'",
+     "F R' F R2 U' R' U' R U R' F2",
+     "y S' R' U' R f R' U R U' F'"
+    ],
+    "recognition": "Awkward shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: front-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge + right corner; left: left corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 31",
+    "name": "Couch",
+    "group": "P",
+    "algs": [
+     "R' U' F U R U' R' F' R",
+     "y2 S' L' U' L U L F' L' f",
+     "y S R U R' U' f' U' F",
+     "y' F R' F' R U R U R' U' R U' R'"
+    ],
+    "recognition": "P shape. Top: edges oriented: back+right (L-shape with centre); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; back: right corner; left: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 32",
+    "name": "Anti-Couch",
+    "group": "P",
+    "algs": [
+     "S R U R' U' R' F R f'",
+     "L U F' U' L' U L F L'",
+     "R U B' U' R' U R B R'",
+     "y' R' F R F' U' r U' r' U r U r'"
+    ],
+    "recognition": "P shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; back: edge + right corner; left: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 33",
+    "name": "Key / Tying Shoelaces",
+    "group": "T",
+    "algs": [
+     "R U R' U' R' F R F'",
+     "y2 L' U' L U L F' L' F",
+     "y2 r' F' r U r U' r' F",
+     "R U R' F' U' F R U' R'"
+    ],
+    "recognition": "T shape (line + two corners on one end); the two unoriented corners face front and back (not headlights). Compare OLL 45. Top: edges oriented: left+right (horizontal line); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; back: edge + right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 34",
+    "name": "City",
+    "group": "C",
+    "algs": [
+     "R U R2 U' R' F R U R U' F'",
+     "y f R f' U' r' U' R U M'",
+     "F R U R' U' R' F' r U R U' r'",
+     "R U R' U' B' R' F R F' B"
+    ],
+    "recognition": "C shape (line + two corners on one side); the two unoriented corners face opposite directions. Top: edges oriented: left+right (horizontal line); corners oriented: front-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: right corner; back: edge; left: left corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 35",
+    "name": "Fish Salad",
+    "group": "Fish",
+    "algs": [
+     "R U2 R2 F R F' R U2 R'",
+     "f R U R' U' f' R U R' U R U2 R'",
+     "R U2 R' d' R' F R U' R' F' R",
+     "y L' U2 L2 F' L' F L' U2 L"
+    ],
+    "recognition": "Fish shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: right corner; back: edge; left: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 36",
+    "name": "Wario / Anti-Moustache",
+    "group": "W",
+    "algs": [
+     "L' U' L U' L' U L U L F' L' F",
+     "y R U R2 F' U' F U R2 U2 R'",
+     "y2 R U R' F' R U R' U' R' F R U' R' F R F'",
+     "R U R' U' F' U2 F U R U R'"
+    ],
+    "recognition": "W shape. Top: edges oriented: back+right (L-shape with centre); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; back: left corner; left: edge + right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 37",
+    "name": "Mounted Fish / Untying Shoelaces",
+    "group": "Fish",
+    "algs": [
+     "F R' F' R U R U' R'",
+     "F R U' R' U' R U R' F'",
+     "y F' r U r' U' r' F r",
+     "y2 r2 D' r U' r' D r U r"
+    ],
+    "recognition": "Fish shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: edge + right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 38",
+    "name": "Mario / Moustache",
+    "group": "W",
+    "algs": [
+     "R U R' U R U' R' U' R' F R F'",
+     "y F R U' R' S U' R U R' f'",
+     "r U R' U' r' F R U R U' R' F'",
+     "y2 L U L' U L U' L' U' L' B L B'"
+    ],
+    "recognition": "W shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: back-right, front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: left corner + edge; back: right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 39",
+    "name": "Fung",
+    "group": "Big Lightning Bolt",
+    "algs": [
+     "L F' L' U' L U F U' L'",
+     "y' f' r U r' U' r' F r S",
+     "y' R U R' F' U' F U R U2 R'",
+     "y' f' L F L' U' L' U L S"
+    ],
+    "recognition": "Big Lightning Bolt shape. Top: edges oriented: left+right (horizontal line); corners oriented: back-right, front-left. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: left corner; back: edge + right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 40",
+    "name": "Anti-Fung",
+    "group": "Big Lightning Bolt",
+    "algs": [
+     "R' F R U R' U' F' U R",
+     "y' f R' F' R U R U' R' S'",
+     "R r D r' U r D' r' U' R'",
+     "y' L' U' L F U F' U' L' U2 L"
+    ],
+    "recognition": "Big Lightning Bolt shape. Top: edges oriented: left+right (horizontal line); corners oriented: back-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; back: left corner + edge; left: right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 41",
+    "name": "Awkward Fish / Dalmatian",
+    "group": "Awkward",
+    "algs": [
+     "R U R' U R U2 R' F R U R' U' F'",
+     "y2 F U R2 D R' U' R D' R2 F'",
+     "y' S U' R' F' U' F U R S'",
+     "M U' F' L' U' L U F M'"
+    ],
+    "recognition": "Awkward shape. Top: edges oriented: back+left (L-shape with centre); corners oriented: front-left, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: edge; back: headlights.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 42",
+    "name": "Lefty Awkward Fish / Anti-Dalmatian",
+    "group": "Awkward",
+    "algs": [
+     "R' U' R U' R' U2 R F R U R' U' F'",
+     "y F S' R U R' U' F' U S",
+     "y R' F R F' R' F R F' R U R' U' R U R'",
+     "y R' U' F2 u' R U R' D R2 B"
+    ],
+    "recognition": "Awkward shape. Top: edges oriented: left+front (L-shape with centre); corners oriented: back-left, back-right. Side U-colour stickers (each side read left-to-right as you face it): front: headlights; right: edge; back: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 43",
+    "name": "Anti-P",
+    "group": "P",
+    "algs": [
+     "y R' U' F' U F R",
+     "F' U' L' U L F",
+     "f' L' U' L U f",
+     "B' U' R' U R B"
+    ],
+    "recognition": "P shape. Top: edges oriented: left+front (L-shape with centre); corners oriented: back-left, front-left. Side U-colour stickers (each side read left-to-right as you face it): right: 3-bar; back: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 44",
+    "name": "P",
+    "group": "P",
+    "algs": [
+     "f R U R' U' f'",
+     "F U R U' R' F'",
+     "y R U B U' B' R'",
+     "y' L U F U' F' L'"
+    ],
+    "recognition": "P shape. Top: edges oriented: right+front (L-shape with centre); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): back: edge; left: 3-bar.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 45",
+    "name": "T / Suit up",
+    "group": "T",
+    "algs": [
+     "F R U R' U' F'",
+     "y R' F' U' F U R",
+     "y2 f U R U' R' f'",
+     "y2 F' L' U' L U F"
+    ],
+    "recognition": "T shape; the two unoriented corners form headlights on the side opposite the oriented corners. Same alg as the 2-look OLL line case. Top: edges oriented: left+right (horizontal line); corners oriented: back-right, front-right. Side U-colour stickers (each side read left-to-right as you face it): front: edge; back: edge; left: headlights.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 46",
+    "name": "Seein' Headlights",
+    "group": "C",
+    "algs": [
+     "R' U' R' F R F' U R",
+     "R' F' U' F R U' R' U2 R",
+     "y F R U R' U' F' U' R U R' U R U2 R'",
+     "l' U2 L2 F' L' F U L' U l"
+    ],
+    "recognition": "C shape; the unoriented corners and edge form a 3-bar on one side. Top: edges oriented: front+back (vertical line); corners oriented: back-left, front-left. Side U-colour stickers (each side read left-to-right as you face it): right: 3-bar; left: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 47",
+    "name": "Anti-Breakneck",
+    "group": "Small L",
+    "algs": [
+     "F' L' U' L U L' U' L U F",
+     "y' F R' F' R U2 R U' R' U R U2 R'",
+     "R' U' R' F R F' R' F R F' U R",
+     "y' R' F' U' F U F' U' F U R"
+    ],
+    "recognition": "Small L shape. Top: edges oriented: back+right (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: headlights; back: right corner; left: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 48",
+    "name": "Breakneck",
+    "group": "Small L",
+    "algs": [
+     "F R U R' U' R U R' U' F'",
+     "y2 f U R U' R' U R U' R' f'",
+     "R U2 R' U' R U R' U2 R' F R F'",
+     "F R' F' U2 R U R' U R2 U2 R'"
+    ],
+    "recognition": "Small L shape. Top: edges oriented: back+left (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; right: edge; back: left corner; left: headlights.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 49",
+    "name": "Right back squeezy",
+    "group": "Small L",
+    "algs": [
+     "r U' r2 U r2 U r2 U' r",
+     "l U' l2 U l2 U l2 U' l",
+     "R B' R2 F R2 B R2 F' R",
+     "y2 R' F R' F' R2 U2 B' R B R'"
+    ],
+    "recognition": "Small L shape. Top: edges oriented: back+right (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge + right corner; back: left corner; left: 3-bar.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 50",
+    "name": "Right front squeezy",
+    "group": "Small L",
+    "algs": [
+     "r' U r2 U' r2 U' r2 U r'",
+     "y2 R' F R2 B' R2 F' R2 B R'",
+     "y' R U2 R' U' R U' R' F R U R' U' F'",
+     "y2 l' U l2 U' l2 U' l2 U l'"
+    ],
+    "recognition": "Small L shape. Top: edges oriented: right+front (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: right corner; back: left corner + edge; left: 3-bar.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 51",
+    "name": "Bottlecap / Ant",
+    "group": "I / Line",
+    "algs": [
+     "F U R U' R' U R U' R' F'",
+     "f R U R' U' R U R' U' f'",
+     "y' R' U' R' F R F' R U' R' U2 R",
+     "y r' F' U' F U F' U' F U r"
+    ],
+    "recognition": "Line, no corners oriented; headlights at one end of the line, the other end's corners face front and back. Top: edges oriented: left+right (horizontal line); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: left corner + edge; right: headlights; back: edge + right corner.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 52",
+    "name": "Rice Cooker",
+    "group": "I / Line",
+    "algs": [
+     "R U R' U R U' B U' B' R'",
+     "y2 R' F' U' F U' R U R' U R",
+     "R U R' U R d' R U' R' F'"
+    ],
+    "recognition": "Line, no corners oriented; a 3-bar on one side parallel to the line. Top: edges oriented: front+back (vertical line); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: left corner; right: 3-bar; back: right corner; left: edge.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 53",
+    "name": "Frying Pan",
+    "group": "Small L",
+    "algs": [
+     "r' U' R U' R' U R U' R' U2 r",
+     "y2 l' U' L U' L' U L U' L' U2 l",
+     "y r' U2 R U R' U' R U R' U r",
+     "l' U2 L U L' U' L U L' U l"
+    ],
+    "recognition": "Small L shape. Top: edges oriented: right+front (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): right: headlights; back: edge; left: 3-bar.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 54",
+    "name": "Anti-Frying Pan",
+    "group": "Small L",
+    "algs": [
+     "r U R' U R U' R' U R U2 r'",
+     "r U2 R' U' R U R' U' R U' r'",
+     "y' r U r' R U R' U' R U R' U' r U' r'",
+     "y2 l U L' U L U' L' U L U2 l'"
+    ],
+    "recognition": "Small L shape. Top: edges oriented: back+right (L-shape with centre); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: headlights; left: 3-bar.",
+    "probability": 0.018518518518518517,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 55",
+    "name": "Highway / Freeway",
+    "group": "I / Line",
+    "algs": [
+     "R' F R U R U' R2 F' R2 U' R' U R U R'",
+     "y R' F U R U' R2 F' R2 U R' U' R",
+     "R U2 R2 U' R U' R' U2 F R F'",
+     "r U2 R2 F R F' U2 r' F R F'"
+    ],
+    "recognition": "Line, no corners oriented; two parallel 3-bars on the two sides along the line. Top: edges oriented: left+right (horizontal line); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: 3-bar; back: 3-bar.",
+    "probability": 0.009259259259259259,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 56",
+    "name": "Streetlights / Dead Man",
+    "group": "I / Line",
+    "algs": [
+     "r U r' U R U' R' U R U' R' r U' r'",
+     "r U r' U R U' R' M' U R U2 r'",
+     "F R U R' U' R F' r U R' U' r'",
+     "r' U' r U' R' U R U' R' U R r' U r"
+    ],
+    "recognition": "Line, no corners oriented; headlights on both ends of the line. Top: edges oriented: left+right (horizontal line); no corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; right: headlights; back: edge; left: headlights.",
+    "probability": 0.009259259259259259,
+    "twoLook": false
+   },
+   {
+    "id": "OLL 57",
+    "name": "Mummy / H / Brick",
+    "group": "Corners Oriented (edges only)",
+    "algs": [
+     "R U R' U' M' U R U' r'",
+     "y R U' R' S' R U R' S",
+     "y R U R' S' R U' R' S",
+     "R U R' U' R' r U R U' r'"
+    ],
+    "recognition": "All corners oriented, two opposite edges unoriented (H / Mummy). Top: edges oriented: left+right (horizontal line); all 4 corners oriented. Side U-colour stickers (each side read left-to-right as you face it): front: edge; back: edge.",
+    "probability": 0.009259259259259259,
+    "twoLook": false
+   }
+  ]
+ },
+ {
+  "id": "PLL",
+  "name": "PLL",
+  "description": "Permute the last layer. 21 cases.",
+  "cases": [
+   {
+    "id": "Aa",
+    "name": "Aa-perm",
+    "group": "Corners only",
+    "algs": [
+     "x R' U R' D2 R U' R' D2 R2 x'",
+     "l' U R' D2 R U' R' D2 R2 x'",
+     "y x' R2 D2 R' U' R D2 R' U R' x"
+    ],
+    "recognition": "Corners only (3-cycle). Edges solved relative to each other; exactly one set of headlights plus a 1x2x2 block (corner with both edges). Headlights at the back: block at front-left = Aa. Held for the main alg: Side features: front: 2-block on left; right: three colours, corners adjacent; back: headlights (adjacent-colour edge); left: 2-block on right.",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "Ab",
+    "name": "Ab-perm",
+    "group": "Corners only",
+    "algs": [
+     "x R2 D2 R U R' D2 R U' R x'",
+     "y x' R U' R D2 R' U R D2 R2 x",
+     "R' B' R U' R D R' U R D' R2 B R"
+    ],
+    "recognition": "Corners only (3-cycle). Exactly one set of headlights plus a 1x2x2 block. Headlights at the back: block at front-right = Ab. Held for the main alg: Side features: front: 2-block on left; right: headlights (adjacent-colour edge); back: three colours, corners adjacent; left: 2-block on right.",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "E",
+    "name": "E-perm",
+    "group": "Corners only",
+    "algs": [
+     "y x' R U' R' D R U R' D' R U R' D R U' R' D' x",
+     "y R' U' R' D' R U' R' D R U R' D' R U R' D R2",
+     "R2 U F' R' U R U' R' U R U' R' U R U' F U' R2"
+    ],
+    "recognition": "Corners only (two diagonal swaps). No headlights, no blocks, no bars; on every side the two corner stickers are opposite colours. Held for the main alg: Side features: front: three colours, corners opposite; right: three colours, corners opposite; back: three colours, corners opposite; left: three colours, corners opposite.",
+    "probability": 0.027777777777777776,
+    "twoLook": false
+   },
+   {
+    "id": "F",
+    "name": "F-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R",
+     "y R' F R f' R' F R2 U R' U' R' F' R2 U R' S",
+     "R' U R U' R2 F' U' F U R F R' F' R2",
+     "y R2 F R F' R' U' F' U F R2 U R' U' R"
+    ],
+    "recognition": "One full 3-bar; the opposite side shows three different colours with opposite-coloured corners; no headlights and no other blocks. Held for the main alg: Side features: front: three colours, corners adjacent; right: three colours, corners opposite; back: three colours, corners adjacent; left: 3-bar.",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "Ga",
+    "name": "Ga-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "R2 U R' U R' U' R U' R2 D U' R' U R D'",
+     "R2 u R' U R' U' R u' R2 F' U F",
+     "D' R2 U R' U R' U' R U' R2 U' D R' U R"
+    ],
+    "recognition": "G perm: one set of headlights and a 2-block that does NOT touch the headlights side; no full bars. Held for the main alg: Side features: front: 2-block on right; right: three colours, corners opposite; back: three colours, corners adjacent; left: headlights (adjacent-colour edge).",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "Gb",
+    "name": "Gb-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "D R' U' R U D' R2 U R' U R U' R U' R2",
+     "R' U' R U D' R2 U R' U R U' R U' R2 D",
+     "y F' U' F R2 u R' U R U' R u' R2",
+     "R' d' F R2 u R' U R U' R u' R2"
+    ],
+    "recognition": "G perm: one set of headlights and a 2-block that does NOT touch the headlights side; no full bars. Held for the main alg: Side features: front: three colours, corners adjacent; right: 2-block on right; back: three colours, corners adjacent; left: headlights (opposite-colour edge).",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "Gc",
+    "name": "Gc-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "R2 U' R U' R U R' U R2 D' U R U' R' D",
+     "y2 R2 F2 R U2 R U2 R' F R U R' U' R' F R2",
+     "D R2 U' R U' R U R' U R2 D' U R U' R'",
+     "R2 u' R U' R U R' u R2 f R' f'"
+    ],
+    "recognition": "G perm: one set of headlights and a 2-block that does NOT touch the headlights side; no full bars. Held for the main alg: Side features: front: three colours, corners adjacent; right: three colours, corners opposite; back: 2-block on left; left: headlights (adjacent-colour edge).",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "Gd",
+    "name": "Gd-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "R U R' U' D R2 U' R U' R' U R' U R2 D'",
+     "D' R U R' U' D R2 U' R U' R' U R' U R2",
+     "y R2 F' R U R U' R' F' R U2 R' U2 R' F2 R2"
+    ],
+    "recognition": "G perm: one set of headlights and a 2-block that does NOT touch the headlights side; no full bars. Held for the main alg: Side features: front: three colours, corners adjacent; right: 2-block on left; back: three colours, corners adjacent; left: headlights (opposite-colour edge).",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "H",
+    "name": "H-perm",
+    "group": "Edges only",
+    "algs": [
+     "M2 U M2 U2 M2 U M2",
+     "M2 U' M2 U2 M2 U' M2",
+     "R2 S2 R2 U' R2 S2 R2",
+     "M2 U2 M2 U M2 U2 M2"
+    ],
+    "recognition": "Edges only. Headlights on all four sides; each edge is the opposite colour of its headlights. Held for the main alg: Side features: front: headlights (opposite-colour edge); right: headlights (opposite-colour edge); back: headlights (opposite-colour edge); left: headlights (opposite-colour edge).",
+    "probability": 0.013888888888888888,
+    "twoLook": true
+   },
+   {
+    "id": "Ja",
+    "name": "Ja-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "y2 x R2 F R F' R U2 r' U r U2 x'",
+     "L' U' L F L' U' L U L F' L2 U L",
+     "y R' U L' U2 R U' R' U2 R L",
+     "R U' L' U R' U2 L U' L' U2 L"
+    ],
+    "recognition": "1x2x3 block: a full 3-bar plus a 2-block on an adjacent side touching it. Mirror of Jb. Held for the main alg: Side features: front: 2-block on left; right: 3-bar; back: 2-block on left; left: 2-block on left.",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "Jb",
+    "name": "Jb-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "R U R' F' R U R' U' R' F R2 U' R'",
+     "R U2 R' U' R U2 L' U R' U' L",
+     "r' F R F' r U2 R' U R U2 R'",
+     "L' U R U' L U2 R' U R U2 R'"
+    ],
+    "recognition": "1x2x3 block: a full 3-bar plus a 2-block on an adjacent side touching it. Mirror of Ja. Held for the main alg: Side features: front: 2-block on right; right: 2-block on right; back: 2-block on right; left: 3-bar.",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "Na",
+    "name": "Na-perm",
+    "group": "Diagonal corner swap",
+    "algs": [
+     "R U R' U R U R' F' R U R' U' R' F R2 U' R' U2 R U' R'",
+     "F' R U R' U' R' F R2 F U' R' U' R U F' R'",
+     "R F U' R' U R U F' R2 F' R U R U' R' F",
+     "r' D r U2 r' D r U2 r' D r U2 r' D r U2 r' D r"
+    ],
+    "recognition": "Every side shows a 2-block plus a lone corner; the 2-block is on the RIGHT of each side as you face it. Mirror of Nb. Held for the main alg: Side features: front: 2-block on right; right: 2-block on right; back: 2-block on right; left: 2-block on right.",
+    "probability": 0.013888888888888888,
+    "twoLook": false
+   },
+   {
+    "id": "Nb",
+    "name": "Nb-perm",
+    "group": "Diagonal corner swap",
+    "algs": [
+     "R' U R U' R' F' U' F R U R' F R' F' R U' R",
+     "r' D' F r U' r' F' D r2 U r' U' r' F r F'",
+     "R' U L' U2 R U' L R' U L' U2 R U' L",
+     "R' U R U' R' F' U' F R U R' U' R U' f R f'"
+    ],
+    "recognition": "Every side shows a 2-block plus a lone corner; the 2-block is on the LEFT of each side as you face it. Mirror of Na. Held for the main alg: Side features: front: 2-block on left; right: 2-block on left; back: 2-block on left; left: 2-block on left.",
+    "probability": 0.013888888888888888,
+    "twoLook": false
+   },
+   {
+    "id": "Ra",
+    "name": "Ra-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "R U' R' U' R U R D R' U' R D' R' U2 R'",
+     "R U R' F' R U2 R' U2 R' F R U R U2 R'",
+     "L U2 L' U2 L F' L' U' L U L F L2",
+     "y R U' R' U' R U R' U R' D' R U' R' D R2 U R'"
+    ],
+    "recognition": "Headlights on one side and a single 2-block on an adjacent side touching the headlights (R perms). Mirror of Rb. Held for the main alg: Side features: front: 2-block on left; right: three colours, corners opposite; back: three colours, corners adjacent; left: headlights (adjacent-colour edge).",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "Rb",
+    "name": "Rb-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "R' U2 R U2 R' F R U R' U' R' F' R2",
+     "R2 F R U R U' R' F' R U2 R' U2 R",
+     "R' U2 R' D' R U' R' D R U R U' R' U' R",
+     "y R' U R U R' U' R' D' R U R' D R U2 R"
+    ],
+    "recognition": "Headlights on one side and a single 2-block on an adjacent side touching the headlights (R perms). Mirror of Ra. Held for the main alg: Side features: front: headlights (adjacent-colour edge); right: three colours, corners adjacent; back: three colours, corners opposite; left: 2-block on right.",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "T",
+    "name": "T-perm",
+    "group": "Adjacent corner swap",
+    "algs": [
+     "R U R' U' R' F R2 U' R' U' R U R' F'",
+     "R U R' U' R' F R2 U' R' U F' L' U L",
+     "R2 u R2 u' R2 F2 u' F2 u F2"
+    ],
+    "recognition": "Headlights on one side, 2-blocks on BOTH adjacent sides touching the headlights; the opposite side shows three colours with the headlights colour in the middle. Held for the main alg: Side features: front: 2-block on left; right: three colours, corners opposite; back: 2-block on right; left: headlights (opposite-colour edge).",
+    "probability": 0.05555555555555555,
+    "twoLook": true
+   },
+   {
+    "id": "Ua",
+    "name": "Ua-perm",
+    "group": "Edges only",
+    "algs": [
+     "M2 U M U2 M' U M2",
+     "R U R' U R' U' R2 U' R' U R' U R",
+     "y R2 U' S' U2 S U' R2",
+     "R U' R U R U R U' R' U' R2"
+    ],
+    "recognition": "Edges only. One solved 3-bar, headlights on the other three sides. Bar at the back: if the front edge matches the RIGHT side's headlights it is Ua (edges cycle counter-clockwise seen from above). Held for the main alg: Side features: front: headlights (adjacent-colour edge); right: headlights (opposite-colour edge); back: 3-bar; left: headlights (adjacent-colour edge).",
+    "probability": 0.05555555555555555,
+    "twoLook": true
+   },
+   {
+    "id": "Ub",
+    "name": "Ub-perm",
+    "group": "Edges only",
+    "algs": [
+     "M2 U' M U2 M' U' M2",
+     "R' U R' U' R' U' R' U R U R2",
+     "R2 U R U R' U' R' U' R' U R'"
+    ],
+    "recognition": "Edges only. One solved 3-bar, headlights on the other three sides. Bar at the back: if the front edge matches the LEFT side's headlights it is Ub (clockwise). Held for the main alg: Side features: front: headlights (adjacent-colour edge); right: headlights (adjacent-colour edge); back: 3-bar; left: headlights (opposite-colour edge).",
+    "probability": 0.05555555555555555,
+    "twoLook": true
+   },
+   {
+    "id": "V",
+    "name": "V-perm",
+    "group": "Diagonal corner swap",
+    "algs": [
+     "R' U R' U' R D' R' D R' U D' R2 U' R2 D R2",
+     "R' U R U' R' f' U' R U2 R' U' R U' R' f R",
+     "y R U' R U R' D R D' R U' D R2 U R2 D' R2",
+     "z D' R2 D R2 U R' D' R U' R U R' D R U' z'"
+    ],
+    "recognition": "V perm: a 1x2x2 block (a corner with both its edges); the two sides away from the block each show opposite-coloured corners. No headlights. Held for the main alg: Side features: front: 2-block on left; right: three colours, corners opposite; back: three colours, corners opposite; left: 2-block on right.",
+    "probability": 0.05555555555555555,
+    "twoLook": false
+   },
+   {
+    "id": "Y",
+    "name": "Y-perm",
+    "group": "Diagonal corner swap",
+    "algs": [
+     "F R U' R' U' R U R' F' R U R' U' R' F R F'",
+     "F R' F R2 U' R' U' R U R' F' R U R' U' F'",
+     "R2 U' R2 U' R2 U F U F' R2 F U' F'",
+     "F R' F' R U R U' R2 U' R U R f' U' f"
+    ],
+    "recognition": "Two separate 2-blocks on adjacent sides that do not share a corner; the other two sides show opposite-coloured corners. No headlights, no bars. Held for the main alg: Side features: front: 2-block on left; right: 2-block on right; back: three colours, corners opposite; left: three colours, corners opposite.",
+    "probability": 0.05555555555555555,
+    "twoLook": true
+   },
+   {
+    "id": "Z",
+    "name": "Z-perm",
+    "group": "Edges only",
+    "algs": [
+     "M' U' M2 U' M2 U' M' U2 M2",
+     "M2 U M2 U M' U2 M2 U2 M'",
+     "M2 U' M2 U' M' U2 M2 U2 M'",
+     "M' U M2 U M2 U M' U2 M2"
+    ],
+    "recognition": "Edges only. Headlights on all four sides; each edge is the colour of an adjacent side (pairs of adjacent edges swap). Held for the main alg: Side features: front: headlights (adjacent-colour edge); right: headlights (adjacent-colour edge); back: headlights (adjacent-colour edge); left: headlights (adjacent-colour edge).",
+    "probability": 0.027777777777777776,
+    "twoLook": true
+   }
+  ]
+ },
+ {
+  "id": "COLL",
+  "name": "COLL",
+  "description": "When the edges are oriented, solve the corners and leave only an edge PLL. 42 cases.",
+  "cases": [
+   {
+    "id": "H1",
+    "name": "H 1",
+    "group": "H",
+    "algs": [
+     "R U R' U R U' R' U R U2 R'",
+     "y R U2 R' U' R U R' U' R U' R'",
+     "y' R U2 R' U' R U R' U' R U' R'",
+     "y' R' U2 R U R' U' R U R' U R"
+    ],
+    "recognition": "H OCLL shape on top. Corner side stickers (held for the main alg): Front: opposite colours; Right: top colour on both corners; Back: opposite colours; Left: top colour on both corners"
+   },
+   {
+    "id": "H2",
+    "name": "H 2",
+    "group": "H",
+    "algs": [
+     "F R U' R' U R U2 R' U' R U R' U' F'",
+     "f R2 S' U' R2 U' R2 U R2 F'",
+     "y2 f R U R' U' R F' R U R' U' R' S'",
+     "f R U R' U' f' R U R' U' R' F R F'"
+    ],
+    "recognition": "H OCLL shape on top. Corner side stickers (held for the main alg): Front: opposite colours; Right: top colour on both corners; Back: headlights (matching corner stickers); Left: top colour on both corners"
+   },
+   {
+    "id": "H3",
+    "name": "H 3",
+    "group": "H",
+    "algs": [
+     "R U R' U R U L' U R' U' L",
+     "R U R' U R U r' F R' F' r",
+     "R' F' R U2 R U2 R' F U' R U' R'",
+     "R U R2 D' R U2 R' D R U' R U2 R'"
+    ],
+    "recognition": "H OCLL shape on top. Corner side stickers (held for the main alg): Front: adjacent colours; Right: top colour on both corners; Back: adjacent colours; Left: top colour on both corners"
+   },
+   {
+    "id": "H4",
+    "name": "H 4",
+    "group": "H",
+    "algs": [
+     "F R U R' U' R U R' U' R U R' U' F'",
+     "U y F R U R' U' R U R' U' R U R' U' F'",
+     "U y F U R U' R' U R U' R' U R U' R' F'",
+     "U2 F R U R' U' R U R' U' R U R' U' F'",
+     "U y' F R U R' U' R U R' U' R U R' U' F'"
+    ],
+    "recognition": "H OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on both corners; Right: headlights (matching corner stickers); Back: top colour on both corners; Left: headlights (matching corner stickers)"
+   },
+   {
+    "id": "Pi1",
+    "name": "Pi 1",
+    "group": "Pi",
+    "algs": [
+     "R U2 R2 U' R2 U' R2 U2 R",
+     "R' U2 R2 U R2 U R2 U2 R'",
+     "y2 L' U2 L2 U L2 U L2 U2 L'",
+     "R U R' U R U2 R' U' R U R' U R U2 R'"
+    ],
+    "recognition": "Pi OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: opposite colours; Back: top colour on left corner; Left: top colour on both corners"
+   },
+   {
+    "id": "Pi2",
+    "name": "Pi 2",
+    "group": "Pi",
+    "algs": [
+     "R' F2 R U2 R U2 R' F2 U' R U' R'",
+     "y F U R U' R' U R U' R2 F' R U R U' R'",
+     "y2 L' U' L U L F' L2 U' L U L' U' L U F",
+     "R U R' U R' F R2 U' R' U' R U R' F' U R U' R'"
+    ],
+    "recognition": "Pi OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: adjacent colours; Back: top colour on left corner; Left: top colour on both corners"
+   },
+   {
+    "id": "Pi3",
+    "name": "Pi 3",
+    "group": "Pi",
+    "algs": [
+     "R' U' F' R U R' U' R' F R2 U2 R' U2 R",
+     "y F U R U' R' U R U2 R' U' R U R' F'",
+     "y F R2 U' R2 U R2 U S R2 f'",
+     "y' R U R' U R U2 R2 F' r U R U' r' F"
+    ],
+    "recognition": "Pi OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: headlights (matching corner stickers); Back: top colour on left corner; Left: top colour on both corners"
+   },
+   {
+    "id": "Pi4",
+    "name": "Pi 4",
+    "group": "Pi",
+    "algs": [
+     "R U R' U' R' F R2 U R' U' R U R' U' F'",
+     "R U2 R' U' R U R' U2 r' F R F' M'",
+     "y' R' U2 R U R' U R2 U' L' U R' U' L"
+    ],
+    "recognition": "Pi OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: adjacent colours; Back: top colour on left corner; Left: top colour on both corners"
+   },
+   {
+    "id": "Pi5",
+    "name": "Pi 5",
+    "group": "Pi",
+    "algs": [
+     "R U' L' U R' U L U L' U L",
+     "y' R U2 R' U R' D' R U2 R' D R2 U' R'",
+     "y' R U R' U F' R U2 R' U2 R' F R",
+     "y2 L' U R U' L U' R' U' R U' R'"
+    ],
+    "recognition": "Pi OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: opposite colours; Back: top colour on left corner; Left: top colour on both corners"
+   },
+   {
+    "id": "Pi6",
+    "name": "Pi 6",
+    "group": "Pi",
+    "algs": [
+     "R2 D' R U R' D R U R U' R' U R U R' U R",
+     "R U D' R U R' D R2 U' R' U' R2 U2 R",
+     "R' F' U' F U' R U S' R' U R S",
+     "y' r U R' U R' F R F' R U' R' U R U2 r'"
+    ],
+    "recognition": "Pi OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: headlights (matching corner stickers); Back: top colour on left corner; Left: top colour on both corners"
+   },
+   {
+    "id": "U1",
+    "name": "U 1",
+    "group": "U",
+    "algs": [
+     "R' U' R U' R' U2 R2 U R' U R U2 R'",
+     "R' U' R U' R' U2 R2 U R' U R U2 R'",
+     "y2 R U R' U R U2 R2 U' R U' R' U2 R",
+     "y R U2 R' U' R U' R' U' R U R' U R U2 R'",
+     "y' R U R' U' R U' R' U2 R U' R' U2 R U R'"
+    ],
+    "recognition": "U OCLL shape on top. Corner side stickers (held for the main alg): Front: headlights (matching corner stickers); Right: adjacent colours; Back: top colour on both corners; Left: adjacent colours"
+   },
+   {
+    "id": "U2",
+    "name": "U 2",
+    "group": "U",
+    "algs": [
+     "R' F R U' R' U' R U R' F' R U R' U' R' F R F' R",
+     "y' r U R' U' r' F R2 U' R' U' R U2 R' U' F'",
+     "y' R' U' R F R2 D' R U R' D R2 U' F'",
+     "y F U R U2 R' U R U R2 F' r U R U' r'"
+    ],
+    "recognition": "U OCLL shape on top. Corner side stickers (held for the main alg): Front: headlights (matching corner stickers); Right: opposite colours; Back: top colour on both corners; Left: opposite colours"
+   },
+   {
+    "id": "U3",
+    "name": "U 3",
+    "group": "U",
+    "algs": [
+     "R2 D R' U2 R D' R' U2 R'",
+     "U2 y2 R2 D R' U2 R D' R' U2 R'",
+     "U2 L2 D L' U2 L D' L' U2 L'",
+     "U2 R U' R' U' R U2 R' U' R' D' R U2 R' D R",
+     "U2 R' U R U R' F' R U R' U' R' F R2 U' R' U' R"
+    ],
+    "recognition": "U OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on both corners; Right: adjacent colours; Back: adjacent colours; Left: adjacent colours"
+   },
+   {
+    "id": "U4",
+    "name": "U 4",
+    "group": "U",
+    "algs": [
+     "F R U' R' U R U R' U R U' R' F'",
+     "y2 R' F2 R U2 R U2 R' F2 R U2 R'",
+     "y' F U2 R' D' R U2 R' D R F'",
+     "y2 R U2 R' U2 L' U2 R U2 R' U2 L"
+    ],
+    "recognition": "U OCLL shape on top. Corner side stickers (held for the main alg): Front: opposite colours; Right: opposite colours; Back: top colour on both corners; Left: opposite colours"
+   },
+   {
+    "id": "U5",
+    "name": "U 5",
+    "group": "U",
+    "algs": [
+     "R2 D' R U2 R' D R U2 R",
+     "y2 L2 D' L U2 L' D L U2 L",
+     "L U' R U' L' U R' U2 L U' L'",
+     "y2 x R' U R D' R' U2 R D R' U R x'"
+    ],
+    "recognition": "U OCLL shape on top. Corner side stickers (held for the main alg): Front: adjacent colours; Right: adjacent colours; Back: top colour on both corners; Left: adjacent colours"
+   },
+   {
+    "id": "U6",
+    "name": "U 6",
+    "group": "U",
+    "algs": [
+     "R2 D' R U R' D R U R U' R' U' R",
+     "R' U2 R F U' R' U' R U F'",
+     "R U' R' U' R U R D R' U R D' R2",
+     "R' U2 R U2 R' F' R U R' U' R' F R2"
+    ],
+    "recognition": "U OCLL shape on top. Corner side stickers (held for the main alg): Front: opposite colours; Right: adjacent colours; Back: top colour on both corners; Left: adjacent colours"
+   },
+   {
+    "id": "T1",
+    "name": "T 1",
+    "group": "T",
+    "algs": [
+     "R U2 R' U' R U' R2 U2 R U R' U R",
+     "R U2 R' U' R U' R2 U2 R U R' U R",
+     "y' R U R2 U' R2 U' R2 U2 R U' R U' R'",
+     "R U2 R' r' F2 r U' R U' R' U' r' F r",
+     "y' R U R' U R U2 R' L' U' L U' L' U2 L"
+    ],
+    "recognition": "T OCLL shape on top. Corner side stickers (held for the main alg): Front: headlights (matching corner stickers); Right: top colour on right corner; Back: opposite colours; Left: top colour on left corner"
+   },
+   {
+    "id": "T2",
+    "name": "T 2",
+    "group": "T",
+    "algs": [
+     "R' U R U2 R' L' U R U' L",
+     "R' U R U2 r' R' F R F' r",
+     "y2 R' F R U R' U' R' F' R2 U' R' U2 R",
+     "y2 R U' R' U2 L R U' R' U L'"
+    ],
+    "recognition": "T OCLL shape on top. Corner side stickers (held for the main alg): Front: headlights (matching corner stickers); Right: top colour on right corner; Back: headlights (matching corner stickers); Left: top colour on left corner"
+   },
+   {
+    "id": "T3",
+    "name": "T 3",
+    "group": "T",
+    "algs": [
+     "y l' U' L U l F' L' F",
+     "y R' F' r U R U' r' F",
+     "y l' U' L U R U' r' F",
+     "y2 R' U' R' D' R U R' D R2"
+    ],
+    "recognition": "T OCLL shape on top. Corner side stickers (held for the main alg): Front: adjacent colours; Right: top colour on right corner; Back: adjacent colours; Left: top colour on left corner"
+   },
+   {
+    "id": "T4",
+    "name": "T 4",
+    "group": "T",
+    "algs": [
+     "y2 F R U R' U' R U' R' U' R U R' F'",
+     "y2 F R' D' R U2 R' D R U2 F'",
+     "y2 R F R' U R U2 R' U R U F' R'",
+     "y R U2 R' F2 R U2 R' U2 R' F2 R"
+    ],
+    "recognition": "T OCLL shape on top. Corner side stickers (held for the main alg): Front: opposite colours; Right: top colour on right corner; Back: opposite colours; Left: top colour on left corner"
+   },
+   {
+    "id": "T5",
+    "name": "T 5",
+    "group": "T",
+    "algs": [
+     "y' r U R' U' r' F R F'",
+     "R U R D R' U' R D' R2",
+     "y2 x' D R U' R' D' R U R' x",
+     "R U R' U R' D' R U' R' D R2 U' R'"
+    ],
+    "recognition": "T OCLL shape on top. Corner side stickers (held for the main alg): Front: adjacent colours; Right: top colour on right corner; Back: adjacent colours; Left: top colour on left corner"
+   },
+   {
+    "id": "T6",
+    "name": "T 6",
+    "group": "T",
+    "algs": [
+     "R' U R2 D r' U2 r D' R2 U' R",
+     "y2 R U' R2 D' r U2 r' D R2 U R'",
+     "y R' U' R U R2 D' R U2 R' D R2 U' R' U R",
+     "y R U R' U' R2 D R' U2 R D' R2 U R U' R'"
+    ],
+    "recognition": "T OCLL shape on top. Corner side stickers (held for the main alg): Front: opposite colours; Right: top colour on right corner; Back: headlights (matching corner stickers); Left: top colour on left corner"
+   },
+   {
+    "id": "L1",
+    "name": "L 1",
+    "group": "L",
+    "algs": [
+     "R' U2 R U R' U' R U R' U' R U R' U R",
+     "U2 y' R U R' U R U' R' U R U' R' U R U2 R'",
+     "U2 y' R U2 R' U' R U R' U' R U R' U' R U' R'",
+     "U2 y2 R' U2 R U R' U' R U R' U' R U R' U R",
+     "U2 R' U' R U' R' U2 R U' R U R' U R U2 R'"
+    ],
+    "recognition": "L OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: adjacent colours; Back: adjacent colours; Left: top colour on left corner"
+   },
+   {
+    "id": "L2",
+    "name": "L 2",
+    "group": "L",
+    "algs": [
+     "R' U2 R' D' R U2 R' D R2",
+     "R U R' U2 L U' R U L' U R'",
+     "y2 L' U2 L' D' L U2 L' D L2",
+     "y' R' U2 R U R2 D' R U R' D R2"
+    ],
+    "recognition": "L OCLL shape on top. Corner side stickers (held for the main alg): Front: adjacent colours; Right: top colour on left corner; Back: top colour on right corner; Left: opposite colours"
+   },
+   {
+    "id": "L3",
+    "name": "L 3",
+    "group": "L",
+    "algs": [
+     "R U2 R D R' U2 R D' R2",
+     "U' y R U2 R D R' U2 R D' R2",
+     "U R U2 R2 D' R U' R' D R2 U' R'",
+     "U' R' F' R U R' U' R' F R2 U' R' U2 R",
+     "U' y R' U' R U2 L' U R' U' L U' R"
+    ],
+    "recognition": "L OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on left corner; Right: top colour on right corner; Back: adjacent colours; Left: opposite colours"
+   },
+   {
+    "id": "L4",
+    "name": "L 4",
+    "group": "L",
+    "algs": [
+     "F R' F' r U R U' r'",
+     "U' y F R' F' r U R U' r'",
+     "U' y2 R2 D R' U R D' R' U' R'",
+     "U' R U R' U' R' F R U R U' R' F'",
+     "U' y F l' U' L U R U' r'"
+    ],
+    "recognition": "L OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on left corner; Right: top colour on right corner; Back: opposite colours; Left: adjacent colours"
+   },
+   {
+    "id": "L5",
+    "name": "L 5",
+    "group": "L",
+    "algs": [
+     "y2 F' r U R' U' r' F R",
+     "y x R' U R D' R' U' R D x'",
+     "r U R U' r' F R' F'",
+     "y' R2 D' R U' R' D R U R"
+    ],
+    "recognition": "L OCLL shape on top. Corner side stickers (held for the main alg): Front: opposite colours; Right: top colour on left corner; Back: top colour on right corner; Left: adjacent colours"
+   },
+   {
+    "id": "L6",
+    "name": "L 6",
+    "group": "L",
+    "algs": [
+     "R' U' R U R' F' R U R' U' R' F R2",
+     "U y r U2 R2 F R F' R U2 r'",
+     "U y' R' U' R U R' F' R U R' U' R' F R2",
+     "R' U' R U R' F' R U R' U' R' F R2",
+     "U y F R U R2 F R F' R U' R' F'"
+    ],
+    "recognition": "L OCLL shape on top. Corner side stickers (held for the main alg): Front: adjacent colours; Right: adjacent colours; Back: top colour on left corner; Left: top colour on right corner"
+   },
+   {
+    "id": "S1",
+    "name": "Sune 1",
+    "group": "Sune",
+    "algs": [
+     "R U R' U R U2 R'",
+     "y' R' U2 R U R' U R",
+     "y L' U2 L U L' U L",
+     "y2 L U L' U L U2 L'"
+    ],
+    "recognition": "Sune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: top colour on right corner; Back: top colour on right corner; Left: adjacent colours"
+   },
+   {
+    "id": "S2",
+    "name": "Sune 2",
+    "group": "Sune",
+    "algs": [
+     "L' U2 L U2 R U' L' U L R'",
+     "y2 R U R' U R2 D R' U2 R D' R2",
+     "r' F2 r U2 R U' r' F M'",
+     "L' U2 L U2 l F' L' F M'"
+    ],
+    "recognition": "Sune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: top colour on right corner; Back: top colour on right corner; Left: opposite colours"
+   },
+   {
+    "id": "S3",
+    "name": "Sune 3",
+    "group": "Sune",
+    "algs": [
+     "R2 D' R U2 R' D R2 U R' U R",
+     "U2 L' R U R' U' L U2 R U2 R'",
+     "U2 M F R' F' r U2 R U2 R'",
+     "U2 y2 R2 D' R U2 R' D R2 U R' U R",
+     "U2 f R' F' R U2 R U2 R' U2 S'"
+    ],
+    "recognition": "Sune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: adjacent colours; Back: top colour on right corner; Left: top colour on right corner"
+   },
+   {
+    "id": "S4",
+    "name": "Sune 4",
+    "group": "Sune",
+    "algs": [
+     "y' R U R' U R U' R D R' U' R D' R2",
+     "R U R' U' R' F R F' r U R' U R U2 r'",
+     "y' F R' U2 R F' R' F U2 F' R",
+     "L F' U2 F L' F' L U2 L' F"
+    ],
+    "recognition": "Sune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: top colour on right corner; Back: top colour on right corner; Left: opposite colours"
+   },
+   {
+    "id": "S5",
+    "name": "Sune 5",
+    "group": "Sune",
+    "algs": [
+     "R U' L' U R' U' L",
+     "R U' r' F R' F' r",
+     "l F' L' F l' U' L",
+     "r U' r' F R' F' r U M"
+    ],
+    "recognition": "Sune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: top colour on right corner; Back: top colour on right corner; Left: adjacent colours"
+   },
+   {
+    "id": "S6",
+    "name": "Sune 6",
+    "group": "Sune",
+    "algs": [
+     "F' R U2 R' U2 R' F2 R U R U' R' F'",
+     "y2 R U R' F' R U R' U R U2 R' F R U' R'",
+     "y2 R U R' U r' F R F' r U2 R'",
+     "y2 R U R' U L' U R U' L U2 R'"
+    ],
+    "recognition": "Sune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on right corner; Right: top colour on right corner; Back: top colour on right corner; Left: adjacent colours"
+   },
+   {
+    "id": "AS1",
+    "name": "Antisune 1",
+    "group": "Antisune",
+    "algs": [
+     "L' U' L U' L' U2 L",
+     "y' R U2 R' U' R U' R'",
+     "y2 R' U' R U' R' U2 R",
+     "U2 y R U2 R' U' R U' R'",
+     "U2 R' U' R U' R' U2 R",
+     "U2 y2 L' U' L U' L' U2 L",
+     "U2 y' L U2 L' U' L U' L'"
+    ],
+    "recognition": "Antisune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on left corner; Right: adjacent colours; Back: top colour on left corner; Left: top colour on left corner"
+   },
+   {
+    "id": "AS2",
+    "name": "Antisune 2",
+    "group": "Antisune",
+    "algs": [
+     "R' U2 F' R U R' U' R' F R2 U R' U R",
+     "R2 D R' U R D' R' U R' U' R U' R'",
+     "U2 y2 R2 D R' U R D' R' U R' U' R U' R'",
+     "U2 y R' U' R U' R' U R' D' R U R' D R2",
+     "R2 D R' U R D' R' U R' U' R U' R'",
+     "U2 R U R' f' U' R U2 R' U' R U' R' f R U' R'"
+    ],
+    "recognition": "Antisune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on left corner; Right: opposite colours; Back: top colour on left corner; Left: top colour on left corner"
+   },
+   {
+    "id": "AS3",
+    "name": "Antisune 3",
+    "group": "Antisune",
+    "algs": [
+     "R2 D R' U2 R D' R2 U' R U' R'",
+     "y2 R U R' F' R U2 R' U2 R' F R2 U' R'",
+     "U2 y2 R2 D R' U2 R D' R2 U' R U' R'",
+     "U2 R' U' F' R U R' U' R' F R2 U' R' U R",
+     "U2 y2 M F' r U R' U2 r' F2 r",
+     "f' L F L' U2 L' U2 L U2 S"
+    ],
+    "recognition": "Antisune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on left corner; Right: adjacent colours; Back: top colour on left corner; Left: top colour on left corner"
+   },
+   {
+    "id": "AS4",
+    "name": "Antisune 4",
+    "group": "Antisune",
+    "algs": [
+     "R' U' R U' R2 D' R U2 R' D R2",
+     "R U2 R' U2 L' U R U' R' L",
+     "U2 y2 R' U' R U' R2 D' R U2 R' D R2",
+     "U2 y2 R U2 R' U2 r' F R F' M'",
+     "U2 R' U' R U R' F R U R' U' R' F' R2",
+     "U2 y2 R U2 R' U2 L' U R U' R' L"
+    ],
+    "recognition": "Antisune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on left corner; Right: opposite colours; Back: top colour on left corner; Left: top colour on left corner"
+   },
+   {
+    "id": "AS5",
+    "name": "Antisune 5",
+    "group": "Antisune",
+    "algs": [
+     "L' U R U' L U R'",
+     "U2 y2 r' F R F' r U R'",
+     "U2 R' U L U' R U L'",
+     "U2 y2 L' U R U' L U R'",
+     "R' F R F' r U R' U' M"
+    ],
+    "recognition": "Antisune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on left corner; Right: adjacent colours; Back: top colour on left corner; Left: top colour on left corner"
+   },
+   {
+    "id": "AS6",
+    "name": "Antisune 6",
+    "group": "Antisune",
+    "algs": [
+     "y2 R U' R' U2 R U' R' U2 R' D' R U R' D R",
+     "U2 R U' R' U2 R U' R' U2 R' D' R U R' D R",
+     "U2 R U2 r' F R' F' r U' R U' R'",
+     "U2 R U R' F' R U2 R' U' R U' R' F R U' R'",
+     "U2 y2 L U2 R' U L' U' R U' L U' L'"
+    ],
+    "recognition": "Antisune OCLL shape on top. Corner side stickers (held for the main alg): Front: top colour on left corner; Right: adjacent colours; Back: top colour on left corner; Left: top colour on left corner"
+   },
+   {
+    "id": "O1",
+    "name": "O Adjacent swap",
+    "group": "O",
+    "algs": [
+     "R U R' U' R' F R2 U' R' U' R U R' F'"
+    ],
+    "recognition": "All four corners already show the top colour. Front: adjacent colours; Right: opposite colours; Back: adjacent colours; Left: headlights (matching corner stickers). Solved with a corner-swapping PLL (T perm) since edges are free to move."
+   },
+   {
+    "id": "O2",
+    "name": "O Diagonal swap",
+    "group": "O",
+    "algs": [
+     "F R U' R' U' R U R' F' R U R' U' R' F R F'",
+     "F R' F R2 U' R' U' R U R' F' R U R' U' F'"
+    ],
+    "recognition": "All four corners already show the top colour. Front: opposite colours; Right: opposite colours; Back: opposite colours; Left: opposite colours. Solved with a corner-swapping PLL (Y perm) since edges are free to move."
+   }
+  ]
+ },
+ {
+  "id": "WV",
+  "name": "Winter Variation",
+  "description": "Insert the last pair with R U' R' while orienting every last-layer corner. 27 cases, edges must already be oriented.",
+  "cases": [
+   {
+    "id": "WV01",
+    "name": "Oriented",
+    "group": "3 Corners",
+    "algs": [
+     "L' U2 R U R' U2 L",
+     "L' U2 R U R' U2 L",
+     "U' L' U2 R U2 R' U2 L",
+     "U' f' L U L' U' L' f",
+     "R' D' R U R' D R U' R U' R'"
+    ],
+    "recognition": "J Perm group '3 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing up; back-left corner: top colour facing up. Plain R U' R' insert would give the L OCLL case."
+   },
+   {
+    "id": "WV02",
+    "name": "Rectangle #1",
+    "group": "2 Corners",
+    "algs": [
+     "R U' R'",
+     "R U' R'",
+     "l F' l'"
+    ],
+    "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing up; back-left corner: top colour facing up. Plain R U' R' insert would give the O OCLL case."
+   },
+   {
+    "id": "WV03",
+    "name": "Rectangle #2",
+    "group": "2 Corners",
+    "algs": [
+     "U' R' F R U R U' R' F'",
+     "U' R' F R U R U' R' F'",
+     "U2 L U' R U L' U R'",
+     "R U' R' U F R' F' r U R U' r'",
+     "U2 R2 U R2 U' R' U2 R U2 R' U2 R2"
+    ],
+    "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing up; back-left corner: top colour facing up. Plain R U' R' insert would give the L OCLL case."
+   },
+   {
+    "id": "WV04",
+    "name": "Snake #1",
+    "group": "2 Corners",
+    "algs": [
+     "R2 D R' U' R D' R2",
+     "R2 D R' U' R D' R2",
+     "U R' D' R U' R' D R2 U' R'",
+     "U R U' R' L' U2 R U R' U2 L",
+     "R U R' U' R U' R2 U2 R U R' U R"
+    ],
+    "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing right; back-left corner: top colour facing up. Plain R U' R' insert would give the T OCLL case."
+   },
+   {
+    "id": "WV05",
+    "name": "Snake #2",
+    "group": "2 Corners",
+    "algs": [
+     "R U' R' U R' U' R U' R' U2 R",
+     "R U' R' U R' U' R U' R' U2 R",
+     "R U' R' U2 R U2 R' U' R U' R'",
+     "R U R' U' R U R D R' U2 R D' R2"
+    ],
+    "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing back; back-left corner: top colour facing up. Plain R U' R' insert would give the Antisune OCLL case."
+   },
+   {
+    "id": "WV06",
+    "name": "Tank #1",
+    "group": "2 Corners",
+    "algs": [
+     "U' R U' R' U2 R U' R' U2 R U R'",
+     "U' R U' R' U2 R U' R' U2 R U R'",
+     "U2 R' D' R U2 R' D R2 U' R'",
+     "R U' R' U' R2 D R' U2 R D' R' U2 R'"
+    ],
+    "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing up; back-left corner: top colour facing back. Plain R U' R' insert would give the U OCLL case."
+   },
+   {
+    "id": "WV07",
+    "name": "Tank #2",
+    "group": "2 Corners",
+    "algs": [
+     "R U R' U' R U' R'",
+     "R U R' U' R U' R'",
+     "U' R' U' R U R U' R' U' R' U R"
+    ],
+    "recognition": "J Perm group '2 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing up; back-left corner: top colour facing left. Plain R U' R' insert would give the Antisune OCLL case."
+   },
+   {
+    "id": "WV08",
+    "name": "Gun (Near)",
+    "group": "1 Corner",
+    "algs": [
+     "U R U' R' U R U2 R'",
+     "U R U' R' U R U2 R'",
+     "U R U L' U R' U' L"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing right; back-left corner: top colour facing back. Plain R U' R' insert would give the H OCLL case."
+   },
+   {
+    "id": "WV09",
+    "name": "Gun (Sides)",
+    "group": "1 Corner",
+    "algs": [
+     "R U' R' U R U2 R2 U' R2 U' R2 U2 R",
+     "U F' R U2 R' U2 R' F R",
+     "U L' R U R' U' R U R' U' L U' R U' R'",
+     "U F2 R U2 R' U2 R' F2 R"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing right; back-left corner: top colour facing left. Plain R U' R' insert would give the Pi OCLL case."
+   },
+   {
+    "id": "WV10",
+    "name": "Gun (Back)",
+    "group": "1 Corner",
+    "algs": [
+     "R U R2 U' R2 U' R2 U2 R",
+     "R U R2 U' R2 U' R2 U2 R",
+     "U' R' U2 R U R' U R2 U2 R'",
+     "U' R' F R2 U R' U' R U R' U' F'",
+     "U F2 L' U L U L' U' L F2"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing back; back-left corner: top colour facing back. Plain R U' R' insert would give the Pi OCLL case."
+   },
+   {
+    "id": "WV11",
+    "name": "Gun (Far)",
+    "group": "1 Corner",
+    "algs": [
+     "U R' U' R2 U' R2 U2 R",
+     "U R' U' R2 U' R2 U2 R",
+     "R U' R' L' U' L U' L' U2 L",
+     "R U' R' U' R U2 R' U' R U' R'",
+     "R U R' U' R U R' U2 R' F R U R U' R' F'"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing up; back-right corner: top colour facing back; back-left corner: top colour facing left. Plain R U' R' insert would give the Antisune OCLL case."
+   },
+   {
+    "id": "WV12",
+    "name": "Bowtie #1",
+    "group": "1 Corner",
+    "algs": [
+     "U' R' F2 R F2 U L' U L",
+     "U' R' F2 R F2 U L' U L",
+     "R U' R2 U' R' D' R U R' D R2",
+     "R U' R' U' l' U' L U R U' r' F"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing up; back-left corner: top colour facing back. Plain R U' R' insert would give the T OCLL case."
+   },
+   {
+    "id": "WV13",
+    "name": "Bowtie #2",
+    "group": "1 Corner",
+    "algs": [
+     "U R U2 R2 U' R U' R' U2 R",
+     "U R U2 R2 U' R U' R' U2 R",
+     "U' R' F R F' R' U' F' U F R",
+     "R U' R D R' U2 R D' R' U2 R'",
+     "U' R2 D R' U' R D' R2 U R U' R'"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing up; back-left corner: top colour facing left. Plain R U' R' insert would give the U OCLL case."
+   },
+   {
+    "id": "WV14",
+    "name": "Bowtie #3",
+    "group": "1 Corner",
+    "algs": [
+     "U R2 D R' U2 R D' R2",
+     "U R2 D R' U2 R D' R2",
+     "U' M' U2 R' F R F' R U2 r'",
+     "U L' U R U' L U2 R'",
+     "R U' R' U2 R U R' U R U2 R'"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing up; back-left corner: top colour facing back. Plain R U' R' insert would give the Sune OCLL case."
+   },
+   {
+    "id": "WV15",
+    "name": "Bowtie #4",
+    "group": "1 Corner",
+    "algs": [
+     "U' L' U R U' R' L",
+     "U' L' U R U' R' L",
+     "U' r' F R F' M'",
+     "U' R' U R U2 R U2 R' U R' U2 R"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing up; back-left corner: top colour facing left. Plain R U' R' insert would give the T OCLL case."
+   },
+   {
+    "id": "WV16",
+    "name": "Adjacent #1",
+    "group": "1 Corner",
+    "algs": [
+     "U R U' R' U' R' F R U R U' R' F'",
+     "R' D' R U R' D R2 U2 R'",
+     "U R U' R' U' R' F R U R U' R' F'",
+     "R U' R' U' R2 D' R U2 R' D R U2 R",
+     "U L' R U R' U' L R U2 R'"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing right; back-left corner: top colour facing up. Plain R U' R' insert would give the U OCLL case."
+   },
+   {
+    "id": "WV17",
+    "name": "Adjacent #3",
+    "group": "1 Corner",
+    "algs": [
+     "U' R' F' R U2 R U2 R' F",
+     "U' R' F' R U2 R U2 R' F",
+     "R U' R' l' U' L U l F' L' F",
+     "L' U2 R U' R' U2 L U R U' R'"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing back; back-left corner: top colour facing up. Plain R U' R' insert would give the T OCLL case."
+   },
+   {
+    "id": "WV18",
+    "name": "Adjacent #2",
+    "group": "1 Corner",
+    "algs": [
+     "U R U2 R'",
+     "U R U2 R'",
+     "U l F2 l'",
+     "U R U2 R'"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing right; back-left corner: top colour facing up. Plain R U' R' insert would give the Sune OCLL case."
+   },
+   {
+    "id": "WV19",
+    "name": "Adjacent #4",
+    "group": "1 Corner",
+    "algs": [
+     "R U' R D' R U2 R' D R U2 R",
+     "U' R' F2 R2 U' R' U' R U R' F2",
+     "L' U2 R U' R' U' R U' R' L",
+     "U L' U R U' R' L U' R U' R'",
+     "R U' R D' R U2 R' D R U2 R"
+    ],
+    "recognition": "J Perm group '1 Corner' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing back; back-left corner: top colour facing up. Plain R U' R' insert would give the U OCLL case."
+   },
+   {
+    "id": "WV20",
+    "name": "Sune #1",
+    "group": "0 Corners",
+    "algs": [
+     "R U' R' U' R U R' U R U2 R'",
+     "R U' R' U' R U R' U R U2 R'",
+     "U R U' R' U R U' R' U' R' F R U R U' R' F'",
+     "L' U2 L R U R' U L' U L",
+     "R U R' U' R U R2 U' R2 U' R2 U2 R"
+    ],
+    "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing right; back-left corner: top colour facing back. Plain R U' R' insert would give the Sune OCLL case."
+   },
+   {
+    "id": "WV21",
+    "name": "Pi (Far)",
+    "group": "0 Corners",
+    "algs": [
+     "R U' R2 U2 R U R' U R",
+     "R U' R2 U2 R U R' U R",
+     "U R U' R D R' U' R D' R2",
+     "R U' R' U R U R' U R U2 R'"
+    ],
+    "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing right; back-left corner: top colour facing back. Plain R U' R' insert would give the Sune OCLL case."
+   },
+   {
+    "id": "WV22",
+    "name": "Pi (Back)",
+    "group": "0 Corners",
+    "algs": [
+     "R2 D R' U R D' R' U2 R'",
+     "R U R D R' U2 R D' R2",
+     "R2 D R' U R D' R' U2 R'",
+     "R U' R' F R' F' r U R U' r'",
+     "U R U2 R' U R' U' R U' R' U2 R"
+    ],
+    "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing right; back-left corner: top colour facing left. Plain R U' R' insert would give the L OCLL case."
+   },
+   {
+    "id": "WV23",
+    "name": "H (Front)",
+    "group": "0 Corners",
+    "algs": [
+     "U R' U L U' R2 U L' U R'",
+     "R U' R' U2 R U2 R2 U' R2 U' R2 U2 R",
+     "U' R2 U R' U R' U' R U R U2 R2",
+     "U R U2 R D' R U2 R' D R U2 R",
+     "F' L U2 L2 U' L2 U' L' U F",
+     "U R' D' R U' R' D R2 U' R2 U' R U' R' U2 R"
+    ],
+    "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing right; back-left corner: top colour facing left. Plain R U' R' insert would give the Pi OCLL case."
+   },
+   {
+    "id": "WV24",
+    "name": "H (Side)",
+    "group": "0 Corners",
+    "algs": [
+     "U R U' R' U R U' R' U R U2 R'",
+     "U R U' R' U R U' R' U R U2 R'",
+     "R U' R' U' F' r U R' U' r' F R",
+     "R U R' U' R U R' U' R U R' U' R U' R'"
+    ],
+    "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing back; back-left corner: top colour facing back. Plain R U' R' insert would give the L OCLL case."
+   },
+   {
+    "id": "WV25",
+    "name": "Pi (Front)",
+    "group": "0 Corners",
+    "algs": [
+     "U R U2 R2 U2 R U R' U R",
+     "U R U2 R2 U2 R U R' U R",
+     "U R U2 R' U R U R' U R U2 R'",
+     "U R U' R' U R U' R D R' U' R D' R2",
+     "R U' R' U' R' U2 R2 U R2 U R2 U2 R'"
+    ],
+    "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing back; back-left corner: top colour facing back. Plain R U' R' insert would give the Pi OCLL case."
+   },
+   {
+    "id": "WV26",
+    "name": "Pi (Near)",
+    "group": "0 Corners",
+    "algs": [
+     "R U' R2 U' R U' R' U2 R",
+     "R U' R2 U' R U' R' U2 R",
+     "R U R' U F2 L' U L U' L' U' L F2",
+     "R' D' R U' R' D R2 U' r' l' U R U' R' L",
+     "R U' R' U R U2 R' U' R U' R'"
+    ],
+    "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing front; back-right corner: top colour facing back; back-left corner: top colour facing left. Plain R U' R' insert would give the Antisune OCLL case."
+   },
+   {
+    "id": "WV27",
+    "name": "Sune #2",
+    "group": "0 Corners",
+    "algs": [
+     "R U R' U' R U R' U' R U' R'",
+     "R U R' U' R U R' U' R U' R'",
+     "R U' R' F R U R' U' R U R' U' R U R' U' F'",
+     "R U' R' U' R U R' U R U' R' U R U2 R'",
+     "R U' R' U R' U' R U' R' U R U' R' U2 R"
+    ],
+    "recognition": "J Perm group '0 Corners' (number of LL corners already showing top colour before insertion). pair corner at front-left with D-colour facing left; front-right corner: top colour facing right; back-right corner: top colour facing back; back-left corner: top colour facing left. Plain R U' R' insert would give the H OCLL case."
+   }
+  ]
+ }
+]

@@ -1,0 +1,1038 @@
+{
+  "set": "PLL",
+  "notation": "WCA/SiGN: R U F L D B, ' and 2; wide moves lowercase (r, l, f, u...); slices M E S; rotations x y z",
+  "field_notes": {
+    "pattern": "Sticker map of the case exactly as held before executing algs[0] (computed by simulation). OLL: \"top\" is 9 chars, rows back->front, columns left->right; X = U-colour sticker. front/right/back/left are the 3 top-layer stickers of that side read left-to-right as you face that side. PLL: letters are the home face of each sticker colour (F,R,B,L), same reading order.",
+    "mirror_of": "Case solved by the left-right mirror (R<->L) of algs[0], computed by simulation.",
+    "inverse_of": "Case solved by the inverse of algs[0], computed by simulation. For OLL this is alg-specific (a different alg for the same case can invert to a different OLL); for PLL it is case-level.",
+    "alg_details": "Per-alg provenance; speedcubedb_votes = community votes on the SpeedCubeDB category page at fetch time (2026-10-28).",
+    "verification": "Every alg was simulated: it solves exactly this case (matched against SpeedCubeDB's setup scramble for the case, up to AUF), preserves F2L, and (PLL) preserves LL orientation. Parentheses from sources were stripped; no other edits. Case identity was cross-checked three ways: J Perm algs, SpeedCubeDB setups/algs, and every alg in Feliks Zemdegs' CubeSkills PDFs (all 78 cases agree)."
+  },
+  "two_look_steps": {
+    "source": "https://jperm.net/algs/2look/pll",
+    "step1_corners": [
+      {
+        "name": "Headlights / adjacent corner swap",
+        "alg": "R U R' U' R' F R2 U' R' U' R U R' F'",
+        "note": "T-perm; hold headlights on the left"
+      },
+      {
+        "name": "Diagonal corner swap",
+        "alg": "F R U' R' U' R U R' F' R U R' U' R' F R F'",
+        "note": "Y-perm"
+      }
+    ],
+    "step2_edges": [
+      "H",
+      "Z",
+      "Ua",
+      "Ub"
+    ]
+  },
+  "cases": [
+    {
+      "id": "Aa",
+      "name": "Aa-perm",
+      "group": "Corners only",
+      "probability": "1/18",
+      "algs": [
+        "x R' U R' D2 R U' R' D2 R2 x'",
+        "l' U R' D2 R U' R' D2 R2 x'",
+        "y x' R2 D2 R' U' R D2 R' U R' x"
+      ],
+      "recognition": "Corners only (3-cycle). Edges solved relative to each other; exactly one set of headlights plus a 1x2x2 block (corner with both edges). Headlights at the back: block at front-left = Aa. As held for algs[0]: Side features: front: 2-block on left; right: three colours, corners adjacent; back: headlights (adjacent-colour edge); left: 2-block on right.",
+      "two_look": false,
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/PLL/Aa",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Ab",
+      "inverse_of": "Ab",
+      "pattern": {
+        "front": "FFB",
+        "right": "LRF",
+        "back": "RBR",
+        "left": "BLL"
+      },
+      "alg_details": [
+        {
+          "alg": "x R' U R' D2 R U' R' D2 R2 x'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 203
+        },
+        {
+          "alg": "l' U R' D2 R U' R' D2 R2 x'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 43
+        },
+        {
+          "alg": "y x' R2 D2 R' U' R D2 R' U R' x",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 43
+        }
+      ]
+    },
+    {
+      "id": "Ab",
+      "name": "Ab-perm",
+      "group": "Corners only",
+      "probability": "1/18",
+      "algs": [
+        "x R2 D2 R U R' D2 R U' R x'",
+        "y x' R U' R D2 R' U R D2 R2 x",
+        "R' B' R U' R D R' U R D' R2 B R"
+      ],
+      "recognition": "Corners only (3-cycle). Exactly one set of headlights plus a 1x2x2 block. Headlights at the back: block at front-right = Ab. As held for algs[0]: Side features: front: 2-block on left; right: headlights (adjacent-colour edge); back: three colours, corners adjacent; left: 2-block on right.",
+      "two_look": false,
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/PLL/Ab",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Aa",
+      "inverse_of": "Aa",
+      "pattern": {
+        "front": "FFR",
+        "right": "BRB",
+        "back": "LBF",
+        "left": "RLL"
+      },
+      "alg_details": [
+        {
+          "alg": "x R2 D2 R U R' D2 R U' R x'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 164
+        },
+        {
+          "alg": "y x' R U' R D2 R' U R D2 R2 x",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 25
+        },
+        {
+          "alg": "R' B' R U' R D R' U R D' R2 B R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 18
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "name": "E-perm",
+      "group": "Corners only",
+      "probability": "1/36",
+      "algs": [
+        "y x' R U' R' D R U R' D' R U R' D R U' R' D' x",
+        "y R' U' R' D' R U' R' D R U R' D' R U R' D R2",
+        "R2 U F' R' U R U' R' U R U' R' U R U' F U' R2"
+      ],
+      "recognition": "Corners only (two diagonal swaps). No headlights, no blocks, no bars; on every side the two corner stickers are opposite colours. As held for algs[0]: Side features: front: three colours, corners opposite; right: three colours, corners opposite; back: three colours, corners opposite; left: three colours, corners opposite.",
+      "two_look": false,
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/PLL/E",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "E",
+      "inverse_of": "E",
+      "pattern": {
+        "front": "RFL",
+        "right": "FRB",
+        "back": "LBR",
+        "left": "BLF"
+      },
+      "alg_details": [
+        {
+          "alg": "y x' R U' R' D R U R' D' R U R' D R U' R' D' x",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 166
+        },
+        {
+          "alg": "y R' U' R' D' R U' R' D R U R' D' R U R' D R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 52
+        },
+        {
+          "alg": "R2 U F' R' U R U' R' U R U' R' U R U' F U' R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 33
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "name": "F-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R",
+        "y R' F R f' R' F R2 U R' U' R' F' R2 U R' S",
+        "R' U R U' R2 F' U' F U R F R' F' R2",
+        "y R2 F R F' R' U' F' U F R2 U R' U' R"
+      ],
+      "recognition": "One full 3-bar; the opposite side shows three different colours with opposite-coloured corners; no headlights and no other blocks. As held for algs[0]: Side features: front: three colours, corners adjacent; right: three colours, corners opposite; back: three colours, corners adjacent; left: 3-bar.",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/F",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "F",
+      "inverse_of": "F",
+      "pattern": {
+        "front": "FBR",
+        "right": "BRF",
+        "back": "RFB",
+        "left": "LLL"
+      },
+      "alg_details": [
+        {
+          "alg": "R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 194
+        },
+        {
+          "alg": "y R' F R f' R' F R2 U R' U' R' F' R2 U R' S",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 55
+        },
+        {
+          "alg": "R' U R U' R2 F' U' F U R F R' F' R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 42
+        },
+        {
+          "alg": "y R2 F R F' R' U' F' U F R2 U R' U' R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 16
+        }
+      ]
+    },
+    {
+      "id": "Ga",
+      "name": "Ga-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "R2 U R' U R' U' R U' R2 D U' R' U R D'",
+        "R2 u R' U R' U' R u' R2 F' U F",
+        "D' R2 U R' U R' U' R U' R2 U' D R' U R"
+      ],
+      "recognition": "G perm: one set of headlights and a 2-block that does NOT touch the headlights side; no full bars. As held for algs[0]: Side features: front: 2-block on right; right: three colours, corners opposite; back: three colours, corners adjacent; left: headlights (adjacent-colour edge).",
+      "two_look": false,
+      "sources": [
+        "https://www.speedcubedb.com/a/3x3/PLL/Ga",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Gc",
+      "inverse_of": "Gb",
+      "pattern": {
+        "front": "FRR",
+        "right": "BLF",
+        "back": "RFB",
+        "left": "LBL"
+      },
+      "alg_details": [
+        {
+          "alg": "R2 U R' U R' U' R U' R2 D U' R' U R D'",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 119
+        },
+        {
+          "alg": "R2 u R' U R' U' R u' R2 F' U F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 22
+        },
+        {
+          "alg": "D' R2 U R' U R' U' R U' R2 U' D R' U R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 11
+        }
+      ]
+    },
+    {
+      "id": "Gb",
+      "name": "Gb-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "D R' U' R U D' R2 U R' U R U' R U' R2",
+        "R' U' R U D' R2 U R' U R U' R U' R2 D",
+        "y F' U' F R2 u R' U R U' R u' R2",
+        "R' d' F R2 u R' U R U' R u' R2"
+      ],
+      "recognition": "G perm: one set of headlights and a 2-block that does NOT touch the headlights side; no full bars. As held for algs[0]: Side features: front: three colours, corners adjacent; right: 2-block on right; back: three colours, corners adjacent; left: headlights (opposite-colour edge).",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Gb",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Gd",
+      "inverse_of": "Ga",
+      "pattern": {
+        "front": "FBR",
+        "right": "BFF",
+        "back": "RLB",
+        "left": "LRL"
+      },
+      "alg_details": [
+        {
+          "alg": "D R' U' R U D' R2 U R' U R U' R U' R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 144
+        },
+        {
+          "alg": "R' U' R U D' R2 U R' U R U' R U' R2 D",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 112
+        },
+        {
+          "alg": "y F' U' F R2 u R' U R U' R u' R2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 58
+        },
+        {
+          "alg": "R' d' F R2 u R' U R U' R u' R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 39
+        }
+      ]
+    },
+    {
+      "id": "Gc",
+      "name": "Gc-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "R2 U' R U' R U R' U R2 D' U R U' R' D",
+        "y2 R2 F2 R U2 R U2 R' F R U R' U' R' F R2",
+        "D R2 U' R U' R U R' U R2 D' U R U' R'",
+        "R2 u' R U' R U R' u R2 f R' f'"
+      ],
+      "recognition": "G perm: one set of headlights and a 2-block that does NOT touch the headlights side; no full bars. As held for algs[0]: Side features: front: three colours, corners adjacent; right: three colours, corners opposite; back: 2-block on left; left: headlights (adjacent-colour edge).",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Gc",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Ga",
+      "inverse_of": "Gd",
+      "pattern": {
+        "front": "FBR",
+        "right": "BLF",
+        "back": "RRB",
+        "left": "LFL"
+      },
+      "alg_details": [
+        {
+          "alg": "R2 U' R U' R U R' U R2 D' U R U' R' D",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 99
+        },
+        {
+          "alg": "y2 R2 F2 R U2 R U2 R' F R U R' U' R' F R2",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 91
+        },
+        {
+          "alg": "D R2 U' R U' R U R' U R2 D' U R U' R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 75
+        },
+        {
+          "alg": "R2 u' R U' R U R' u R2 f R' f'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 25
+        }
+      ]
+    },
+    {
+      "id": "Gd",
+      "name": "Gd-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "R U R' U' D R2 U' R U' R' U R' U R2 D'",
+        "D' R U R' U' D R2 U' R U' R' U R' U R2",
+        "y R2 F' R U R U' R' F' R U2 R' U2 R' F2 R2"
+      ],
+      "recognition": "G perm: one set of headlights and a 2-block that does NOT touch the headlights side; no full bars. As held for algs[0]: Side features: front: three colours, corners adjacent; right: 2-block on left; back: three colours, corners adjacent; left: headlights (opposite-colour edge).",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Gd",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Gb",
+      "inverse_of": "Gc",
+      "pattern": {
+        "front": "FLR",
+        "right": "BBF",
+        "back": "RFB",
+        "left": "LRL"
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U' D R2 U' R U' R' U R' U R2 D'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 108
+        },
+        {
+          "alg": "D' R U R' U' D R2 U' R U' R' U R' U R2",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 35
+        },
+        {
+          "alg": "y R2 F' R U R U' R' F' R U2 R' U2 R' F2 R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 14
+        }
+      ]
+    },
+    {
+      "id": "H",
+      "name": "H-perm",
+      "group": "Edges only",
+      "probability": "1/72",
+      "algs": [
+        "M2 U M2 U2 M2 U M2",
+        "M2 U' M2 U2 M2 U' M2",
+        "R2 S2 R2 U' R2 S2 R2",
+        "M2 U2 M2 U M2 U2 M2"
+      ],
+      "recognition": "Edges only. Headlights on all four sides; each edge is the opposite colour of its headlights. As held for algs[0]: Side features: front: headlights (opposite-colour edge); right: headlights (opposite-colour edge); back: headlights (opposite-colour edge); left: headlights (opposite-colour edge).",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/H",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "H",
+      "inverse_of": "H",
+      "pattern": {
+        "front": "FBF",
+        "right": "RLR",
+        "back": "BFB",
+        "left": "LRL"
+      },
+      "alg_details": [
+        {
+          "alg": "M2 U M2 U2 M2 U M2",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 142
+        },
+        {
+          "alg": "M2 U' M2 U2 M2 U' M2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 140
+        },
+        {
+          "alg": "R2 S2 R2 U' R2 S2 R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 17
+        },
+        {
+          "alg": "M2 U2 M2 U M2 U2 M2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 15
+        }
+      ]
+    },
+    {
+      "id": "Ja",
+      "name": "Ja-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "y2 x R2 F R F' R U2 r' U r U2 x'",
+        "L' U' L F L' U' L U L F' L2 U L",
+        "y R' U L' U2 R U' R' U2 R L",
+        "R U' L' U R' U2 L U' L' U2 L"
+      ],
+      "recognition": "1x2x3 block: a full 3-bar plus a 2-block on an adjacent side touching it. Mirror of Jb. As held for algs[0]: Side features: front: 2-block on left; right: 3-bar; back: 2-block on left; left: 2-block on left.",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Ja",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Jb",
+      "inverse_of": "Ja",
+      "pattern": {
+        "front": "LLF",
+        "right": "RRR",
+        "back": "BBL",
+        "left": "FFB"
+      },
+      "alg_details": [
+        {
+          "alg": "y2 x R2 F R F' R U2 r' U r U2 x'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 149
+        },
+        {
+          "alg": "L' U' L F L' U' L U L F' L2 U L",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 68
+        },
+        {
+          "alg": "y R' U L' U2 R U' R' U2 R L",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 67
+        },
+        {
+          "alg": "R U' L' U R' U2 L U' L' U2 L",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 24
+        }
+      ]
+    },
+    {
+      "id": "Jb",
+      "name": "Jb-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "R U R' F' R U R' U' R' F R2 U' R'",
+        "R U2 R' U' R U2 L' U R' U' L",
+        "r' F R F' r U2 R' U R U2 R'",
+        "L' U R U' L U2 R' U R U2 R'"
+      ],
+      "recognition": "1x2x3 block: a full 3-bar plus a 2-block on an adjacent side touching it. Mirror of Ja. As held for algs[0]: Side features: front: 2-block on right; right: 2-block on right; back: 2-block on right; left: 3-bar.",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Jb",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Ja",
+      "inverse_of": "Jb",
+      "pattern": {
+        "front": "LFF",
+        "right": "RLL",
+        "back": "FRR",
+        "left": "BBB"
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' F' R U R' U' R' F R2 U' R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 212
+        },
+        {
+          "alg": "R U2 R' U' R U2 L' U R' U' L",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 13
+        },
+        {
+          "alg": "r' F R F' r U2 R' U R U2 R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 8
+        },
+        {
+          "alg": "L' U R U' L U2 R' U R U2 R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 7
+        }
+      ]
+    },
+    {
+      "id": "Na",
+      "name": "Na-perm",
+      "group": "Diagonal corner swap",
+      "probability": "1/72",
+      "algs": [
+        "R U R' U R U R' F' R U R' U' R' F R2 U' R' U2 R U' R'",
+        "F' R U R' U' R' F R2 F U' R' U' R U F' R'",
+        "R F U' R' U R U F' R2 F' R U R U' R' F",
+        "r' D r U2 r' D r U2 r' D r U2 r' D r U2 r' D r"
+      ],
+      "recognition": "Every side shows a 2-block plus a lone corner; the 2-block is on the RIGHT of each side as you face it. Mirror of Nb. As held for algs[0]: Side features: front: 2-block on right; right: 2-block on right; back: 2-block on right; left: 2-block on right.",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Na",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Nb",
+      "inverse_of": "Na",
+      "pattern": {
+        "front": "BFF",
+        "right": "RLL",
+        "back": "FBB",
+        "left": "LRR"
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U R U R' F' R U R' U' R' F R2 U' R' U2 R U' R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 154
+        },
+        {
+          "alg": "F' R U R' U' R' F R2 F U' R' U' R U F' R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 62
+        },
+        {
+          "alg": "R F U' R' U R U F' R2 F' R U R U' R' F",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 39
+        },
+        {
+          "alg": "r' D r U2 r' D r U2 r' D r U2 r' D r U2 r' D r",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 32
+        }
+      ]
+    },
+    {
+      "id": "Nb",
+      "name": "Nb-perm",
+      "group": "Diagonal corner swap",
+      "probability": "1/72",
+      "algs": [
+        "R' U R U' R' F' U' F R U R' F R' F' R U' R",
+        "r' D' F r U' r' F' D r2 U r' U' r' F r F'",
+        "R' U L' U2 R U' L R' U L' U2 R U' L",
+        "R' U R U' R' F' U' F R U R' U' R U' f R f'"
+      ],
+      "recognition": "Every side shows a 2-block plus a lone corner; the 2-block is on the LEFT of each side as you face it. Mirror of Na. As held for algs[0]: Side features: front: 2-block on left; right: 2-block on left; back: 2-block on left; left: 2-block on left.",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Nb",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Na",
+      "inverse_of": "Nb",
+      "pattern": {
+        "front": "FFB",
+        "right": "LLR",
+        "back": "BBF",
+        "left": "RRL"
+      },
+      "alg_details": [
+        {
+          "alg": "R' U R U' R' F' U' F R U R' F R' F' R U' R",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 125
+        },
+        {
+          "alg": "r' D' F r U' r' F' D r2 U r' U' r' F r F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 111
+        },
+        {
+          "alg": "R' U L' U2 R U' L R' U L' U2 R U' L",
+          "source": "SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 34
+        },
+        {
+          "alg": "R' U R U' R' F' U' F R U R' U' R U' f R f'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 23
+        }
+      ]
+    },
+    {
+      "id": "Ra",
+      "name": "Ra-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "R U' R' U' R U R D R' U' R D' R' U2 R'",
+        "R U R' F' R U2 R' U2 R' F R U R U2 R'",
+        "L U2 L' U2 L F' L' U' L U L F L2",
+        "y R U' R' U' R U R' U R' D' R U' R' D R2 U R'"
+      ],
+      "recognition": "Headlights on one side and a single 2-block on an adjacent side touching the headlights (R perms). Mirror of Rb. As held for algs[0]: Side features: front: 2-block on left; right: three colours, corners opposite; back: three colours, corners adjacent; left: headlights (adjacent-colour edge).",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Ra",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Rb",
+      "inverse_of": "Ra",
+      "pattern": {
+        "front": "LLF",
+        "right": "RFL",
+        "back": "FBR",
+        "left": "BRB"
+      },
+      "alg_details": [
+        {
+          "alg": "R U' R' U' R U R D R' U' R D' R' U2 R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 152
+        },
+        {
+          "alg": "R U R' F' R U2 R' U2 R' F R U R U2 R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 65
+        },
+        {
+          "alg": "L U2 L' U2 L F' L' U' L U L F L2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 31
+        },
+        {
+          "alg": "y R U' R' U' R U R' U R' D' R U' R' D R2 U R'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 18
+        }
+      ]
+    },
+    {
+      "id": "Rb",
+      "name": "Rb-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "R' U2 R U2 R' F R U R' U' R' F' R2",
+        "R2 F R U R U' R' F' R U2 R' U2 R",
+        "R' U2 R' D' R U' R' D R U R U' R' U' R",
+        "y R' U R U R' U' R' D' R U R' D R U2 R"
+      ],
+      "recognition": "Headlights on one side and a single 2-block on an adjacent side touching the headlights (R perms). Mirror of Ra. As held for algs[0]: Side features: front: headlights (adjacent-colour edge); right: three colours, corners adjacent; back: three colours, corners opposite; left: 2-block on right.",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Rb",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Ra",
+      "inverse_of": "Rb",
+      "pattern": {
+        "front": "LFL",
+        "right": "FLR",
+        "back": "BRF",
+        "left": "RBB"
+      },
+      "alg_details": [
+        {
+          "alg": "R' U2 R U2 R' F R U R' U' R' F' R2",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 113
+        },
+        {
+          "alg": "R2 F R U R U' R' F' R U2 R' U2 R",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 77
+        },
+        {
+          "alg": "R' U2 R' D' R U' R' D R U R U' R' U' R",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 51
+        },
+        {
+          "alg": "y R' U R U R' U' R' D' R U R' D R U2 R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 8
+        }
+      ]
+    },
+    {
+      "id": "T",
+      "name": "T-perm",
+      "group": "Adjacent corner swap",
+      "probability": "1/18",
+      "algs": [
+        "R U R' U' R' F R2 U' R' U' R U R' F'",
+        "R U R' U' R' F R2 U' R' U F' L' U L",
+        "R2 u R2 u' R2 F2 u' F2 u F2"
+      ],
+      "recognition": "Headlights on one side, 2-blocks on BOTH adjacent sides touching the headlights; the opposite side shows three colours with the headlights colour in the middle. As held for algs[0]: Side features: front: 2-block on left; right: three colours, corners opposite; back: 2-block on right; left: headlights (opposite-colour edge).",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/T",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "T",
+      "inverse_of": "T",
+      "pattern": {
+        "front": "FFR",
+        "right": "BLF",
+        "back": "RBB",
+        "left": "LRL"
+      },
+      "alg_details": [
+        {
+          "alg": "R U R' U' R' F R2 U' R' U' R U R' F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 224
+        },
+        {
+          "alg": "R U R' U' R' F R2 U' R' U F' L' U L",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 19
+        },
+        {
+          "alg": "R2 u R2 u' R2 F2 u' F2 u F2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 19
+        }
+      ]
+    },
+    {
+      "id": "Ua",
+      "name": "Ua-perm",
+      "group": "Edges only",
+      "probability": "1/18",
+      "algs": [
+        "M2 U M U2 M' U M2",
+        "R U R' U R' U' R2 U' R' U R' U R",
+        "y R2 U' S' U2 S U' R2",
+        "R U' R U R U R U' R' U' R2"
+      ],
+      "recognition": "Edges only. One solved 3-bar, headlights on the other three sides. Bar at the back: if the front edge matches the RIGHT side's headlights it is Ua (edges cycle counter-clockwise seen from above). As held for algs[0]: Side features: front: headlights (adjacent-colour edge); right: headlights (opposite-colour edge); back: 3-bar; left: headlights (adjacent-colour edge).",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Ua",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Ub",
+      "inverse_of": "Ub",
+      "pattern": {
+        "front": "FRF",
+        "right": "RLR",
+        "back": "BBB",
+        "left": "LFL"
+      },
+      "alg_details": [
+        {
+          "alg": "M2 U M U2 M' U M2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 137
+        },
+        {
+          "alg": "R U R' U R' U' R2 U' R' U R' U R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 120
+        },
+        {
+          "alg": "y R2 U' S' U2 S U' R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 81
+        },
+        {
+          "alg": "R U' R U R U R U' R' U' R2",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 72
+        }
+      ]
+    },
+    {
+      "id": "Ub",
+      "name": "Ub-perm",
+      "group": "Edges only",
+      "probability": "1/18",
+      "algs": [
+        "M2 U' M U2 M' U' M2",
+        "R' U R' U' R' U' R' U R U R2",
+        "R2 U R U R' U' R' U' R' U R'"
+      ],
+      "recognition": "Edges only. One solved 3-bar, headlights on the other three sides. Bar at the back: if the front edge matches the LEFT side's headlights it is Ub (clockwise). As held for algs[0]: Side features: front: headlights (adjacent-colour edge); right: headlights (adjacent-colour edge); back: 3-bar; left: headlights (opposite-colour edge).",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Ub",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Ua",
+      "inverse_of": "Ua",
+      "pattern": {
+        "front": "FLF",
+        "right": "RFR",
+        "back": "BBB",
+        "left": "LRL"
+      },
+      "alg_details": [
+        {
+          "alg": "M2 U' M U2 M' U' M2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 131
+        },
+        {
+          "alg": "R' U R' U' R' U' R' U R U R2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 59
+        },
+        {
+          "alg": "R2 U R U R' U' R' U' R' U R'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 43
+        }
+      ]
+    },
+    {
+      "id": "V",
+      "name": "V-perm",
+      "group": "Diagonal corner swap",
+      "probability": "1/18",
+      "algs": [
+        "R' U R' U' R D' R' D R' U D' R2 U' R2 D R2",
+        "R' U R U' R' f' U' R U2 R' U' R U' R' f R",
+        "y R U' R U R' D R D' R U' D R2 U R2 D' R2",
+        "z D' R2 D R2 U R' D' R U' R U R' D R U' z'"
+      ],
+      "recognition": "V perm: a 1x2x2 block (a corner with both its edges); the two sides away from the block each show opposite-coloured corners. No headlights. As held for algs[0]: Side features: front: 2-block on left; right: three colours, corners opposite; back: three colours, corners opposite; left: 2-block on right.",
+      "two_look": false,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/V",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "V",
+      "inverse_of": "V",
+      "pattern": {
+        "front": "FFB",
+        "right": "LBR",
+        "back": "BRF",
+        "left": "RLL"
+      },
+      "alg_details": [
+        {
+          "alg": "R' U R' U' R D' R' D R' U D' R2 U' R2 D R2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 108
+        },
+        {
+          "alg": "R' U R U' R' f' U' R U2 R' U' R U' R' f R",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 96
+        },
+        {
+          "alg": "y R U' R U R' D R D' R U' D R2 U R2 D' R2",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 82
+        },
+        {
+          "alg": "z D' R2 D R2 U R' D' R U' R U R' D R U' z'",
+          "source": "J Perm",
+          "speedcubedb_votes": null
+        }
+      ]
+    },
+    {
+      "id": "Y",
+      "name": "Y-perm",
+      "group": "Diagonal corner swap",
+      "probability": "1/18",
+      "algs": [
+        "F R U' R' U' R U R' F' R U R' U' R' F R F'",
+        "F R' F R2 U' R' U' R U R' F' R U R' U' F'",
+        "R2 U' R2 U' R2 U F U F' R2 F U' F'",
+        "F R' F' R U R U' R2 U' R U R f' U' f"
+      ],
+      "recognition": "Two separate 2-blocks on adjacent sides that do not share a corner; the other two sides show opposite-coloured corners. No headlights, no bars. As held for algs[0]: Side features: front: 2-block on left; right: 2-block on right; back: three colours, corners opposite; left: three colours, corners opposite.",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Y",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Y",
+      "inverse_of": "Y",
+      "pattern": {
+        "front": "FFB",
+        "right": "LRR",
+        "back": "BLF",
+        "left": "RBL"
+      },
+      "alg_details": [
+        {
+          "alg": "F R U' R' U' R U R' F' R U R' U' R' F R F'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 171
+        },
+        {
+          "alg": "F R' F R2 U' R' U' R U R' F' R U R' U' F'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 59
+        },
+        {
+          "alg": "R2 U' R2 U' R2 U F U F' R2 F U' F'",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 15
+        },
+        {
+          "alg": "F R' F' R U R U' R2 U' R U R f' U' f",
+          "source": "SpeedCubeDB",
+          "speedcubedb_votes": 9
+        }
+      ]
+    },
+    {
+      "id": "Z",
+      "name": "Z-perm",
+      "group": "Edges only",
+      "probability": "1/36",
+      "algs": [
+        "M' U' M2 U' M2 U' M' U2 M2",
+        "M2 U M2 U M' U2 M2 U2 M'",
+        "M2 U' M2 U' M' U2 M2 U2 M'",
+        "M' U M2 U M2 U M' U2 M2"
+      ],
+      "recognition": "Edges only. Headlights on all four sides; each edge is the colour of an adjacent side (pairs of adjacent edges swap). As held for algs[0]: Side features: front: headlights (adjacent-colour edge); right: headlights (adjacent-colour edge); back: headlights (adjacent-colour edge); left: headlights (adjacent-colour edge).",
+      "two_look": true,
+      "sources": [
+        "https://jperm.net/algs/pll",
+        "https://www.speedcubedb.com/a/3x3/PLL/Z",
+        "https://www.speedsolving.com/wiki/index.php?title=PLL",
+        "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf"
+      ],
+      "mirror_of": "Z",
+      "inverse_of": "Z",
+      "pattern": {
+        "front": "RBR",
+        "right": "BRB",
+        "back": "LFL",
+        "left": "FLF"
+      },
+      "alg_details": [
+        {
+          "alg": "M' U' M2 U' M2 U' M' U2 M2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 93
+        },
+        {
+          "alg": "M2 U M2 U M' U2 M2 U2 M'",
+          "source": "J Perm + SpeedCubeDB + CubeSkills (Feliks Zemdegs)",
+          "speedcubedb_votes": 83
+        },
+        {
+          "alg": "M2 U' M2 U' M' U2 M2 U2 M'",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 43
+        },
+        {
+          "alg": "M' U M2 U M2 U M' U2 M2",
+          "source": "J Perm + SpeedCubeDB",
+          "speedcubedb_votes": 41
+        }
+      ]
+    }
+  ]
+}
