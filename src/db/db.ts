@@ -18,6 +18,13 @@ export interface CaseProgress extends Synced {
   algIndex: number;
   customAlg?: string;
   notes?: string;
+  /**
+   * Set when the user wants to replace an alg they know with a better one: `from` is the old alg,
+   * `started` is when they picked the new one and began learning it.
+   */
+  upgrade?: { from: string; at: number; started?: number };
+  /** The user's own fingertricks, per alg: move index → how they do it. */
+  fingertricks?: Record<string, Record<number, string>>;
   /** ts-fsrs card serialised as JSON (dates as ISO strings). */
   card?: Record<string, unknown>;
   dueAt?: number;

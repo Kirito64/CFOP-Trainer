@@ -16,8 +16,12 @@ export default function LibraryPage() {
   const { view, mask } = VIEW[setId];
 
   const counts = useMemo(() => {
-    const c: Record<LearnStatus, number> = { new: 0, learning: 0, known: 0 };
-    for (const def of set.cases) c[progress?.get(caseKey(setId, def.id))?.status ?? "new"]++;
+    const c: Record<LearnStatus | "upgrading", number> = { new: 0, learning: 0, known: 0, upgrading: 0 };
+    for (const def of set.cases) {
+      const p = progress?.get(caseKey(setId, def.id));
+      c[p?.status ?? "new"]++;
+      if (p?.upgrade) c.upgrading++;
+    }
     return c;
   }, [progress, set, setId]);
 
@@ -36,6 +40,7 @@ export default function LibraryPage() {
       <p className="mb-2 max-w-[70ch] text-ink-2">{set.description}</p>
       <p className="mb-8 text-sm text-ink-3">
         {counts.known} known, {counts.learning} learning, {counts.new} not learned
+        {counts.upgrading > 0 && `, ${counts.upgrading} with an alg you're replacing`}
       </p>
 
       {groups(setId).map(({ group, cases }) => (
@@ -67,6 +72,11 @@ export default function LibraryPage() {
                     <span className="font-display text-lg leading-tight font-semibold">{def.id === def.name ? def.id : def.id.replace(/^OLL /, "")}</span>
                     {def.name !== def.id && <span className="-mt-1.5 line-clamp-1 text-center text-sm text-ink-2">{def.name}</span>}
                     <StatusPill status={p?.status ?? "new"} />
+                    {p?.upgrade && (
+                      <span className={`text-xs font-semibold ${p.upgrade.started ? "text-steel" : "text-warn"}`}>
+                        {p.upgrade.started ? "Switching alg" : "Alg outdated"}
+                      </span>
+                    )}
                   </Link>
                 </li>
               );

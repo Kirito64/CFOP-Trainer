@@ -24,6 +24,8 @@ interface Prepared {
   item: Item;
   alg: string;
   scramble: CaseScramble;
+  /** The outdated alg this case's alg is replacing, while the switch is in progress. */
+  oldAlg?: string;
 }
 
 interface Result {
@@ -38,7 +40,9 @@ async function prepare(item: Item): Promise<Prepared> {
   const p = await db.progress.get(item.key);
   const alg = chosenAlg(item.key, p);
   const scramble = await scrambleForCase({ set: setOf(item.key), alg, mirror: item.mirror, noise: NOISE });
-  return { item, alg: item.mirror ? mirrorAlg(alg) : alg, scramble };
+  const from = p?.upgrade?.started ? p.upgrade.from : undefined;
+  const mirror = (a: string) => (item.mirror ? mirrorAlg(a) : a);
+  return { item, alg: mirror(alg), scramble, oldAlg: from && mirror(from) };
 }
 
 async function loadHistory(keys: CaseKey[]): Promise<Map<CaseKey, CaseHistory>> {
@@ -190,7 +194,7 @@ export function TrainerRun({ config, onExit }: { config: RunConfig; onExit: () =
 
       {current && def && set && view && studying && (
         <section className="rounded-xl bg-panel p-6">
-          <p className="mb-1 text-sm font-medium text-steel">New case</p>
+          <p className="mb-1 text-sm font-medium text-steel">{current.oldAlg ? "New alg for a case you know" : "New case"}</p>
           <h2 className="mb-4 font-display text-3xl font-semibold">{def.name === def.id ? def.id : `${def.id}: ${def.name}`}</h2>
           <div className="grid items-center gap-6 sm:grid-cols-[auto_1fr]">
             <CaseView view={view.view} mask={view.mask} state={caseState(current.alg)} size={160} />
@@ -199,6 +203,11 @@ export function TrainerRun({ config, onExit }: { config: RunConfig; onExit: () =
             </div>
           </div>
           <p className="alg mt-4 text-3xl">{current.alg}</p>
+          {current.oldAlg && (
+            <p className="mt-2 text-ink-2">
+              Replaces <span className="alg line-through">{current.oldAlg}</span>. Your hands will reach for the old one at first; go slowly.
+            </p>
+          )}
           {def.recognition && <p className="mt-3 max-w-[65ch] text-ink-2">{def.recognition}</p>}
           <p className="mt-5 text-ink-2">
             Do it slowly 5 to 10 times on your cube, then press <Kbd>Space</Kbd> to get a scramble for it.
@@ -232,6 +241,7 @@ export function TrainerRun({ config, onExit }: { config: RunConfig; onExit: () =
             <ResultPanel
               result={result}
               alg={current.alg}
+              oldAlg={current.oldAlg}
               set={set}
               history={history.current.get(current.item.key)}
               onNext={commit}
@@ -247,6 +257,7 @@ export function TrainerRun({ config, onExit }: { config: RunConfig; onExit: () =
 function ResultPanel({
   result,
   alg,
+  oldAlg,
   set,
   history,
   onNext,
@@ -254,6 +265,7 @@ function ResultPanel({
 }: {
   result: Result;
   alg: string;
+  oldAlg?: string;
   set: AlgSetId;
   history?: CaseHistory;
   onNext: () => void;
@@ -277,6 +289,11 @@ function ResultPanel({
           {result.peeked ? ", peeked" : ""}
         </p>
         {!result.ok && notes && <p className="mt-2 text-sm text-warn">Your note: {notes}</p>}
+        {oldAlg && (
+          <p className="mt-2 text-sm text-ink-2">
+            Replacing <span className="alg line-through">{oldAlg}</span>. If you did the old alg, press <Kbd>X</Kbd>.
+          </p>
+        )}
       </div>
       <div className="flex flex-col items-stretch gap-2">
         <span className={`text-center font-display text-2xl font-semibold ${grade === Rating.Again ? "text-hold" : grade === Rating.Hard ? "text-warn" : "text-ready"}`}>

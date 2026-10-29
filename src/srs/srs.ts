@@ -44,6 +44,8 @@ export async function review(key: CaseKey, grade: Grade, at = new Date()) {
       card: serialise(next),
       dueAt: next.dueAt.getTime(),
       introducedAt: p.introducedAt ?? at.getTime(),
+      // A replacement alg that has stuck finishes the upgrade.
+      ...(learned && p.upgrade?.started ? { upgrade: undefined } : {}),
       updatedAt: now(),
     });
   });

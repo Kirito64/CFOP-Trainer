@@ -1,5 +1,5 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import { Link, useParams } from "react-router";
 import { CaseView } from "../../components/CubeView";
 import { Player } from "../../components/Player";
@@ -8,9 +8,10 @@ import { caseState, mirrorAlg, parseAlg } from "../../cube/cube";
 import { checkAlg } from "../../cube/validate";
 import { getCase, VIEW } from "../../data/algsets";
 import { type AlgSetId, type CaseKey, caseKey } from "../../data/types";
-import { db, type LearnStatus } from "../../db/db";
-import { chosenAlg, setStatus, updateProgress, useProgress } from "../../db/progress";
+import { type CaseProgress, db, type LearnStatus } from "../../db/db";
+import { chosenAlg, keepOldAlg, learnInstead, markOutdated, setStatus, updateProgress, useProgress } from "../../db/progress";
 import { median } from "../../lib/stats";
+import { Fingertricks } from "./Fingertricks";
 
 export default function CasePage() {
   const params = useParams();
@@ -26,14 +27,25 @@ export default function CasePage() {
   const alg = chosenAlg(key, p);
   const { view, mask } = VIEW[setId];
 
+  const upgrade = p.upgrade;
+  const choosingBetter = !!upgrade && !upgrade.started;
+
   const saveCustom = async () => {
     const err = checkAlg(setId, custom, def.algs[0]);
     setError(err);
     if (!err) {
-      await updateProgress(key, { algIndex: -1, customAlg: custom.trim() });
+      const choice = { algIndex: -1, customAlg: custom.trim() };
+      await (choosingBetter ? learnInstead(key, p, choice) : updateProgress(key, choice));
       setCustom("");
     }
   };
+  const learnButton = (choice: { algIndex: number; customAlg?: string }, a: string) =>
+    choosingBetter && a !== upgrade?.from ? (
+      <Button className="text-sm" onClick={() => learnInstead(key, p, choice)}>
+        Learn this instead
+      </Button>
+    ) : undefined;
+  const tags = (a: string, i: number) => [...(i === 0 ? ["Recommended"] : []), ...(upgrade && a === upgrade.from ? ["Your old alg"] : [])];
 
   return (
     <article className="max-w-5xl">
@@ -88,10 +100,25 @@ export default function CasePage() {
             <legend className="mb-2 font-display text-xl font-semibold">Your alg</legend>
             <ul className="divide-y divide-rule rounded-lg border border-rule bg-panel">
               {def.algs.map((a, i) => (
-                <AlgRow key={a} alg={a} checked={p.algIndex === i} onSelect={() => updateProgress(key, { algIndex: i })} mirror={setId === "F2L"} />
+                <AlgRow
+                  key={a}
+                  alg={a}
+                  checked={p.algIndex === i}
+                  onSelect={() => updateProgress(key, { algIndex: i })}
+                  mirror={setId === "F2L"}
+                  tags={tags(a, i)}
+                  action={learnButton({ algIndex: i }, a)}
+                />
               ))}
               {p.customAlg && (
-                <AlgRow alg={p.customAlg} checked={p.algIndex === -1} onSelect={() => updateProgress(key, { algIndex: -1 })} label="Your own" />
+                <AlgRow
+                  alg={p.customAlg}
+                  checked={p.algIndex === -1}
+                  onSelect={() => updateProgress(key, { algIndex: -1 })}
+                  label="Your own"
+                  tags={tags(p.customAlg, -1)}
+                  action={learnButton({ algIndex: -1, customAlg: p.customAlg }, p.customAlg)}
+                />
               )}
             </ul>
             <form
@@ -116,7 +143,10 @@ export default function CasePage() {
               </Button>
             </form>
             {error && <p className="mt-2 text-sm text-hold">{error}</p>}
+            <AlgUpgrade caseKey={key} p={p} alg={alg} />
           </fieldset>
+
+          <Fingertricks key={alg} caseKey={key} alg={alg} progress={p} f2l={setId === "F2L"} />
 
           <div>
             <label htmlFor="notes" className="mb-2 block font-display text-xl font-semibold">
@@ -138,21 +168,84 @@ export default function CasePage() {
   );
 }
 
-function AlgRow({ alg, checked, onSelect, label, mirror }: { alg: string; checked: boolean; onSelect: () => void; label?: string; mirror?: boolean }) {
+function AlgRow({
+  alg,
+  checked,
+  onSelect,
+  label,
+  mirror,
+  tags = [],
+  action,
+}: {
+  alg: string;
+  checked: boolean;
+  onSelect: () => void;
+  label?: string;
+  mirror?: boolean;
+  tags?: string[];
+  action?: ReactNode;
+}) {
   return (
-    <li>
-      <label className={`flex cursor-pointer items-start gap-3 px-4 py-3 ${checked ? "bg-steel-soft" : "hover:bg-panel-2"}`}>
+    <li className={`flex flex-wrap items-center gap-x-3 ${checked ? "bg-steel-soft" : "hover:bg-panel-2"}`}>
+      <label className="flex min-w-0 flex-1 cursor-pointer items-start gap-3 px-4 py-3">
         <input type="radio" name="alg" checked={checked} onChange={onSelect} className="mt-1.5 accent-[var(--steel)]" />
         <span className="min-w-0 flex-1">
           <span className="alg block text-xl">{alg}</span>
           <span className="text-sm text-ink-3">
             {label ? `${label}, ` : ""}
             {parseAlg(alg).filter((m) => !"xyz".includes(m.letter)).length} moves
+            {tags.map((t) => (
+              <span key={t} className={`ml-2 rounded px-1.5 text-xs font-semibold ${t === "Recommended" ? "bg-panel-2 text-steel" : "bg-panel-2 text-warn"}`}>
+                {t}
+              </span>
+            ))}
             {mirror && <span className="ml-2">front-left: <span className="alg">{mirrorAlg(alg)}</span></span>}
           </span>
         </span>
       </label>
+      {action && <div className="pr-4 pb-3 pl-11 sm:pb-0 sm:pl-0">{action}</div>}
     </li>
+  );
+}
+
+/** Flag the alg you know as outdated, then learn a better one in its place. */
+function AlgUpgrade({ caseKey, p, alg }: { caseKey: CaseKey; p: CaseProgress; alg: string }) {
+  const upgrade = p.upgrade;
+  if (!upgrade)
+    return p.status === "new" ? null : (
+      <div className="mt-3">
+        <Button variant="quiet" className="text-sm" onClick={() => markOutdated(caseKey, p)}>
+          My alg is outdated, I want a better one
+        </Button>
+      </div>
+    );
+  if (!upgrade.started)
+    return (
+      <div className="mt-4 rounded-lg border border-warn p-4">
+        <p className="font-semibold">You marked your alg as outdated</p>
+        <p className="alg mt-1 text-lg text-ink-2">{upgrade.from}</p>
+        <p className="mt-2 text-sm text-ink-2">
+          Pick a better one above with Learn this instead, or add your own. Until then you keep reviewing the old one.
+        </p>
+        <Button variant="quiet" className="mt-2 -ml-4 text-sm" onClick={() => updateProgress(caseKey, { upgrade: undefined })}>
+          Keep my alg after all
+        </Button>
+      </div>
+    );
+  return (
+    <div className="mt-4 rounded-lg border border-steel p-4">
+      <p className="font-semibold">Switching to a better alg</p>
+      <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
+        <dt className="text-ink-2">New</dt>
+        <dd className="alg text-lg">{alg}</dd>
+        <dt className="text-ink-2">Old</dt>
+        <dd className="alg text-lg text-ink-3 line-through">{upgrade.from}</dd>
+      </dl>
+      <p className="mt-2 text-sm text-ink-2">It's back in your daily review as a new case until it holds for a week.</p>
+      <Button variant="quiet" className="mt-2 -ml-4 text-sm" onClick={() => keepOldAlg(caseKey, p)}>
+        Go back to my old alg
+      </Button>
+    </div>
   );
 }
 
