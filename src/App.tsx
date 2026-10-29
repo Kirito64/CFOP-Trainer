@@ -1,45 +1,62 @@
-import { createBrowserRouter, NavLink, Outlet, ScrollRestoration } from "react-router";
+import { useState } from "react";
+import { createBrowserRouter, Link, Outlet, ScrollRestoration, useLocation } from "react-router";
+import { Icon, type IconName } from "./components/Icon";
+import { useSettings } from "./db/settings";
 
 const NAV = [
-  { to: "/", label: "Today", end: true },
-  { to: "/train", label: "Train algs" },
-  { to: "/recognise", label: "Recognise" },
-  { to: "/timer", label: "Timer" },
-  { to: "/drills", label: "Drills" },
-  { to: "/library/OLL", label: "Library" },
-  { to: "/stats", label: "Stats" },
-  { to: "/settings", label: "Settings" },
-];
+  { to: "/", match: "/", label: "Today", icon: "today" },
+  { to: "/train", match: "/train", label: "Train algs", icon: "train" },
+  { to: "/recognise", match: "/recognise", label: "Recognise", icon: "recognise" },
+  { to: "/timer", match: "/timer", label: "Timer", icon: "timer" },
+  { to: "/drills", match: "/drills", label: "Drills", icon: "drills" },
+  { to: "/library/OLL", match: "/library", label: "Library", icon: "library" },
+  { to: "/stats", match: "/stats", label: "Stats", icon: "stats" },
+  { to: "/settings", match: "/settings", label: "Settings", icon: "settings" },
+] satisfies { to: string; match: string; label: string; icon: IconName }[];
 
 function Shell() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const settings = useSettings();
+  const current = NAV.find((n) => pathname === n.match || (n.match !== "/" && pathname.startsWith(`${n.match}/`)));
+  const navItem = (n: (typeof NAV)[number]) => {
+    const active = current === n;
+    return (
+      <Link key={n.to} to={n.to} onClick={() => setMenuOpen(false)}
+        aria-current={active ? "page" : undefined} className={`nav-item ${active ? "is-active" : ""}`}>
+        <Icon name={n.icon} size={19} />
+        <span>{n.label}</span>
+        <span className="nav-active-dot" />
+      </Link>
+    );
+  };
   return (
-    <div className="min-h-dvh md:grid md:grid-cols-[13rem_1fr]">
-      <nav
-        aria-label="Main"
-        className="sticky top-0 z-20 flex gap-1 overflow-x-auto border-b border-rule bg-panel px-3 py-2 md:h-dvh md:flex-col md:overflow-visible md:border-r md:border-b-0 md:px-4 md:py-6"
-      >
-        <div className="mr-3 flex shrink-0 items-center gap-2 font-display text-xl font-semibold md:mb-6 md:mr-0">
-          <img src="/favicon.svg" alt="" className="size-6" />
-          CFOP Trainer
+    <div className="app-shell">
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <aside className="app-sidebar">
+        <Link to="/" className="brand"><img src="/favicon.svg" alt="" /><span>CFOP<span className="brand-subtitle">TRAINER</span></span></Link>
+        <nav aria-label="Main" className="desktop-navigation">
+          <p className="nav-label">WORKSPACE</p>
+          {NAV.slice(0, 5).map(navItem)}
+          <p className="nav-label mt-8">YOUR CUBING</p>
+          {NAV.slice(5, 7).map(navItem)}
+        </nav>
+        <div className="sidebar-bottom">
+          <Link to="/settings" className="goal-note"><Icon name="target" /><span>Your next milestone<strong>Sub-{settings.goalMs / 1000}<span> seconds</span></strong></span><Icon name="chevron" size={16} /></Link>
+          <nav aria-label="Preferences">{navItem(NAV[7])}</nav>
+          <p className="local-note"><span /> Saved on this device</p>
         </div>
-        {NAV.map((n) => (
-          <NavLink
-            key={n.to}
-            to={n.to}
-            end={n.end}
-            className={({ isActive }) =>
-              `shrink-0 rounded-md px-3 py-1.5 text-[0.95rem] font-medium whitespace-nowrap transition-colors ${
-                isActive ? "bg-steel-soft text-ink" : "text-ink-2 hover:bg-panel-2 hover:text-ink"
-              }`
-            }
-          >
-            {n.label}
-          </NavLink>
-        ))}
-      </nav>
-      <main className="min-w-0 px-4 py-6 md:px-10 md:py-8">
-        <Outlet />
-      </main>
+      </aside>
+      <div className="app-content">
+        <header className="workspace-bar">
+          <Link to="/" className="mobile-brand"><img src="/favicon.svg" alt="" />CFOP Trainer</Link>
+          <div className="breadcrumb"><span>Workspace</span><Icon name="chevron" size={13} /><span>{current?.label ?? "Practice"}</span></div>
+          <span className="workspace-caption">A little faster. Every day.</span>
+          <button className="mobile-menu-button" type="button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)}><Icon name={menuOpen ? "close" : "menu"} /></button>
+        </header>
+        {menuOpen && <nav id="mobile-navigation" aria-label="Mobile navigation" className="mobile-navigation">{NAV.map(navItem)}</nav>}
+        <main id="main-content" className="main-content" tabIndex={-1}><Outlet /></main>
+      </div>
       <ScrollRestoration />
     </div>
   );

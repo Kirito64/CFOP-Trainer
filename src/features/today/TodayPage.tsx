@@ -1,7 +1,9 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import type { ReactNode } from "react";
 import { Link } from "react-router";
-import { Button, fmt, PageHeader, Section } from "../../components/ui";
+import { Button, fmt } from "../../components/ui";
+import { Icon, type IconName } from "../../components/Icon";
+import { IsoView } from "../../components/CubeView";
+import { caseState } from "../../cube/cube";
 import { allCaseKeys, SET_IDS } from "../../data/algsets";
 import { db } from "../../db/db";
 import { setStatus } from "../../db/progress";
@@ -63,103 +65,83 @@ export default function TodayPage() {
   const crossLevel = Math.max(0, ...drills.filter((d) => d.drill === "cross").map((d) => (d.detail?.outcome === "optimal" ? (d.detail.level as number) : 0)));
   const bestAo12 = bestAverage(results, 12);
 
+  const startOfDay = new Date().setHours(0, 0, 0, 0);
+  const todaySolves = solves.filter((s) => s.at >= startOfDay).length;
+  const milestones = [
+    { done: known("PLL") === 21, label: "Full PLL", detail: `${known("PLL")} / 21 known` },
+    { done: known("OLL") === 57, label: "Full OLL", detail: `${known("OLL")} / 57 known` },
+    { done: pllRecog != null && pllRecog < 1000, label: "Two-sided PLL recognition under 1s", detail: pllRecog != null ? `${fmt(pllRecog)}s median` : "Not measured yet" },
+    { done: pllAttack.length > 0 && Math.min(...pllAttack) < 45000, label: "PLL time attack under 45s", detail: pllAttack.length ? `${fmt(Math.min(...pllAttack))} best` : "Not tried yet" },
+    { done: crossLevel >= 7, label: "Optimal 7-move crosses", detail: crossLevel ? `Level ${crossLevel} reached` : "Start with the cross trainer" },
+    { done: bestAo12 != null && bestAo12 < 12000, label: "Average of 12 under 12s", detail: bestAo12 != null ? `${fmt(bestAo12, bestAo12 === Infinity)} best` : "Establish your baseline" },
+    { done: bestAo12 != null && bestAo12 < 11000, label: "Average of 12 under 11s" },
+    { done: bestAo12 != null && bestAo12 < 10000, label: "Average of 12 under 10s" },
+    { done: known("COLL") + known("WV") > 0, label: "Explore COLL or Winter Variation", detail: "Optional · once full OLL is solid" },
+  ];
+  const steps: { title: string; detail: string; minutes: number; to: string; icon: IconName }[] = [
+    { title: "Wake up your recognition", detail: "Two-sided PLL recognition", minutes: 5, to: "/recognise", icon: "recognise" },
+    { title: "Keep your algs sharp", detail: reviewCount ? `${reviewCount} cases ready · ${queue.fresh.length} new` : "Review known cases or learn something new", minutes: 10, to: "/train", icon: "train" },
+    { title: focus.title, detail: `${focusKey} · today's training focus`, minutes: 15, to: focus.to, icon: "drills" },
+    { title: "Put it all together", detail: "Two averages of 12 with inspection", minutes: 15, to: "/timer", icon: "timer" },
+    { title: "Find your next improvement", detail: "Look back at your slowest cases", minutes: 5, to: "/stats", icon: "stats" },
+  ];
+
   return (
-    <div className="max-w-4xl">
-      <PageHeader title="Today">
-        {ao12 != null
-          ? `Your current ao12 is ${fmt(ao12, ao12 === Infinity)}. Goal: sub-${settings.goalMs / 1000}.`
-          : `Goal: sub-${settings.goalMs / 1000}. Do an ao12 in the timer so the plan can see where you are.`}
-      </PageHeader>
+    <div className="today-dashboard">
+      <header className="today-heading">
+        <div><p className="eyebrow">THE DAILY PRACTICE</p><h1>Time to turn up.</h1><p>Small improvements. Faster solves.</p></div>
+        <span className="date-label"><Icon name="today" size={16} />{new Date().toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" })}</span>
+      </header>
 
-      {nothingSetUp && (
-        <Section title="Start by telling it what you know">
-          <p className="mb-4 max-w-[65ch] text-ink-2">
-            Cases you already know go into review instead of being taught from scratch. You can change any case later in the library.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <Button variant="primary" onClick={() => Promise.all(allCaseKeys("PLL").map((k) => setStatus(k, "known")))}>
-              I know all 21 PLLs
-            </Button>
-            <Link to="/library/OLL" className="inline-flex items-center rounded-md border border-rule bg-panel px-3.5 py-1.5 font-medium hover:border-ink-3">
-              Mark the OLLs I know
-            </Link>
-          </div>
-        </Section>
-      )}
+      <section className="practice-hero" aria-labelledby="practice-heading">
+        <div className="hero-copy">
+          <span className="hero-tag"><span /> YOUR ROAD TO SUB-{settings.goalMs / 1000}</span>
+          <h2 id="practice-heading">One session.<br /><span>A little faster.</span></h2>
+          <p>Your next good solve starts here. Warm up, sharpen your algs, and work on what moves you forward.</p>
+          <div className="hero-actions"><Link className="action-primary" to="/recognise">Start your warm-up<Icon name="arrow" size={18} /></Link><Link className="hero-secondary" to="/timer"><Icon name="timer" size={17} />Just time some solves</Link></div>
+          <div className="hero-meta"><Icon name="clock" size={14} />50 min plan<span>·</span>5 focused steps<span>·</span>Your own pace</div>
+        </div>
+        <div className="hero-art" aria-hidden="true"><div className="cube-orbit orbit-one" /><div className="cube-orbit orbit-two" /><div className="hero-cube"><IsoView state={caseState("R U R' U R U2 R'")} size={240} mask="orientation" /></div><span className="cube-caption">INSPECT / RECOGNISE / EXECUTE</span></div>
+      </section>
 
-      <Section title="Today's session">
-        <ol className="flex flex-col divide-y divide-rule">
-          <Step n={1} title="Warm up" minutes="5 min" to="/recognise" action="Recognise PLLs">
-            A few minutes of two-sided PLL recognition gets your eyes going before you turn.
-          </Step>
-          <Step n={2} title="Alg review" minutes="10 min" to="/train" action={reviewCount ? `Review ${reviewCount} cases` : "Open the trainer"}>
-            {reviewCount
-              ? `${queue.due.length} due, ${queue.unscheduled.length} known cases to check, ${queue.fresh.length} new.`
-              : known("OLL") < 57
-                ? "Nothing due. Pick up a few more OLLs:"
-                : "Nothing due today."}
-            {!reviewCount && known("OLL") < 57 && (
-              <div className="mt-2">
-                <StartNextButton set="OLL" n={settings.newPerDay} />
-              </div>
-            )}
-          </Step>
-          <Step n={3} title={focus.title} minutes="15 min" to={focus.to} action="Start the drill">
-            {gaps ? focus.why : `${focus.about} Turn on Split taps in the timer and the plan will pick the focus from your own splits.`}
-          </Step>
-          <Step n={4} title="Timed solves" minutes="15 min" to="/timer" action="Open the timer">
-            Two ao12s with inspection on. Cue for today: {focus.cue}
-          </Step>
-          <Step n={5} title="Look back" minutes="5 min" to="/stats" action="Open stats">
-            Check your slowest cases and drill the worst few.
-          </Step>
-        </ol>
-      </Section>
+      <section className="metric-grid" aria-label="Your training at a glance">
+        <Metric label="Current average" icon="timer" value={fmt(ao12, ao12 === Infinity)} unit={ao12 != null && Number.isFinite(ao12) ? "s" : ""} detail={ao12 == null ? "12 solves to set your baseline" : "Average of your last 12 solves"} />
+        <Metric label="Ready for review" icon="train" value={String(reviewCount)} unit="cases" detail={reviewCount ? `${queue.due.length} due · ${queue.unscheduled.length} to check · ${queue.fresh.length} new` : "Your queue is clear"} accent />
+        <Metric label="Last-layer repertoire" icon="library" value={String(known("OLL") + known("PLL"))} unit="/ 78" detail="OLL + PLL algorithms known" />
+        <Metric label="Solves today" icon="bolt" value={String(todaySolves)} detail={todaySolves ? "Every solve is useful practice" : "A fresh start. Make it count."} />
+      </section>
 
-      <Section title="Road to sub-10">
-        <ul className="divide-y divide-rule">
-          <Milestone done={known("PLL") === 21} label="Full PLL" detail={`${known("PLL")} of 21 known`} />
-          <Milestone done={known("OLL") === 57} label="Full OLL" detail={`${known("OLL")} of 57 known`} />
-          <Milestone done={pllRecog != null && pllRecog < 1000} label="Recognise PLL from two sides in under a second" detail={pllRecog ? `median ${fmt(pllRecog)} s` : "not measured yet"} />
-          <Milestone done={pllAttack.length > 0 && Math.min(...pllAttack) < 45000} label="PLL time attack under 45 s" detail={pllAttack.length ? `best ${fmt(Math.min(...pllAttack))}` : "not tried yet"} />
-          <Milestone done={crossLevel >= 7} label="Find optimal 7-move crosses in inspection" detail={crossLevel ? `optimal up to ${crossLevel} moves` : "not tried yet"} />
-          <Milestone done={bestAo12 != null && bestAo12 < 12000} label="Ao12 under 12" detail={bestAo12 ? `best ${fmt(bestAo12, bestAo12 === Infinity)}` : "no ao12 yet"} />
-          <Milestone done={bestAo12 != null && bestAo12 < 11000} label="Ao12 under 11" />
-          <Milestone done={bestAo12 != null && bestAo12 < 10000} label="Ao12 under 10" />
-          <Milestone done={known("COLL") + known("WV") > 0} label="Start COLL or Winter Variation for easy last layers" detail="optional, once full OLL is solid" />
-        </ul>
-      </Section>
+      <div className="dashboard-columns">
+        <div className="dashboard-primary">
+          <section className="dashboard-card session-card" aria-labelledby="session-heading">
+            <div className="card-heading"><div><p className="eyebrow">SHOW UP. GET SHARPER.</p><h2 id="session-heading">Your session plan</h2></div><span className="subtle-tag">50 MIN</span></div>
+            <ol className="session-list">{steps.map((step, i) => <li key={step.title}><Link to={step.to} className={`session-step ${i === 0 ? "session-step-first" : ""}`}><span className="step-index">{String(i + 1).padStart(2, "0")}</span><span className="step-icon"><Icon name={step.icon} /></span><span className="step-copy"><strong>{step.title}</strong><span>{step.detail}</span></span><span className="step-time">{step.minutes} min</span><Icon name="arrow" size={17} /></Link></li>)}</ol>
+            <p className="session-footnote">A suggested routine. Jump into any step that fits your day.</p>
+          </section>
+
+          <section className="focus-card" aria-labelledby="focus-heading"><span className="focus-icon"><Icon name="target" size={25} /></span><div><p className="eyebrow">{gaps ? "FROM YOUR SPLITS" : "TODAY'S FOCUS"} / {focusKey.toUpperCase()}</p><h2 id="focus-heading">{focus.cue}</h2><p>{gaps ? focus.why : focus.about}</p><Link to={focus.to} className="text-action">Open {focus.title.toLowerCase()}<Icon name="arrow" size={16} /></Link></div></section>
+        </div>
+
+        <aside className="dashboard-secondary">
+          <section className="dashboard-card repertoire-card" aria-labelledby="repertoire-heading"><div className="card-heading"><h2 id="repertoire-heading">Your repertoire</h2><Icon name="library" size={18} /></div><p className="card-description">Build fluency, one case at a time.</p>
+            {(["PLL", "OLL"] as const).map((set) => { const total = set === "PLL" ? 21 : 57; return <Link key={set} to={`/library/${set}`} className="repertoire-row"><div><strong>{set}</strong><span><b>{known(set)}</b> / {total}</span></div><progress value={known(set)} max={total} aria-label={`${set} cases known`} /><span>{known(set) === total ? "All cases known" : `${total - known(set)} more to learn`}<Icon name="chevron" size={12} /></span></Link>; })}
+            <Link to="/library/OLL" className="text-action">Explore the library<Icon name="arrow" size={16} /></Link>
+          </section>
+
+          <section className="dashboard-card roadmap-card" aria-labelledby="roadmap-heading"><div className="card-heading"><h2 id="roadmap-heading">The sub-10 checklist</h2><Icon name="target" size={18} /></div><p className="card-description">{milestones.filter((m) => m.done).length} of {milestones.length} milestones reached</p><ul>{milestones.slice(0, 2).map((m) => <Milestone key={m.label} {...m} />)}</ul><details><summary>View all milestones<Icon name="chevron" size={14} /></summary><ul>{milestones.slice(2).map((m) => <Milestone key={m.label} {...m} />)}</ul></details></section>
+
+          {nothingSetUp ? <section className="setup-note"><p className="eyebrow">MAKE IT YOURS</p><h2>Already know your PLLs?</h2><p>Tell the trainer where you're starting. Known cases go straight into review.</p><Button onClick={() => Promise.all(allCaseKeys("PLL").map((k) => setStatus(k, "known")))}>I know all 21 PLLs<Icon name="check" size={15} /></Button><Link to="/library/OLL">Choose the OLLs I know<Icon name="arrow" size={14} /></Link></section> : !reviewCount && known("OLL") < 57 ? <section className="setup-note"><p className="eyebrow">ROOM FOR SOMETHING NEW</p><h2>Meet your next OLLs.</h2><p>Your review queue is clear. Add a few new cases to your practice.</p><StartNextButton set="OLL" n={settings.newPerDay} /></section> : null}
+        </aside>
+      </div>
+      <footer className="dashboard-footer"><span>BETTER PRACTICE. BETTER SOLVES.</span><span>Cross. F2L. OLL. PLL.</span></footer>
     </div>
   );
 }
 
-function Step({ n, title, minutes, to, action, children }: { n: number; title: string; minutes: string; to: string; action: string; children: ReactNode }) {
-  return (
-    <li className="grid grid-cols-[2rem_1fr] gap-x-3 py-4 sm:grid-cols-[2rem_1fr_auto]">
-      <span className="font-display text-2xl font-semibold text-ink-3">{n}</span>
-      <div>
-        <h3 className="font-display text-xl font-semibold">
-          {title} <span className="font-sans text-sm font-normal text-ink-3">{minutes}</span>
-        </h3>
-        <div className="text-ink-2">{children}</div>
-      </div>
-      <Link
-        to={to}
-        className="col-start-2 mt-2 self-center justify-self-start rounded-md border border-rule bg-panel px-3.5 py-1.5 font-medium hover:border-ink-3 sm:col-start-3 sm:mt-0"
-      >
-        {action}
-      </Link>
-    </li>
-  );
+function Metric({ label, value, unit, detail, icon, accent }: { label: string; value: string; unit?: string; detail: string; icon: IconName; accent?: boolean }) {
+  return <div className={`metric-card ${accent ? "metric-accent" : ""}`}><div className="metric-label">{label}<Icon name={icon} size={17} /></div><div className="metric-value">{value}<span>{unit}</span></div><p>{detail}</p></div>;
 }
 
 function Milestone({ done, label, detail }: { done: boolean; label: string; detail?: string }) {
-  return (
-    <li className="flex items-baseline gap-3 py-2">
-      <span aria-hidden className={`inline-block size-3 shrink-0 rounded-full border-2 ${done ? "border-ready bg-ready" : "border-rule"}`} />
-      <span className={done ? "text-ink-2 line-through decoration-ink-3" : ""}>{label}</span>
-      {detail && <span className="ml-auto text-sm text-ink-3">{detail}</span>}
-      <span className="sr-only">{done ? "done" : "not done yet"}</span>
-    </li>
-  );
+  return <li className={`milestone ${done ? "milestone-done" : ""}`}><span className="milestone-marker">{done && <Icon name="check" size={11} />}</span><div><span>{label}</span>{detail && <small>{detail}</small>}</div><span className="sr-only">{done ? "done" : "not done yet"}</span></li>;
 }

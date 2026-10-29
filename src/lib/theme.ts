@@ -4,9 +4,9 @@ const KEY = "theme";
 
 export function getTheme(): Theme {
   try {
-    return (localStorage.getItem(KEY) as Theme | null) ?? "system";
+    return (localStorage.getItem(KEY) as Theme | null) ?? "dark";
   } catch {
-    return "system";
+    return "dark";
   }
 }
 

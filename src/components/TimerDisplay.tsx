@@ -34,7 +34,7 @@ export function TimerDisplay({
       aria-live={phase === "stopped" ? "polite" : "off"}
     >
       <div
-        className={`font-display leading-none font-semibold tracking-tight transition-colors duration-75 ${PHASE_COLOUR[phase]} ${
+        className={`font-timer leading-none font-semibold tracking-tight transition-colors duration-75 ${PHASE_COLOUR[phase]} ${
           size === "xl" ? "text-[clamp(5rem,16vw,11rem)]" : "text-[clamp(3.5rem,10vw,6.5rem)]"
         }`}
       >

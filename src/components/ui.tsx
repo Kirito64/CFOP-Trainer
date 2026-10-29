@@ -3,10 +3,10 @@ import type { LearnStatus } from "../db/db";
 
 export function PageHeader({ title, children, actions }: { title: string; children?: ReactNode; actions?: ReactNode }) {
   return (
-    <header className="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <header className="page-header mb-8 flex flex-wrap items-end justify-between gap-4">
       <div className="max-w-[65ch]">
-        <h1 className="font-display text-4xl font-semibold tracking-tight">{title}</h1>
-        {children && <div className="mt-1 text-ink-2">{children}</div>}
+        <h1 className="font-display text-3xl font-bold tracking-tight">{title}</h1>
+        {children && <div className="mt-3 text-sm leading-relaxed text-ink-2">{children}</div>}
       </div>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
     </header>
@@ -15,7 +15,7 @@ export function PageHeader({ title, children, actions }: { title: string; childr
 
 type Variant = "primary" | "quiet" | "outline" | "danger";
 const VARIANT: Record<Variant, string> = {
-  primary: "bg-ink text-panel hover:opacity-90",
+  primary: "bg-accent text-accent-ink hover:brightness-110",
   quiet: "text-ink-2 hover:bg-panel-2 hover:text-ink",
   outline: "border border-rule bg-panel text-ink hover:border-ink-3",
   danger: "border border-rule bg-panel text-hold hover:border-hold",
@@ -26,7 +26,7 @@ export function Button({ variant = "outline", className = "", ...props }: Button
     <button
       type="button"
       {...props}
-      className={`inline-flex items-center justify-center gap-2 rounded-md px-3.5 py-1.5 text-[0.95rem] font-medium transition disabled:cursor-not-allowed disabled:opacity-45 ${VARIANT[variant]} ${className}`}
+      className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-45 ${VARIANT[variant]} ${className}`}
     />
   );
 }
@@ -43,7 +43,7 @@ export function Tabs<T extends string | number>({
   label: string;
 }) {
   return (
-    <div role="tablist" aria-label={label} className="inline-flex flex-wrap gap-1 rounded-lg bg-panel-2 p-1">
+    <div role="tablist" aria-label={label} className="inline-flex flex-wrap gap-1 rounded-xl border border-rule bg-panel p-1">
       {options.map((o) => (
         <button
           key={o.value}
@@ -51,8 +51,8 @@ export function Tabs<T extends string | number>({
           role="tab"
           aria-selected={o.value === value}
           onClick={() => onChange(o.value)}
-          className={`rounded-md px-3 py-1 text-[0.95rem] font-medium transition-colors ${
-            o.value === value ? "bg-panel text-ink shadow-[0_1px_0_var(--rule)]" : "text-ink-2 hover:text-ink"
+          className={`min-h-9 rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors ${
+            o.value === value ? "bg-steel-soft text-steel" : "text-ink-2 hover:text-ink"
           }`}
         >
           {o.label}
@@ -83,7 +83,7 @@ export function Section({ title, children, aside }: { title: string; children: R
   return (
     <section className="mb-10">
       <div className="mb-3 flex items-baseline justify-between gap-4 border-b border-rule pb-1.5">
-        <h2 className="font-display text-2xl font-semibold">{title}</h2>
+        <h2 className="font-display text-lg font-bold tracking-tight">{title}</h2>
         {aside}
       </div>
       {children}
