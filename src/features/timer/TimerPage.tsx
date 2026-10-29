@@ -450,8 +450,8 @@ function Pauses({ solve, solves }: { solve: Solve; solves: Solve[] }) {
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
       if (e.metaKey || e.ctrlKey || e.altKey || ["INPUT", "TEXTAREA", "SELECT"].includes(t.tagName)) return;
-      const n = Number(e.key);
-      if (e.key.length === 1 && PAUSE_OPTIONS.includes(n)) void set(n);
+      // Only digit keys: Number(" ") is 0, so Space for the next solve would log this one as smooth.
+      if (/^[0-5]$/.test(e.key)) void set(Number(e.key));
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
