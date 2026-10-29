@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router";
+import { Link, useLocation, useSearchParams } from "react-router";
 import { CaseView, type Mask } from "../../components/CubeView";
 import { Button, Kbd, PageHeader, Tabs, fmt } from "../../components/ui";
 import { applyAlg, at, caseState, type CubeState, invertAlg, normalise } from "../../cube/cube";
@@ -46,15 +46,20 @@ const PLL_NOISE = PLL.map((c) => c.algs[0]);
 const UP_EDGES = [at("U", 0, 1), at("U", 1, 0), at("U", 1, 2), at("U", 2, 1)];
 const OLL_EDGES = new Map(OLL.map((c) => [c.id, UP_EDGES.filter((i) => caseState(c.algs[0])[i] === "U").length]));
 
-/** The case plus look-alikes: same shape group first, then cases with the same number of oriented edges. */
-function similarOll(def: CaseDef, n: number): CaseDef[] {
+/**
+ * The case plus look-alikes: the cases you're practising together first, then the same shape group,
+ * then cases with the same number of oriented edges.
+ */
+function similarOll(def: CaseDef, n: number, prefer: CaseDef[]): CaseDef[] {
   const others = OLL.filter((c) => c.id !== def.id);
   const same = shuffle(others.filter((c) => c.group === def.group));
   const near = shuffle(others.filter((c) => c.group !== def.group && OLL_EDGES.get(c.id) === OLL_EDGES.get(def.id)));
-  return shuffle([def, ...[...same, ...near].slice(0, n - 1)]);
+  const together = shuffle(prefer.filter((c) => c.id !== def.id));
+  return shuffle([def, ...new Set([...together, ...same, ...near])].slice(0, n));
 }
 
 function makeQuestion(mode: Mode, withAuf: boolean, pool: CaseDef[]): Question {
+  const focused = pool.length < (mode === "OLL" ? OLL : PLL).length;
   const def = pick(pool);
   const alg = def.algs[0];
   const postAuf = Math.floor(Math.random() * 4);
@@ -62,7 +67,7 @@ function makeQuestion(mode: Mode, withAuf: boolean, pool: CaseDef[]): Question {
   if (mode === "OLL") {
     // Random permutation underneath so only orientation identifies the case.
     const before = normalise(applyAlg(caseState(""), invertAlg(pick(PLL_NOISE))));
-    return { def, key: caseKey("OLL", def.id), state: caseState(alg, { preAuf, postAuf, before }), options: similarOll(def, 6), shownAt: performance.now() };
+    return { def, key: caseKey("OLL", def.id), state: caseState(alg, { preAuf, postAuf, before }), options: similarOll(def, 6, focused ? pool : []), shownAt: performance.now() };
   }
   const state = recolour(caseState(alg, { preAuf, postAuf }), Math.floor(Math.random() * 4));
   return { def, key: caseKey("PLL", def.id), state, aufs: withAuf ? validPreAufs(state, alg) : undefined, shownAt: performance.now() };
@@ -71,12 +76,15 @@ function makeQuestion(mode: Mode, withAuf: boolean, pool: CaseDef[]): Question {
 const PLL_NAMES = PLL.map((c) => c.id.toLowerCase());
 
 export default function RecognitionPage() {
+  const location = useLocation();
   const [params, setParams] = useSearchParams();
   const requestedMode = params.get("mode");
   const mode = MODES.find((m) => m.value === requestedMode)?.value ?? "PLL2";
   const setMode = (next: Mode) => setParams((current) => { current.set("mode", next); return current; }, { replace: true });
   const [withAuf, setWithAuf] = useState(false);
   const [running, setRunning] = useState(false);
+  // Cases sent from Stats to practise telling apart.
+  const [focus, setFocus] = useState(() => ((location.state as { focus?: CaseKey[] } | null)?.focus ?? []).filter((k) => k.startsWith(mode === "OLL" ? "OLL:" : "PLL:")));
   return (
     <>
       <PageHeader title="Recognise">
@@ -84,12 +92,29 @@ export default function RecognitionPage() {
         number that hides inside your solve times.
       </PageHeader>
       {running ? (
-        <RecognitionRun mode={mode} withAuf={withAuf} onExit={() => setRunning(false)} />
+        <RecognitionRun mode={mode} withAuf={withAuf} focus={focus} onExit={() => setRunning(false)} />
       ) : (
         <div className="max-w-2xl">
           <div className="mb-5">
-            <Tabs label="What to recognise" value={mode} onChange={setMode} options={MODES} />
+            <Tabs
+              label="What to recognise"
+              value={mode}
+              onChange={(m) => {
+                setFocus([]);
+                setMode(m);
+              }}
+              options={MODES}
+            />
           </div>
+          {focus.length > 0 && (
+            <div className="mb-6 rounded-lg border border-steel p-4">
+              <p className="font-semibold">Only the cases you mix up</p>
+              <p className="mt-1 text-ink-2">{focus.map((k) => k.split(":")[1]).join(", ")}</p>
+              <Button variant="quiet" className="mt-1 -ml-4 text-sm" onClick={() => setFocus([])}>
+                Practise every case instead
+              </Button>
+            </div>
+          )}
           {mode !== "OLL" && (
             <label className="mb-6 flex items-center gap-2">
               <input type="checkbox" className="accent-[var(--steel)]" checked={withAuf} onChange={(e) => setWithAuf(e.target.checked)} />
@@ -110,8 +135,12 @@ export default function RecognitionPage() {
   );
 }
 
-function RecognitionRun({ mode, withAuf, onExit }: { mode: Mode; withAuf: boolean; onExit: () => void }) {
-  const pool = mode === "OLL" ? OLL : PLL;
+function RecognitionRun({ mode, withAuf, focus, onExit }: { mode: Mode; withAuf: boolean; focus: CaseKey[]; onExit: () => void }) {
+  const [pool] = useState(() => {
+    const all = mode === "OLL" ? OLL : PLL;
+    const only = all.filter((c) => focus.includes(caseKey(mode === "OLL" ? "OLL" : "PLL", c.id)));
+    return only.length ? only : all;
+  });
   const [q, setQ] = useState(() => makeQuestion(mode, withAuf, pool));
   const [typed, setTyped] = useState("");
   const [answer, setAnswer] = useState<Answer | null>(null);
@@ -119,30 +148,40 @@ function RecognitionRun({ mode, withAuf, onExit }: { mode: Mode; withAuf: boolea
   const [log, setLog] = useState<Answer[]>([]);
 
   const finish = useCallback(
-    async (pickedId: string, caseOk: boolean, ms: number) => {
-      const a: Answer = { q, pickedId, ok: caseOk, ms };
+    async (pickedId: string, caseOk: boolean, ms: number, label = pickedId) => {
+      const a: Answer = { q, pickedId: label, ok: caseOk, ms };
       setAnswer(a);
       setLog((l) => [...l, a]);
-      await db.attempts.add({ id: newId(), caseKey: q.key, kind: "recog", ms: Math.round(ms), ok: caseOk, at: now(), updatedAt: now() });
+      await db.attempts.add({
+        id: newId(),
+        caseKey: q.key,
+        kind: "recog",
+        ms: Math.round(ms),
+        ok: caseOk,
+        ...(caseOk ? {} : { picked: pickedId }),
+        at: now(),
+        updatedAt: now(),
+      });
     },
     [q],
   );
 
   const submitCase = useCallback(
-    (id: string) => {
+    (typed: string) => {
       const ms = performance.now() - q.shownAt;
-      const ok = id.toLowerCase() === q.def.id.toLowerCase();
+      const id = (mode === "OLL" ? OLL : PLL).find((c) => c.id.toLowerCase() === typed.toLowerCase())?.id ?? typed;
+      const ok = id === q.def.id;
       if (q.aufs && ok) setAufStage({ caseOk: ok, ms, pickedId: id });
       else void finish(id, ok, ms);
     },
-    [q, finish],
+    [q, mode, finish],
   );
 
   const submitAuf = useCallback(
     (auf: Auf) => {
       if (!aufStage || !q.aufs) return;
       const ok = q.aufs.includes(auf);
-      void finish(aufStage.pickedId + (ok ? "" : ` (AUF ${AUF_LABELS[auf]})`), ok, performance.now() - q.shownAt);
+      void finish(aufStage.pickedId, ok, performance.now() - q.shownAt, aufStage.pickedId + (ok ? "" : ` (AUF ${AUF_LABELS[auf]})`));
       setAufStage(null);
     },
     [aufStage, q, finish],

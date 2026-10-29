@@ -37,6 +37,8 @@ export interface Attempt extends Synced {
   kind: AttemptKind;
   ms: number;
   ok: boolean;
+  /** For a wrong recognition answer, the case id you named (the right id when only the AUF was wrong). */
+  picked?: string;
   at: number;
 }
 
@@ -51,12 +53,17 @@ export interface Solve extends Synced {
   oll?: string;
   pll?: string;
   note?: string;
+  /** In a slow session, how many times you stopped to look for the next piece. */
+  pauses?: number;
   at: number;
 }
 
+/** "slow" sessions are lookahead practice, kept out of your speed averages and stats. */
+export type SessionKind = "timed" | "slow";
 export interface TimerSession extends Synced {
   name: string;
   createdAt: number;
+  kind?: SessionKind;
 }
 
 export interface DrillResult extends Synced {

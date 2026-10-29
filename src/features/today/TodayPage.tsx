@@ -8,7 +8,7 @@ import { allCaseKeys, SET_IDS } from "../../data/algsets";
 import { db } from "../../db/db";
 import { setStatus } from "../../db/progress";
 import { useSettings } from "../../db/settings";
-import { PHASE_NAMES, phaseDurations, resultOf } from "../../db/solves";
+import { PHASE_NAMES, phaseDurations, resultOf, speedSolves } from "../../db/solves";
 import { averageOf, bestAverage, mean, median } from "../../lib/stats";
 import { useLocalDay } from "../../lib/useLocalDay";
 import { dailyQueue } from "../../srs/srs";
@@ -41,14 +41,14 @@ export default function TodayPage() {
   const day = useLocalDay();
   const data = useLiveQuery(async () => {
     const [solves, progress, attempts, drills, queue, statsVisit] = await Promise.all([
-      db.solves.orderBy("at").toArray(),
+      speedSolves(),
       db.progress.toArray(),
       db.attempts.filter((a) => !a.deleted).toArray(),
       db.drills.toArray(),
       dailyQueue({ sets: SET_IDS, newPerDay: settings.newPerDay }),
       db.meta.get(STATS_VISIT_KEY),
     ]);
-    return { solves: solves.filter((s) => !s.deleted), progress: progress.filter((p) => !p.deleted), attempts, drills: drills.filter((d) => !d.deleted), queue, statsVisitedAt: statsVisit?.value };
+    return { solves, progress: progress.filter((p) => !p.deleted), attempts, drills: drills.filter((d) => !d.deleted), queue, statsVisitedAt: statsVisit?.value };
   }, [settings.newPerDay, day.start, day.end]);
 
   if (!data) return null;
