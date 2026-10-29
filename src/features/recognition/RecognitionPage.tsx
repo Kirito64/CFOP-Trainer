@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { CaseView, type Mask } from "../../components/CubeView";
 import { Button, Kbd, PageHeader, Tabs, fmt } from "../../components/ui";
 import { applyAlg, at, caseState, type CubeState, invertAlg, normalise } from "../../cube/cube";
@@ -71,7 +71,10 @@ function makeQuestion(mode: Mode, withAuf: boolean, pool: CaseDef[]): Question {
 const PLL_NAMES = PLL.map((c) => c.id.toLowerCase());
 
 export default function RecognitionPage() {
-  const [mode, setMode] = useState<Mode>("PLL2");
+  const [params, setParams] = useSearchParams();
+  const requestedMode = params.get("mode");
+  const mode = MODES.find((m) => m.value === requestedMode)?.value ?? "PLL2";
+  const setMode = (next: Mode) => setParams((current) => { current.set("mode", next); return current; }, { replace: true });
   const [withAuf, setWithAuf] = useState(false);
   const [running, setRunning] = useState(false);
   return (

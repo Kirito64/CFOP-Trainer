@@ -122,6 +122,9 @@ button, summary { cursor: pointer; }
 .step-index { font-family: "IBM Plex Mono", monospace; font-size: 9px; color: var(--ink-3); }
 .step-icon { display: grid; place-items: center; width: 35px; height: 35px; flex-shrink: 0; border: 1px solid var(--rule); border-radius: 8px; color: var(--ink-2); }
 .session-step-first .step-icon { background: var(--steel-soft); color: var(--steel); border-color: transparent; }
+.session-step-done .step-icon { background: color-mix(in srgb, var(--ready) 12%, transparent); color: var(--ready); border-color: transparent; }
+.step-copy > .step-progress { color: var(--steel); font-size: 10px; margin-top: 5px; }
+.session-step-done .step-progress { color: var(--ready); }
 .step-copy { flex: 1; min-width: 0; }
 .step-copy strong { display: block; font-size: 12px; font-weight: 650; }
 .step-copy > span { display: block; font-size: 11px; color: var(--ink-3); margin-top: 3px; }

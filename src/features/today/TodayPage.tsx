@@ -10,8 +10,10 @@ import { setStatus } from "../../db/progress";
 import { useSettings } from "../../db/settings";
 import { PHASE_NAMES, phaseDurations, resultOf } from "../../db/solves";
 import { averageOf, bestAverage, mean, median } from "../../lib/stats";
+import { useLocalDay } from "../../lib/useLocalDay";
 import { dailyQueue } from "../../srs/srs";
 import { StartNextButton } from "../trainer/TrainerPage";
+import { sessionProgress, STATS_VISIT_KEY, type FocusKey } from "./sessionProgress";
 
 const SUB10_SPLITS = [1300, 5300, 1600, 1600];
 
@@ -25,30 +27,33 @@ interface Focus {
   cue: string;
 }
 
-const FOCUS: Record<string, Focus> = {
+const FOCUS: Record<FocusKey, Focus> = {
   Cross: { title: "Cross trainer", why: "Your cross is the furthest behind sub-10 pace.", about: "Planning the whole cross in inspection takes a second or more off most 13-second solves.", to: "/drills/cross", cue: "Plan the full cross before you start the timer." },
   F2L: { title: "Metronome solves", why: "F2L is where the most time goes; pauses between pairs are the usual culprit.", about: "Most of a solve is F2L, and pauses between pairs are where lookahead time hides.", to: "/drills/metronome", cue: "Don't stop turning between pairs." },
-  OLL: { title: "OLL recognition and review", why: "Your OLL stage is slow: recognition and unknown cases add up.", about: "Finishing full OLL and recognising it instantly removes the two-look fallbacks.", to: "/recognise", cue: "Recognise the OLL before the last pair is in." },
+  OLL: { title: "OLL recognition and review", why: "Your OLL stage is slow: recognition and unknown cases add up.", about: "Finishing full OLL and recognising it instantly removes the two-look fallbacks.", to: "/recognise?mode=OLL", cue: "Recognise the OLL before the last pair is in." },
   PLL: { title: "PLL time attack", why: "PLL is slower than it should be for a sub-10 average.", about: "Fast, pause-free PLL execution is one of the cheapest seconds to win.", to: "/drills/pll-attack", cue: "Recognise PLL from two sides and pre-AUF without looking around." },
 };
 // Without split data, rotate the focus through the week.
-const ROTATION = ["Cross", "F2L", "OLL", "F2L", "Cross", "PLL", "F2L"];
+const ROTATION: FocusKey[] = ["Cross", "F2L", "OLL", "F2L", "Cross", "PLL", "F2L"];
 
 export default function TodayPage() {
   const settings = useSettings();
+  const day = useLocalDay();
   const data = useLiveQuery(async () => {
-    const [solves, progress, attempts, drills, queue] = await Promise.all([
+    const [solves, progress, attempts, drills, queue, statsVisit] = await Promise.all([
       db.solves.orderBy("at").toArray(),
       db.progress.toArray(),
-      db.attempts.filter((a) => a.kind === "recog" && !a.deleted).toArray(),
+      db.attempts.filter((a) => !a.deleted).toArray(),
       db.drills.toArray(),
       dailyQueue({ sets: SET_IDS, newPerDay: settings.newPerDay }),
+      db.meta.get(STATS_VISIT_KEY),
     ]);
-    return { solves: solves.filter((s) => !s.deleted), progress: progress.filter((p) => !p.deleted), recog: attempts, drills, queue };
-  }, [settings.newPerDay]);
+    return { solves: solves.filter((s) => !s.deleted), progress: progress.filter((p) => !p.deleted), attempts, drills: drills.filter((d) => !d.deleted), queue, statsVisitedAt: statsVisit?.value };
+  }, [settings.newPerDay, day.start, day.end]);
 
   if (!data) return null;
-  const { solves, progress, recog, drills, queue } = data;
+  const { solves, progress, attempts, drills, queue, statsVisitedAt } = data;
+  const recog = attempts.filter((a) => a.kind === "recog");
   const results = solves.map(resultOf);
   const ao12 = averageOf(results, 12);
   const known = (set: string) => progress.filter((p) => p.id.startsWith(`${set}:`) && p.status === "known").length;
@@ -56,7 +61,7 @@ export default function TodayPage() {
 
   const phases = solves.slice(-50).map(phaseDurations).filter((p): p is number[] => !!p);
   const gaps = phases.length >= 5 ? PHASE_NAMES.map((n, i) => ({ n, gap: mean(phases.map((p) => p[i]))! - SUB10_SPLITS[i] })) : null;
-  const focusKey = gaps ? gaps.reduce((a, b) => (b.gap > a.gap ? b : a)).n : ROTATION[new Date().getDay()];
+  const focusKey: FocusKey = gaps ? gaps.reduce((a, b) => (b.gap > a.gap ? b : a)).n as FocusKey : ROTATION[new Date(day.start).getDay()];
   const focus = FOCUS[focusKey];
   const reviewCount = queue.due.length + queue.unscheduled.length + queue.fresh.length;
 
@@ -65,8 +70,8 @@ export default function TodayPage() {
   const crossLevel = Math.max(0, ...drills.filter((d) => d.drill === "cross").map((d) => (d.detail?.outcome === "optimal" ? (d.detail.level as number) : 0)));
   const bestAo12 = bestAverage(results, 12);
 
-  const startOfDay = new Date().setHours(0, 0, 0, 0);
-  const todaySolves = solves.filter((s) => s.at >= startOfDay).length;
+  const session = sessionProgress({ day, attempts, drills, solves, reviewCount, statsVisitedAt, focus: focusKey });
+  const todaySolves = session.steps[3].count;
   const milestones = [
     { done: known("PLL") === 21, label: "Full PLL", detail: `${known("PLL")} / 21 known` },
     { done: known("OLL") === 57, label: "Full OLL", detail: `${known("OLL")} / 57 known` },
@@ -85,12 +90,14 @@ export default function TodayPage() {
     { title: "Put it all together", detail: "Two averages of 12 with inspection", minutes: 15, to: "/timer", icon: "timer" },
     { title: "Find your next improvement", detail: "Look back at your slowest cases", minutes: 5, to: "/stats", icon: "stats" },
   ];
+  const nextStep = steps[session.nextIndex];
+  const nextAction = session.nextIndex === 0 ? "Start your warm-up" : nextStep ? `Continue: ${nextStep.title}` : "Session complete";
 
   return (
     <div className="today-dashboard">
       <header className="today-heading">
         <div><p className="eyebrow">THE DAILY PRACTICE</p><h1>Time to turn up.</h1><p>Small improvements. Faster solves.</p></div>
-        <span className="date-label"><Icon name="today" size={16} />{new Date().toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" })}</span>
+        <span className="date-label"><Icon name="today" size={16} />{new Date(day.start).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" })}</span>
       </header>
 
       <section className="practice-hero" aria-labelledby="practice-heading">
@@ -98,8 +105,8 @@ export default function TodayPage() {
           <span className="hero-tag"><span /> YOUR ROAD TO SUB-{settings.goalMs / 1000}</span>
           <h2 id="practice-heading">One session.<br /><span>A little faster.</span></h2>
           <p>Your next good solve starts here. Warm up, sharpen your algs, and work on what moves you forward.</p>
-          <div className="hero-actions"><Link className="action-primary" to="/recognise">Start your warm-up<Icon name="arrow" size={18} /></Link><Link className="hero-secondary" to="/timer"><Icon name="timer" size={17} />Just time some solves</Link></div>
-          <div className="hero-meta"><Icon name="clock" size={14} />50 min plan<span>·</span>5 focused steps<span>·</span>Your own pace</div>
+          <div className="hero-actions">{nextStep ? <Link className="action-primary" to={nextStep.to}>{nextAction}<Icon name="arrow" size={18} /></Link> : <span className="action-primary"><Icon name="check" size={18} />{nextAction}</span>}<Link className="hero-secondary" to="/timer"><Icon name="timer" size={17} />Just time some solves</Link></div>
+          <div className="hero-meta"><Icon name="clock" size={14} />50 min suggested plan<span>·</span>{session.completed} / 5 steps complete<span>·</span>Your own pace</div>
         </div>
         <div className="hero-art" aria-hidden="true"><div className="cube-orbit orbit-one" /><div className="cube-orbit orbit-two" /><div className="hero-cube"><IsoView state={caseState("R U R' U R U2 R'")} size={240} mask="orientation" /></div><span className="cube-caption">INSPECT / RECOGNISE / EXECUTE</span></div>
       </section>
@@ -114,9 +121,22 @@ export default function TodayPage() {
       <div className="dashboard-columns">
         <div className="dashboard-primary">
           <section className="dashboard-card session-card" aria-labelledby="session-heading">
-            <div className="card-heading"><div><p className="eyebrow">SHOW UP. GET SHARPER.</p><h2 id="session-heading">Your session plan</h2></div><span className="subtle-tag">50 MIN</span></div>
-            <ol className="session-list">{steps.map((step, i) => <li key={step.title}><Link to={step.to} className={`session-step ${i === 0 ? "session-step-first" : ""}`}><span className="step-index">{String(i + 1).padStart(2, "0")}</span><span className="step-icon"><Icon name={step.icon} /></span><span className="step-copy"><strong>{step.title}</strong><span>{step.detail}</span></span><span className="step-time">{step.minutes} min</span><Icon name="arrow" size={17} /></Link></li>)}</ol>
-            <p className="session-footnote">A suggested routine. Jump into any step that fits your day.</p>
+            <div className="card-heading"><div><p className="eyebrow">SHOW UP. GET SHARPER.</p><h2 id="session-heading">Your session plan</h2></div><span className="subtle-tag" role="status">{session.completed} / 5 DONE</span></div>
+            <ol className="session-list">{steps.map((step, i) => {
+              const progress = session.steps[i];
+              return (
+                <li key={step.title}>
+                  <Link to={step.to} aria-current={i === session.nextIndex ? "step" : undefined}
+                    className={`session-step ${i === session.nextIndex ? "session-step-first" : ""} ${progress.done ? "session-step-done" : ""}`}>
+                    <span className="step-index">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="step-icon"><Icon name={progress.done ? "check" : step.icon} /></span>
+                    <span className="step-copy"><strong>{step.title}</strong><span>{step.detail}</span><span className="step-progress">{progress.done && <span className="sr-only">Complete. </span>}{progress.label}</span></span>
+                    <span className="step-time">~{step.minutes} min</span><Icon name="arrow" size={17} />
+                  </Link>
+                </li>
+              );
+            })}</ol>
+            <p className="session-footnote">Counts reset at local midnight. Times are suggestions. Jump into any step that fits your day.</p>
           </section>
 
           <section className="focus-card" aria-labelledby="focus-heading"><span className="focus-icon"><Icon name="target" size={25} /></span><div><p className="eyebrow">{gaps ? "FROM YOUR SPLITS" : "TODAY'S FOCUS"} / {focusKey.toUpperCase()}</p><h2 id="focus-heading">{focus.cue}</h2><p>{gaps ? focus.why : focus.about}</p><Link to={focus.to} className="text-action">Open {focus.title.toLowerCase()}<Icon name="arrow" size={16} /></Link></div></section>

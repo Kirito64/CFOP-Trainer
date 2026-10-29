@@ -1,5 +1,5 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { CaseView } from "../../components/CubeView";
 import { Button, Empty, fmt, PageHeader, Section, StatusPill, Tabs } from "../../components/ui";
@@ -10,11 +10,24 @@ import { type Attempt, type CaseProgress, db, type Solve } from "../../db/db";
 import { chosenAlg } from "../../db/progress";
 import { PHASE_NAMES, phaseDurations, resultOf } from "../../db/solves";
 import { bestAverage, mean, median } from "../../lib/stats";
+import { useLocalDay } from "../../lib/useLocalDay";
+import { STATS_VISIT_KEY } from "../today/sessionProgress";
 
 /** Rough stage targets for a sub-10 average (ms), from the research notes. */
 const SUB10_SPLITS = [1300, 5300, 1600, 1600];
 
 export default function StatsPage() {
+  const day = useLocalDay();
+  useEffect(() => {
+    const recordVisit = () => {
+      // A background Stats tab left open overnight is not a new visit until it is shown.
+      if (document.visibilityState !== "visible") return;
+      void db.meta.put({ key: STATS_VISIT_KEY, value: Date.now() }).catch((error) => console.error("Could not record Stats visit", error));
+    };
+    recordVisit();
+    document.addEventListener("visibilitychange", recordVisit);
+    return () => document.removeEventListener("visibilitychange", recordVisit);
+  }, [day.start]);
   const solves = useLiveQuery(async () => (await db.solves.orderBy("at").toArray()).filter((s) => !s.deleted), []);
   const attempts = useLiveQuery(async () => (await db.attempts.toArray()).filter((a) => !a.deleted), []);
   const progress = useLiveQuery(async () => new Map((await db.progress.toArray()).map((p) => [p.id, p])), []);
