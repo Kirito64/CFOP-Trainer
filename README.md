@@ -51,3 +51,29 @@ worker/              Cloudflare Worker: passkey auth (AuthStore DO) and sync (Us
 - Algs are written for yellow on top and green in front, with white cross on the bottom. F2L algs insert into the front-right slot.
 - Trainer scrambles assume that same orientation. Timer and cross-trainer scrambles use the WCA orientation (white on top, green in front).
 - Passkeys are tied to a hostname. A passkey made on `*.workers.dev` won't work on a custom domain later, so pick the final domain before relying on sync.
+
+## Contributing
+
+1. Fork the repo, or create a branch if you have access. Name it after the change, for example `feat/smart-cube` or `fix/timer-pauses`.
+2. Use bun for everything (`bun install`, `bun run …`, `bunx …`), not npm or node.
+3. Before opening a pull request, run `bun run typecheck`, `bun test` and `bun run build`. All three should pass.
+4. Open a pull request against `main`. Every push to `main` deploys, so changes go in through pull requests.
+
+Commit messages follow [Conventional Commits](https://www.conventionalcommits.org): `type(scope): summary`, written in lower case and the imperative. For example, `fix(timer): stop Space from logging a slow solve as smooth`.
+
+| Type | Use it for |
+|---|---|
+| `feat` | Something new a user can see or do |
+| `fix` | A bug fix |
+| `refactor` | Code changes that don't change behaviour |
+| `test` | Adding or changing tests only |
+| `docs` | README, research notes and comments |
+| `chore` | Dependencies, config and tooling |
+
+The scope is the area you touched, such as `timer`, `stats`, `trainer`, `library`, `sync` or `build`. When the summary isn't enough, add a body that explains why.
+
+Some things to keep in mind:
+
+- Change algs in `research/*.json`, never in `src/data/algsets.json` directly. Then run `bun scripts/build-data.ts` and the Python verifier.
+- Add tests for anything that touches the cube model, scrambles, stats or sync merging.
+- Keep to the orientations under [Conventions](#conventions).
