@@ -45,6 +45,13 @@ export function useStackmat({ holdMs = 300, enabled = true, onStart, onStop, pha
     raf.current = requestAnimationFrame(tick);
   }, []);
 
+  const finish = useCallback((ms: number) => {
+    cancelAnimationFrame(raf.current!);
+    setElapsed(ms);
+    go("stopped");
+    cb.current.onStop?.(ms, splitsRef.current);
+  }, []);
+
   const press = useCallback(() => {
     const p = phaseRef.current;
     if (p === "running") {
@@ -54,10 +61,7 @@ export function useStackmat({ holdMs = 300, enabled = true, onStart, onStop, pha
         setSplits(splitsRef.current);
         return true;
       }
-      cancelAnimationFrame(raf.current!);
-      setElapsed(ms);
-      go("stopped");
-      cb.current.onStop?.(ms, splitsRef.current);
+      finish(ms);
       return true;
     }
     if (p === "idle" || p === "stopped") {
@@ -66,7 +70,7 @@ export function useStackmat({ holdMs = 300, enabled = true, onStart, onStop, pha
       return true;
     }
     return false;
-  }, [holdMs, phases]);
+  }, [holdMs, phases, finish]);
 
   const release = useCallback(() => {
     const p = phaseRef.current;
@@ -117,6 +121,14 @@ export function useStackmat({ holdMs = 300, enabled = true, onStart, onStop, pha
     clearTimeout(holdTimer.current);
   }, []);
 
+  /** Stops a running timer from outside, e.g. when a smart cube reports it solved. `at` is a performance.now() time. */
+  const stop = useCallback(
+    (at = performance.now()) => {
+      if (phaseRef.current === "running") finish(at - startedAt.current);
+    },
+    [finish],
+  );
+
   const reset = useCallback(() => {
     cancelAnimationFrame(raf.current!);
     clearTimeout(holdTimer.current);
@@ -140,5 +152,5 @@ export function useStackmat({ holdMs = 300, enabled = true, onStart, onStop, pha
     },
   };
 
-  return { phase, elapsed, splits, reset, padProps, isRunning: phase === "running" };
+  return { phase, elapsed, splits, reset, stop, padProps, isRunning: phase === "running" };
 }

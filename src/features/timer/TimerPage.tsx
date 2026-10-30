@@ -1,4 +1,5 @@
 import { type FormEvent, useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router";
 import { TimerDisplay } from "../../components/TimerDisplay";
 import { Button, fmt, Kbd } from "../../components/ui";
 import { getSet } from "../../data/algsets";
@@ -22,6 +23,8 @@ import {
   useSolves,
 } from "../../db/solves";
 import { paceAdvice } from "../../lib/analytics";
+import { applyAlg, cfopSplits, isSolved, SOLVED, type TimedMove } from "../../lib/cube3";
+import { onCubeMove, useCube } from "../../lib/smartcube/connection";
 import { randomScramble } from "../../lib/scramble333";
 import { mean } from "../../lib/stats";
 import { useStackmat } from "../../lib/useStackmat";
@@ -46,6 +49,10 @@ export default function TimerPage() {
   const [inspectNow, setInspectNow] = useState(0);
   const [lastId, setLastId] = useState<string | null>(null);
   const pendingPenalty = useRef<Penalty>(0);
+  const cube = useCube();
+  const cubeOn = cube.status === "connected";
+  // The cube's state when the timer started and its turns since, while a smart-cube solve is running.
+  const cubeSolve = useRef<{ start: string; at: number; moves: TimedMove[] } | null>(null);
 
   useEffect(() => {
     void ensureSession().then((id) => setSessionId((cur) => cur ?? id));
@@ -76,25 +83,47 @@ export default function TimerPage() {
   const timer = useStackmat({
     enabled: !editing,
     holdMs: settings.holdMs,
-    phases: settings.phases,
+    // With a smart cube the splits come from its moves, so there's nothing to tap.
+    phases: cubeOn ? 1 : settings.phases,
     onStart: () => {
+      cubeSolve.current = cube.status === "connected" ? { start: cube.facelets, at: performance.now(), moves: [] } : null;
       pendingPenalty.current = inspectStart != null ? inspectionPenalty(performance.now() - inspectStart) : 0;
       setInspectStart(null);
       setLastId(null);
     },
     onStop: async (ms, splits) => {
+      const fromCube = cubeSolve.current;
+      cubeSolve.current = null;
       if (!sessionId || !scramble) return;
+      const cubeSplits = fromCube && cfopSplits(fromCube.start, fromCube.moves)?.splits;
+      if (cubeSplits) splits = cubeSplits;
       const id = await addSolve({
         sessionId,
         scramble,
         ms: Math.floor(ms),
         penalty: pendingPenalty.current,
         ...(splits.length === 3 ? { splits: splits.map(Math.floor) } : {}),
+        ...(fromCube?.moves.length
+          ? { cube: { start: fromCube.start, moves: fromCube.moves.map((m) => m.move).join(" "), times: fromCube.moves.map((m) => Math.round(m.t)) } }
+          : {}),
       });
       setLastId(id as string);
       void newScramble();
     },
   });
+
+  // Record each turn during a solve, and stop the timer on the turn that solves the cube.
+  const { stop } = timer;
+  useEffect(
+    () =>
+      onCubeMove((move, facelets, at) => {
+        const solve = cubeSolve.current;
+        if (!solve) return;
+        solve.moves.push({ move, t: at - solve.at });
+        if (isSolved(facelets)) stop(at);
+      }),
+    [stop],
+  );
 
   // With inspection on, the first space press starts the 15 s countdown instead of arming the timer.
   const inspectionKeyDown = useRef(false);
@@ -150,10 +179,17 @@ export default function TimerPage() {
               <input type="checkbox" className="accent-[var(--steel)]" checked={settings.inspection} onChange={(e) => saveSetting("inspection", e.target.checked)} />
               Inspection
             </label>
-            <label className="flex items-center gap-1.5">
-              <input type="checkbox" className="accent-[var(--steel)]" checked={settings.phases === 4} onChange={(e) => saveSetting("phases", e.target.checked ? 4 : 1)} />
-              Split taps
-            </label>
+            {cubeOn ? (
+              <Link to="/settings#smart-cube" className="flex items-center gap-1.5 text-ink-2 hover:text-ink">
+                <span aria-hidden className="size-2 rounded-full bg-ready" />
+                Cube connected, splits automatic
+              </Link>
+            ) : (
+              <label className="flex items-center gap-1.5">
+                <input type="checkbox" className="accent-[var(--steel)]" checked={settings.phases === 4} onChange={(e) => saveSetting("phases", e.target.checked ? 4 : 1)} />
+                Split taps
+              </label>
+            )}
             <label className="flex items-center gap-1.5">
               <input
                 type="checkbox"
@@ -187,6 +223,7 @@ export default function TimerPage() {
         <p className={`alg my-6 min-h-[2.5em] text-center text-[clamp(1.3rem,2.8vw,1.9rem)] leading-snug transition-opacity ${running || inspecting ? "opacity-0" : ""}`}>
           {scramble ?? "…"}
         </p>
+        {cubeOn && scramble && !running && !inspecting && <ScrambleCheck facelets={cube.facelets} scramble={scramble} />}
 
         {inspecting ? (
           <div className="flex flex-col items-center select-none">
@@ -209,7 +246,7 @@ export default function TimerPage() {
           />
         )}
 
-        {running && settings.phases === 4 && (
+        {running && !cubeOn && settings.phases === 4 && (
           <p className="mt-3 text-ink-3">
             {PHASE_NAMES[timer.splits.length]}: press any key when it's done
           </p>
@@ -237,6 +274,16 @@ export default function TimerPage() {
         {stats && <StatsPanel stats={stats} solves={solves!} slow={slow} />}
       </aside>
     </div>
+  );
+}
+
+/** Whether the connected cube is scrambled the way the scramble says. */
+function ScrambleCheck({ facelets, scramble }: { facelets: string; scramble: string }) {
+  const matches = facelets === applyAlg(SOLVED, scramble);
+  return (
+    <p role="status" className={`-mt-4 mb-4 text-sm ${matches ? "font-semibold text-ready" : "text-ink-3"}`}>
+      {matches ? "Your cube matches the scramble. Ready when you are." : isSolved(facelets) ? "Scramble your cube (white on top, green in front)." : "Your cube doesn't match the scramble yet."}
+    </p>
   );
 }
 

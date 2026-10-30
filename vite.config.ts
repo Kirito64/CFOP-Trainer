@@ -1,6 +1,7 @@
 import { cloudflare } from "@cloudflare/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import { fileURLToPath } from "node:url";
 import { defineConfig, type Plugin } from "vite";
 
 const WORKER_LOOKUP = 'import.meta.resolve("./search-worker-entry.js")';
@@ -23,6 +24,12 @@ function cubingSearchWorker(): Plugin {
 
 export default defineConfig({
   plugins: [cubingSearchWorker(), react(), tailwindcss(), cloudflare()],
+  resolve: {
+    alias: {
+      // Installed from GitHub, which has the TypeScript source but no built files: compile the source.
+      "smartcube-web-bluetooth": fileURLToPath(new URL("./node_modules/smartcube-web-bluetooth/src/index.ts", import.meta.url)),
+    },
+  },
   // Pre-bundling would skip the plugin above and move cubing away from its worker entry.
   optimizeDeps: { exclude: ["cubing"] },
   // cubing.js runs its scramble/search code in module workers

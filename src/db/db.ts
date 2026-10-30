@@ -55,6 +55,8 @@ export interface Solve extends Synced {
   note?: string;
   /** In a slow session, how many times you stopped to look for the next piece. */
   pauses?: number;
+  /** From a smart cube: its state when the timer started, and every turn with its time (ms from the start). */
+  cube?: { start: string; moves: string; times: number[] };
   at: number;
 }
 

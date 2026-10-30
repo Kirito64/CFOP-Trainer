@@ -5,6 +5,7 @@ import { saveSetting, useSettings } from "../../db/settings";
 import { getTheme, setTheme, type Theme } from "../../lib/theme";
 import { addPasskey, ApiError, deleteAccount, registerPasskey, signInWithPasskey, signOut } from "../../sync/api";
 import { markSignedOut, pushEverything, resetSyncCursor, syncNow, useSyncState } from "../../sync/sync";
+import { SmartCubeSection } from "./SmartCubeSection";
 
 export default function SettingsPage() {
   const settings = useSettings();
@@ -52,6 +53,8 @@ export default function SettingsPage() {
           </Row>
         </dl>
       </Section>
+
+      <SmartCubeSection />
 
       <Section title="Appearance">
         <Tabs<Theme>
