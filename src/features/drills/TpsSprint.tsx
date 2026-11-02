@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TimerDisplay } from "../../components/TimerDisplay";
-import { Kbd, Tabs } from "../../components/ui";
+import { Hint, Kbd, Tabs } from "../../components/ui";
 import { parseAlg } from "../../cube/cube";
 import { getSet } from "../../data/algsets";
 import { type AlgSetId, caseKey } from "../../data/types";
@@ -68,7 +68,14 @@ export function TpsSprint() {
         </p>
       ) : (
         <p className="mt-4 text-sm text-ink-3">
-          Hold <Kbd>Space</Kbd> to start, do the alg {REPS} times, any key to stop.
+          <Hint
+            keys={
+              <>
+                Hold <Kbd>Space</Kbd> to start, do the alg {REPS} times, any key to stop.
+              </>
+            }
+            touch={`Touch and hold the time, let go to start, do the alg ${REPS} times, then tap anywhere to stop.`}
+          />
           {best != null && ` Best for this alg: ${best.toFixed(2)} turns a second.`}
         </p>
       )}

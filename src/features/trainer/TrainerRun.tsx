@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { CaseView } from "../../components/CubeView";
 import { Player } from "../../components/Player";
 import { TimerDisplay } from "../../components/TimerDisplay";
-import { Button, fmt, Kbd } from "../../components/ui";
+import { Button, fmt, Hint, Kbd } from "../../components/ui";
 import { caseState, mirrorAlg } from "../../cube/cube";
 import { type CaseScramble, scrambleForCase } from "../../cube/scramble";
 import { getCase, getSet, VIEW } from "../../data/algsets";
@@ -209,9 +209,12 @@ export function TrainerRun({ config, onExit }: { config: RunConfig; onExit: () =
             </p>
           )}
           {def.recognition && <p className="mt-3 max-w-[65ch] text-ink-2">{def.recognition}</p>}
-          <p className="mt-5 text-ink-2">
-            Do it slowly 5 to 10 times on your cube, then press <Kbd>Space</Kbd> to get a scramble for it.
-          </p>
+          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-3">
+            <p className="text-ink-2">Do it slowly 5 to 10 times on your cube, then get a scramble for it.</p>
+            <Button variant="primary" onClick={() => setStudying(false)}>
+              Get a scramble <Kbd>Space</Kbd>
+            </Button>
+          </div>
         </section>
       )}
 
@@ -225,9 +228,25 @@ export function TrainerRun({ config, onExit }: { config: RunConfig; onExit: () =
           <TimerDisplay phase={timer.phase} ms={timer.elapsed} padProps={timer.padProps} />
 
           {!result && (
-            <p className="mt-6 text-center text-sm text-ink-3">
-              Hold <Kbd>Space</Kbd> until green, release to start, any key to stop. <Kbd>H</Kbd> shows the case and alg (counts as a peek).
+            <p className="mt-2 text-center text-sm text-ink-3">
+              <Hint
+                keys={
+                  <>
+                    Hold <Kbd>Space</Kbd> until green, release to start, any key to stop.
+                  </>
+                }
+                touch="Touch and hold the time until green, let go to start, and tap anywhere to stop."
+              />
             </p>
+          )}
+
+          {!result && !peeked && !timer.isRunning && (
+            <div className="mt-4 flex flex-col items-center gap-1">
+              <Button variant="quiet" onClick={() => setPeeked(true)}>
+                Peek at the case and alg <Kbd>H</Kbd>
+              </Button>
+              <p className="text-xs text-ink-3">Counts as a peek: the review is graded Hard.</p>
+            </div>
           )}
 
           {peeked && !result && (
@@ -291,7 +310,16 @@ function ResultPanel({
         {!result.ok && notes && <p className="mt-2 text-sm text-warn">Your note: {notes}</p>}
         {oldAlg && (
           <p className="mt-2 text-sm text-ink-2">
-            Replacing <span className="alg line-through">{oldAlg}</span>. If you did the old alg, press <Kbd>X</Kbd>.
+            Replacing <span className="alg line-through">{oldAlg}</span>. If you did the old alg,{" "}
+            <Hint
+              keys={
+                <>
+                  press <Kbd>X</Kbd>
+                </>
+              }
+              touch="tap I messed up"
+            />
+            .
           </p>
         )}
       </div>

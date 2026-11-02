@@ -26,7 +26,7 @@ export function Button({ variant = "outline", className = "", ...props }: Button
     <button
       type="button"
       {...props}
-      className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-45 ${VARIANT[variant]} ${className}`}
+      className={`inline-flex min-h-10 touch:min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-45 ${VARIANT[variant]} ${className}`}
     />
   );
 }
@@ -75,8 +75,19 @@ export function StatusPill({ status }: { status: LearnStatus }) {
 
 export const statusLabel = (s: LearnStatus) => STATUS_LABEL[s];
 
+/** A keyboard shortcut hint. Hidden on touch screens, where the button or pad it sits on is the way in. */
 export function Kbd({ children }: { children: ReactNode }) {
-  return <kbd className="rounded border border-rule bg-panel-2 px-1.5 font-sans text-[0.8rem] font-semibold text-ink-2">{children}</kbd>;
+  return <kbd className="rounded border border-rule bg-panel-2 px-1.5 font-sans text-[0.8rem] font-semibold text-ink-2 touch:hidden">{children}</kbd>;
+}
+
+/** Instructions worded for a keyboard, or for touch on phones and tablets. */
+export function Hint({ keys, touch }: { keys: ReactNode; touch: ReactNode }) {
+  return (
+    <>
+      <span className="touch:hidden">{keys}</span>
+      <span className="hidden touch:inline">{touch}</span>
+    </>
+  );
 }
 
 export function Section({ title, children, aside }: { title: string; children: ReactNode; aside?: ReactNode }) {

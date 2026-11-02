@@ -21,7 +21,7 @@ const isTyping = (e: Event) => {
 
 /**
  * Stackmat-style timer: hold space (or touch the pad) until it turns green, release to start,
- * press any key or touch to stop.
+ * press any key or touch anywhere to stop.
  */
 export function useStackmat({ holdMs = 300, enabled = true, onStart, onStop, phases = 1 }: Options = {}) {
   const [phase, setPhase] = useState<TimerPhase>("idle");
@@ -104,11 +104,20 @@ export function useStackmat({ holdMs = 300, enabled = true, onStart, onStop, pha
         release();
       }
     };
+    // Like any key, a touch or click anywhere stops a running timer (or records a split), so a
+    // tablet doesn't need its pad hit precisely mid-solve. The pad leaves running presses to this.
+    const touch = (e: PointerEvent) => {
+      if (phaseRef.current !== "running" || e.button > 0) return;
+      e.preventDefault();
+      press();
+    };
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
+    window.addEventListener("pointerdown", touch);
     return () => {
       window.removeEventListener("keydown", down);
       window.removeEventListener("keyup", up);
+      window.removeEventListener("pointerdown", touch);
     };
   }, [enabled, press, release]);
 
@@ -129,8 +138,10 @@ export function useStackmat({ holdMs = 300, enabled = true, onStart, onStop, pha
   /** Props for a touch/click pad so the timer works on phones and tablets. */
   const padProps = {
     onPointerDown: (e: React.PointerEvent) => {
-      if (!enabled) return;
+      if (!enabled || phaseRef.current === "running" || e.button > 0) return;
       e.preventDefault();
+      // Keep receiving this finger's events even if it slides off the pad.
+      e.currentTarget.setPointerCapture?.(e.pointerId);
       press();
     },
     onPointerUp: (e: React.PointerEvent) => {
@@ -138,6 +149,12 @@ export function useStackmat({ holdMs = 300, enabled = true, onStart, onStop, pha
       e.preventDefault();
       release();
     },
+    // The system took the touch (a gesture, an alert): drop the hold rather than start the timer.
+    onPointerCancel: () => {
+      clearTimeout(holdTimer.current);
+      if (phaseRef.current === "holding" || phaseRef.current === "ready") go("idle");
+    },
+    onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
   };
 
   return { phase, elapsed, splits, reset, padProps, isRunning: phase === "running" };

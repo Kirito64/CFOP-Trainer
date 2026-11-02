@@ -54,15 +54,18 @@ export function Metronome() {
     }
   };
 
+  const nudge = (by: number) => setBpm((b) => Math.min(480, Math.max(40, b + by)));
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.repeat) return;
-      if (e.code === "Space") {
+      // A focused button handles Space itself; toggling here as well would undo its press.
+      if (e.code === "Space" && !(e.target as HTMLElement).closest("button")) {
         e.preventDefault();
         void toggle();
       }
-      if (e.key === "ArrowUp") setBpm((b) => Math.min(480, b + 5));
-      if (e.key === "ArrowDown") setBpm((b) => Math.max(40, b - 5));
+      if (e.key === "ArrowUp") nudge(5);
+      if (e.key === "ArrowDown") nudge(-5);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -93,13 +96,16 @@ export function Metronome() {
         aria-label="Tempo"
         className="w-full max-w-md accent-[var(--steel)]"
       />
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <Button variant="primary" onClick={toggle}>
           {running ? "Stop" : "Start"} <Kbd>Space</Kbd>
         </Button>
-        <span className="self-center text-sm text-ink-3">
-          <Kbd>↑</Kbd> <Kbd>↓</Kbd> change tempo by 5
-        </span>
+        <Button onClick={() => nudge(-5)} aria-label="Slower by 5">
+          −5 <Kbd>↓</Kbd>
+        </Button>
+        <Button onClick={() => nudge(5)} aria-label="Faster by 5">
+          +5 <Kbd>↑</Kbd>
+        </Button>
       </div>
       <div className="max-w-[65ch] text-ink-2">
         <p className="mb-2">

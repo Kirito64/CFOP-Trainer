@@ -1,5 +1,5 @@
 import { TimerDisplay } from "../../components/TimerDisplay";
-import { fmt, Kbd } from "../../components/ui";
+import { fmt, Hint, Kbd } from "../../components/ui";
 import { getSet } from "../../data/algsets";
 import { addDrillResult, useDrillResults } from "../../db/drills";
 import { useSettings } from "../../db/settings";
@@ -23,7 +23,15 @@ export function PllAttack() {
       <div className="flex flex-col items-center">
         <TimerDisplay phase={timer.phase} ms={timer.elapsed} padProps={timer.padProps} />
         <p className="mt-4 text-sm text-ink-3">
-          Hold <Kbd>Space</Kbd> to start, any key to stop. Start from solved and do every PLL once.
+          <Hint
+            keys={
+              <>
+                Hold <Kbd>Space</Kbd> to start, any key to stop.
+              </>
+            }
+            touch="Touch and hold the time, let go to start, and tap anywhere to stop."
+          />{" "}
+          Start from solved and do every PLL once.
         </p>
         <ol className="mt-8 flex max-w-2xl flex-wrap justify-center gap-2">
           {ORDER.filter((n) => names.has(n)).map((n, i) => (

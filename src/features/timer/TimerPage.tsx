@@ -1,6 +1,6 @@
 import { type FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { TimerDisplay } from "../../components/TimerDisplay";
-import { Button, fmt, Kbd } from "../../components/ui";
+import { Button, fmt, Hint, Kbd } from "../../components/ui";
 import { getSet } from "../../data/algsets";
 import type { Penalty, SessionKind, Solve, TimerSession } from "../../db/db";
 import { saveSetting, useSettings } from "../../db/settings";
@@ -140,6 +140,28 @@ export default function TimerPage() {
   const stats = solves ? sessionStats(solves) : null;
   const running = timer.isRunning;
 
+  // On a touch screen with inspection on, a tap on the time starts the countdown, like tapping Space.
+  const inspectTap = useRef(false);
+  const padProps =
+    settings.inspection && !inspecting && !running
+      ? {
+          onPointerDown: (e: React.PointerEvent) => {
+            if (editing || e.button > 0) return;
+            e.preventDefault();
+            inspectTap.current = true;
+          },
+          onPointerUp: (e: React.PointerEvent) => {
+            if (!inspectTap.current) return;
+            inspectTap.current = false;
+            e.preventDefault();
+            timer.reset();
+            setInspectStart(performance.now());
+          },
+          onPointerCancel: () => (inspectTap.current = false),
+          onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
+        }
+      : timer.padProps;
+
   return (
     <div className="grid gap-8 xl:grid-cols-[1fr_22rem]">
       <div className="flex min-w-0 flex-col items-center">
@@ -189,7 +211,7 @@ export default function TimerPage() {
         </p>
 
         {inspecting ? (
-          <div className="flex flex-col items-center select-none">
+          <div {...timer.padProps} className="flex w-full touch-none flex-col items-center py-6 select-none [-webkit-touch-callout:none]">
             <div
               className={`font-display text-[clamp(5rem,16vw,11rem)] leading-none font-semibold ${
                 timer.phase === "ready" ? "text-ready" : timer.phase === "holding" ? "text-hold" : inspectLeft <= 3000 ? "text-warn" : "text-ink"
@@ -197,7 +219,9 @@ export default function TimerPage() {
             >
               {inspectLeft > 0 ? Math.ceil(inspectLeft / 1000) : inspectLeft > -2000 ? "+2" : "DNF"}
             </div>
-            <p className="mt-2 text-sm text-ink-3">Inspecting. Hold space when you're ready.</p>
+            <p className="mt-2 text-sm text-ink-3">
+              <Hint keys="Inspecting. Hold Space when you're ready." touch="Inspecting. Touch and hold the countdown when you're ready." />
+            </p>
           </div>
         ) : (
           <TimerDisplay
@@ -205,13 +229,13 @@ export default function TimerPage() {
             ms={timer.elapsed}
             hideWhileRunning={settings.hideRunningTime}
             penalty={!running && last ? last.penalty : 0}
-            padProps={timer.padProps}
+            padProps={padProps}
           />
         )}
 
         {running && settings.phases === 4 && (
           <p className="mt-3 text-ink-3">
-            {PHASE_NAMES[timer.splits.length]}: press any key when it's done
+            {PHASE_NAMES[timer.splits.length]}: <Hint keys="press any key" touch="tap anywhere" /> when it's done
           </p>
         )}
 
@@ -220,13 +244,23 @@ export default function TimerPage() {
         {!running && !inspecting && !last && (
           <p className="mt-6 text-center text-sm text-ink-3">
             {settings.inspection ? (
-              <>
-                Tap <Kbd>Space</Kbd> to start inspection, then hold it until green and release to start.
-              </>
+              <Hint
+                keys={
+                  <>
+                    Tap <Kbd>Space</Kbd> to start inspection, then hold it until green and release to start.
+                  </>
+                }
+                touch="Tap the time to start inspection, then touch and hold the countdown until green and let go to start. Tap anywhere to stop."
+              />
             ) : (
-              <>
-                Hold <Kbd>Space</Kbd> until green, release to start, any key to stop.
-              </>
+              <Hint
+                keys={
+                  <>
+                    Hold <Kbd>Space</Kbd> until green, release to start, any key to stop.
+                  </>
+                }
+                touch="Touch and hold the time until green, let go to start, and tap anywhere to stop."
+              />
             )}{" "}
             Scramble with white on top, green in front.
           </p>
@@ -460,7 +494,7 @@ function Pauses({ solve, solves }: { solve: Solve; solves: Solve[] }) {
   return (
     <div className="flex flex-col items-center gap-2">
       <p id="pauses-label" className="text-sm text-ink-2">
-        How many times did you stop to look for the next piece? <span className="text-ink-3">Keys 0–5</span>
+        How many times did you stop to look for the next piece? <span className="text-ink-3 touch:hidden">Keys 0–5</span>
       </p>
       <div role="radiogroup" aria-labelledby="pauses-label" className="flex gap-1.5">
         {PAUSE_OPTIONS.map((n) => (
@@ -544,10 +578,16 @@ function StatsPanel({ stats, solves, slow }: { stats: ReturnType<typeof sessionS
             .map((s, i) => ({ s, i }))
             .reverse()
             .map(({ s, i }) => (
-              <li key={s.id} className="flex items-baseline justify-between border-b border-rule py-1" title={s.scramble}>
-                <span className="text-sm text-ink-3">{i + 1}</span>
-                {slow && s.pauses != null && <span className="ml-auto pr-3 text-sm text-ink-3">{s.pauses ? `${s.pauses === 5 ? "5+" : s.pauses} paused` : "smooth"}</span>}
-                <span className="font-display text-lg">{s.penalty === "DNF" ? "DNF" : fmt(resultOf(s)) + (s.penalty === 2 ? "+" : "")}</span>
+              <li key={s.id} className="border-b border-rule">
+                {/* Tap or click a time to see its scramble. */}
+                <details>
+                  <summary className="flex list-none items-baseline justify-between py-1 touch:py-2 [&::-webkit-details-marker]:hidden">
+                    <span className="text-sm text-ink-3">{i + 1}</span>
+                    {slow && s.pauses != null && <span className="ml-auto pr-3 text-sm text-ink-3">{s.pauses ? `${s.pauses === 5 ? "5+" : s.pauses} paused` : "smooth"}</span>}
+                    <span className="font-display text-lg">{s.penalty === "DNF" ? "DNF" : fmt(resultOf(s)) + (s.penalty === 2 ? "+" : "")}</span>
+                  </summary>
+                  <p className="alg pb-2 text-sm text-ink-2">{s.scramble}</p>
+                </details>
               </li>
             ))}
         </ol>

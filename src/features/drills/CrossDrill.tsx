@@ -94,18 +94,22 @@ export function CrossDrill() {
     [history, length, planMs, current, target, deal],
   );
 
+  const step = useCallback(() => {
+    if (stage === "ready") {
+      setPlanStart(performance.now());
+      setStage("planning");
+    } else if (stage === "planning") {
+      setPlanMs(performance.now() - planStart);
+      setStage("solving");
+    } else if (stage === "solving") setStage("report");
+  }, [stage, planStart]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.repeat || (e.target as HTMLElement).tagName === "INPUT") return;
       if (e.code === "Space") {
         e.preventDefault();
-        if (stage === "ready") {
-          setPlanStart(performance.now());
-          setStage("planning");
-        } else if (stage === "planning") {
-          setPlanMs(performance.now() - planStart);
-          setStage("solving");
-        } else if (stage === "solving") setStage("report");
+        step();
       }
       if (stage === "report") {
         const o = ({ "1": "optimal", "2": "solved", "3": "missed" } as Record<string, Outcome>)[e.key];
@@ -116,7 +120,7 @@ export function CrossDrill() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [stage, planStart, record, withPair, outcome]);
+  }, [stage, step, record, withPair, outcome]);
 
   const session = history.slice(-20);
 
@@ -149,16 +153,35 @@ export function CrossDrill() {
             <p className={`alg my-4 text-[clamp(1.3rem,2.8vw,1.9rem)] leading-snug ${stage === "solving" ? "opacity-0" : ""}`}>{current.scramble}</p>
 
             {stage === "ready" && (
-              <p className="text-ink-2">
-                Turn the cube white side down and press <Kbd>Space</Kbd> to start planning.
-              </p>
+              <div className="flex flex-col items-center gap-3">
+                <p className="text-ink-2">Turn the cube white side down, then start planning.</p>
+                <Button variant="primary" onClick={step}>
+                  Start planning <Kbd>Space</Kbd>
+                </Button>
+              </div>
             )}
-            {stage === "planning" && <PlanClock start={planStart} withPair={withPair} />}
+            {stage === "planning" && (
+              <>
+                <PlanClock start={planStart} withPair={withPair} />
+                <Button variant="primary" className="mt-4" onClick={step}>
+                  I know it <Kbd>Space</Kbd>
+                </Button>
+              </>
+            )}
             {stage === "solving" && (
-              <p className="max-w-md text-lg text-ink-2">
-                Close your eyes and solve the cross{withPair ? ", then the first pair if you can," : ""} without looking. Press <Kbd>Space</Kbd>{" "}
-                when you're done.
-              </p>
+              <>
+                <p className="max-w-md text-lg text-ink-2">
+                  Close your eyes and solve the cross{withPair ? ", then the first pair if you can," : ""} without looking.
+                </p>
+                {/* Big enough to hit without looking. */}
+                <button
+                  type="button"
+                  onClick={step}
+                  className="mt-5 flex min-h-40 w-full max-w-md items-center justify-center gap-2 rounded-xl border border-rule bg-panel text-lg font-semibold hover:border-ink-3"
+                >
+                  Done <Kbd>Space</Kbd>
+                </button>
+              </>
             )}
             {stage === "report" && (
               <div className="flex flex-col items-center gap-4">
@@ -230,7 +253,7 @@ function PlanClock({ start, withPair }: { start: number; withPair: boolean }) {
     <div className="flex flex-col items-center">
       <div className={`font-display text-8xl font-semibold ${t > 15000 ? "text-hold" : t > 12000 ? "text-warn" : ""}`}>{(t / 1000).toFixed(1)}</div>
       <p className="text-ink-2">
-        Plan the whole cross{withPair ? " and find your first pair" : ""}. Press <Kbd>Space</Kbd> when you know it. Aim for under 15 seconds.
+        Plan the whole cross{withPair ? " and find your first pair" : ""}. Aim for under 15 seconds.
       </p>
     </div>
   );

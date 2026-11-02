@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation, useSearchParams } from "react-router";
 import { CaseView, type Mask } from "../../components/CubeView";
-import { Button, Kbd, PageHeader, Tabs, fmt } from "../../components/ui";
+import { Button, Hint, Kbd, PageHeader, Tabs, fmt } from "../../components/ui";
 import { applyAlg, at, caseState, type CubeState, invertAlg, normalise } from "../../cube/cube";
 import { type Auf, AUF_LABELS, recolour, validPreAufs } from "../../cube/recolour";
 import { getSet } from "../../data/algsets";
@@ -236,14 +236,14 @@ function RecognitionRun({ mode, withAuf, focus, onExit }: { mode: Mode; withAuf:
 
         {!answer && !aufStage && mode !== "OLL" && (
           <div className="mt-6 flex flex-col items-center gap-3">
-            <div className="h-12 font-display text-4xl font-semibold uppercase">{typed || <span className="text-ink-3 normal-case">type the name</span>}</div>
+            <div className="h-12 font-display text-4xl font-semibold uppercase">{typed || <span className="text-ink-3 normal-case"><Hint keys="type the name" touch="pick the name" /></span>}</div>
             <div className="flex max-w-xl flex-wrap justify-center gap-1.5">
               {PLL.map((c) => (
                 <button
                   key={c.id}
                   type="button"
                   onClick={() => submitCase(c.id)}
-                  className="w-11 rounded-md border border-rule bg-panel py-1 font-display text-lg font-semibold hover:border-ink-3"
+                  className="w-11 rounded-md border border-rule bg-panel py-1 font-display text-lg font-semibold hover:border-ink-3 touch:w-12 touch:py-2"
                 >
                   {c.id}
                 </button>

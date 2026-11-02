@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+/* Touch-first screens (phones, iPads): swap key hints for touch wording, grow tap targets. */
+@custom-variant touch (@media (hover: none) and (pointer: coarse));
 
 :root {
   --mat: #f4f4ef; --panel: #ffffff; --panel-2: #ebede6;
@@ -39,6 +41,13 @@ html, body { background: var(--mat); color: var(--ink); font-family: var(--font-
 body { margin: 0; font-variant-numeric: tabular-nums; }
 button, a, input, select, summary { -webkit-tap-highlight-color: transparent; }
 button, summary { cursor: pointer; }
+/* No double-tap zoom on controls, so quick taps register as taps. */
+button, a, input, select, label, summary { touch-action: manipulation; }
+@media (hover: none) and (pointer: coarse) {
+  input[type="checkbox"], input[type="radio"] { width: 1.25rem; height: 1.25rem; }
+  /* iOS zooms the page into any text field under 16px when it's tapped. */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea { font-size: 16px; }
+}
 :focus-visible { outline: 2px solid var(--steel); outline-offset: 4px; border-radius: 5px; }
 ::selection { background: var(--steel-soft); color: var(--ink); }
 .alg { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 400; letter-spacing: -.025em; word-spacing: .08em; }

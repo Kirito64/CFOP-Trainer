@@ -30,7 +30,7 @@ export function TimerDisplay({
   return (
     <div
       {...padProps}
-      className="flex touch-none flex-col items-center justify-center select-none"
+      className="flex w-full touch-none flex-col items-center justify-center py-6 select-none [-webkit-touch-callout:none]"
       aria-live={phase === "stopped" ? "polite" : "off"}
     >
       <div
