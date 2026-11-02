@@ -13,7 +13,7 @@ A personal training app for CFOP speedsolving, from about 13 seconds to sub-10.
 - **Today:** a daily session plan that picks its focus from your splits, plus a sub-10 roadmap.
 - **Library:** every case with verified algs, an animated player, your chosen or custom alg (checked by simulation), and notes.
 
-Data lives in IndexedDB, so everything works offline. Sign in with a passkey to sync between devices through a Cloudflare Worker and a per-user Durable Object.
+Data lives in IndexedDB, and a service worker caches the app after its first load, so it opens and works with no internet. On an iPad or iPhone, open it in Safari and choose Share, then Add to Home Screen, to use it as an app. Sign in with a passkey to sync between devices through a Cloudflare Worker and a per-user Durable Object. Anything done offline syncs when the connection comes back.
 
 ## Commands
 
