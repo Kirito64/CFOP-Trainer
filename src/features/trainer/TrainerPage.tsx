@@ -12,6 +12,7 @@ import { type Item, shuffle } from "./queue";
 import { TrainerRun } from "./TrainerRun";
 
 type Mode = "review" | "drill";
+type Tab = Mode | "practice";
 type Filter = "all" | LearnStatus | "groups";
 
 export interface RunConfig {
@@ -32,7 +33,7 @@ export default function TrainerPage() {
 }
 
 function TrainerSetup({ onStart }: { onStart: (c: RunConfig) => void }) {
-  const [mode, setMode] = useState<Mode>("review");
+  const [tab, setTab] = useState<Tab>("review");
   return (
     <>
       <PageHeader title="Train algs">
@@ -40,17 +41,18 @@ function TrainerSetup({ onStart }: { onStart: (c: RunConfig) => void }) {
         and green in front when you scramble.
       </PageHeader>
       <div className="mb-8">
-        <Tabs<Mode>
+        <Tabs<Tab>
           label="Training mode"
-          value={mode}
-          onChange={setMode}
+          value={tab}
+          onChange={setTab}
           options={[
             { value: "review", label: "Daily review" },
+            { value: "practice", label: "Practise what I know" },
             { value: "drill", label: "Drill a set" },
           ]}
         />
       </div>
-      {mode === "review" ? <ReviewSetup onStart={onStart} /> : <DrillSetup onStart={onStart} />}
+      {tab === "review" ? <ReviewSetup onStart={onStart} /> : tab === "practice" ? <PracticeSetup onStart={onStart} /> : <DrillSetup onStart={onStart} />}
     </>
   );
 }
@@ -125,6 +127,91 @@ function QueueRow({ label, n }: { label: string; n: number }) {
       <th className="py-1.5 text-left font-normal text-ink-2">{label}</th>
       <td className="text-right font-display text-2xl font-semibold">{n}</td>
     </tr>
+  );
+}
+
+/**
+ * Endless practice of the algs already in rotation, across sets: Known cases, plus Learning cases
+ * the daily review has already introduced. Cases not yet introduced stay out, so new algs still
+ * only arrive through the daily review at its daily limit.
+ */
+function PracticeSetup({ onStart }: { onStart: (c: RunConfig) => void }) {
+  const settings = useSettings();
+  const progress = useLiveQuery(async () => (await db.progress.toArray()).filter((p) => !p.deleted), []);
+  const [sets, setSets] = useState<AlgSetId[]>(SET_IDS);
+  const [statuses, setStatuses] = useState<("known" | "learning")[]>(["known", "learning"]);
+  const slots = settings.f2lSlots.filter((s): s is "FR" | "FL" => s === "FR" || s === "FL");
+
+  const inRotation = useMemo(
+    () => (progress ?? []).filter((p) => p.status === "known" || (p.status === "learning" && p.card)),
+    [progress],
+  );
+  const countIn = (set: AlgSetId) => inRotation.filter((p) => p.id.startsWith(`${set}:`)).length;
+  const keys = inRotation.filter((p) => statuses.includes(p.status as "known" | "learning") && sets.some((s) => p.id.startsWith(`${s}:`))).map((p) => p.id);
+
+  if (!progress) return null;
+  if (!inRotation.length)
+    return (
+      <Empty>
+        <p className="mb-3">No algs to practise yet.</p>
+        <p className="text-sm">
+          Mark the cases you already know as Known in the <Link to="/library/PLL" className="underline">Library</Link>, or learn some in the daily
+          review first. They show up here once they're in your rotation.
+        </p>
+      </Empty>
+    );
+
+  return (
+    <div className="max-w-3xl">
+      <fieldset className="mb-6">
+        <legend className="mb-2 font-medium">Sets to include</legend>
+        <div className="flex flex-wrap gap-2">
+          {ALG_SETS.filter((s) => countIn(s.id) > 0).map((s) => (
+            <label key={s.id} className="flex items-center gap-2 rounded-md border border-rule bg-panel px-3 py-1.5">
+              <input
+                type="checkbox"
+                className="accent-[var(--steel)]"
+                checked={sets.includes(s.id)}
+                onChange={(e) => setSets(e.target.checked ? [...sets, s.id] : sets.filter((x) => x !== s.id))}
+              />
+              {s.name} <span className="text-ink-3">{countIn(s.id)}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <fieldset className="mb-6">
+        <legend className="mb-2 font-medium">Which algs</legend>
+        <div className="flex flex-wrap gap-2">
+          {(
+            [
+              ["known", "Known"],
+              ["learning", "Learning"],
+            ] as const
+          ).map(([status, label]) => (
+            <label key={status} className="flex items-center gap-2 rounded-md border border-rule bg-panel px-3 py-1.5">
+              <input
+                type="checkbox"
+                className="accent-[var(--steel)]"
+                checked={statuses.includes(status)}
+                onChange={(e) => setStatuses(e.target.checked ? [...statuses, status] : statuses.filter((x) => x !== status))}
+              />
+              {label}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <Button
+        variant="primary"
+        disabled={!keys.length}
+        onClick={() => onStart({ mode: "drill", items: keys.flatMap((key) => (key.startsWith("F2L:") ? (slots.length ? slots : (["FR"] as const)).map((s) => ({ key, mirror: s === "FL" })) : [{ key, mirror: false }])), fresh: new Set() })}
+      >
+        Practise {keys.length} {keys.length === 1 ? "alg" : "algs"}
+      </Button>
+      <p className="mt-3 max-w-[60ch] text-sm text-ink-3">
+        Cases come up at random until you stop, with the slow and missed ones more often. New algs only come through the daily review. Your first try
+        at each alg counts toward its review schedule, so a miss brings it back to the daily review sooner.
+      </p>
+    </div>
   );
 }
 
