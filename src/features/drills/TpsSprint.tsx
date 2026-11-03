@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { TimerDisplay } from "../../components/TimerDisplay";
-import { Hint, Kbd, Tabs } from "../../components/ui";
+import { Button, Hint, Kbd, Tabs } from "../../components/ui";
 import { parseAlg } from "../../cube/cube";
 import { getSet } from "../../data/algsets";
 import { type AlgSetId, caseKey } from "../../data/types";
 import { db } from "../../db/db";
-import { addDrillResult, useDrillResults } from "../../db/drills";
+import { addDrillResult, deleteDrillResult, useDrillResults } from "../../db/drills";
 import { chosenAlg } from "../../db/progress";
 import { useSettings } from "../../db/settings";
 import { useStackmat } from "../../lib/useStackmat";
@@ -20,6 +20,7 @@ export function TpsSprint() {
   const [caseId, setCaseId] = useState(getSet("PLL").cases[0].id);
   const [alg, setAlg] = useState(getSet("PLL").cases[0].algs[0]);
   const results = useDrillResults("tps");
+  const [lastId, setLastId] = useState<string>();
 
   const choose = async (s: AlgSetId, id: string) => {
     setSet(s);
@@ -30,12 +31,13 @@ export function TpsSprint() {
   const moves = moveCount(alg) * REPS;
   const timer = useStackmat({
     holdMs: settings.holdMs,
-    onStop: (ms) => void addDrillResult("tps", Math.round((moves / (ms / 1000)) * 100) / 100, { case: caseKey(set, caseId), ms: Math.floor(ms) }),
+    onStop: (ms) => void addDrillResult("tps", Math.round((moves / (ms / 1000)) * 100) / 100, { case: caseKey(set, caseId), ms: Math.floor(ms) }).then(setLastId),
   });
 
   const mine = results?.filter((r) => r.detail?.case === caseKey(set, caseId)) ?? [];
   const best = mine.length ? Math.max(...mine.map((r) => r.score)) : null;
   const tps = timer.phase === "stopped" ? moves / (timer.elapsed / 1000) : null;
+  const last = tps != null ? results?.find((r) => r.id === lastId) : undefined;
 
   return (
     <div className="flex flex-col items-center">
@@ -65,6 +67,18 @@ export function TpsSprint() {
         <p className="mt-4 text-lg">
           <span className="font-display text-3xl font-semibold">{tps.toFixed(2)}</span> turns a second
           {best != null && <span className="ml-2 text-ink-3">(best {best.toFixed(2)})</span>}
+          {last && (
+            <Button
+              variant="danger"
+              className="ml-4"
+              onClick={() => {
+                void deleteDrillResult(last.id);
+                timer.reset();
+              }}
+            >
+              Delete this time
+            </Button>
+          )}
         </p>
       ) : (
         <p className="mt-4 text-sm text-ink-3">

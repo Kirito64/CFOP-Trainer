@@ -9,3 +9,6 @@ export const addDrillResult = (drill: DrillId, score: number, detail?: Record<st
 export function useDrillResults(drill: DrillId): DrillResult[] | undefined {
   return useLiveQuery(async () => (await db.drills.where("drill").equals(drill).sortBy("at")).filter((d) => !d.deleted), [drill]);
 }
+
+/** Marks the result deleted rather than removing it, so the deletion syncs to other devices. */
+export const deleteDrillResult = (id: string) => db.drills.update(id, { deleted: true, updatedAt: now() });
