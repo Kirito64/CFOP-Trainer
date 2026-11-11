@@ -38,7 +38,17 @@ self.addEventListener("fetch", (event) => {
     const key = request.mode === "navigate" ? "/" : request;
     // The server sends Vary: Origin, and scripts are requested with an Origin header the cached
     // copies don't have. Built files never change under the same name, so Vary doesn't matter.
-    event.respondWith(caches.match(key, { ignoreVary: true }).then((hit) => hit ?? fetch(request)));
+    const opts = { ignoreVary: true };
+    // This version's cache first: caches.match() alone searches the oldest cache first, which
+    // kept serving the previous version's page after an update. Then the previous version's
+    // cache, for a chunk an older tab still asks for.
+    event.respondWith(
+      caches
+        .open(CACHE)
+        .then((cache) => cache.match(key, opts))
+        .then((hit) => hit ?? caches.match(key, opts))
+        .then((hit) => hit ?? fetch(request)),
+    );
     return;
   }
 
